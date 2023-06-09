@@ -1,46 +1,31 @@
 package com.poly.duanbangiay.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Objects;
 
 @Entity
-@Table(name = "kich_thuoc", schema = "dbo", catalog = "ShopShoe")
+@Table(name = "kich_thuoc")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class KichThuoc {
-    private long id;
-    private int giaTri;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    public long getId() {
-        return id;
-    }
+    private long id;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    @Column(name = "gia_tri")
+    private int giaTri;
 
-    @Basic
-    @Column(name = "gia_tri", nullable = false)
-    public int getGiaTri() {
-        return giaTri;
-    }
+    @Column(name = "trang_thai")
+    private Boolean trangThai;
 
-    public void setGiaTri(int giaTri) {
-        this.giaTri = giaTri;
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        KichThuoc kichThuoc = (KichThuoc) o;
-        return id == kichThuoc.id && giaTri == kichThuoc.giaTri;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, giaTri);
-    }
 }

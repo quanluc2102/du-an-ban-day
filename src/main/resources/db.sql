@@ -6,24 +6,26 @@ CREATE TABLE tai_khoan (
   email NVARCHAR(255) NOT NULL,
   ten NVARCHAR(255) NOT NULL,
   dia_chi NVARCHAR(255) NOT NULL,
-  ngay_sinh DATETIME,
+  ngay_tao DATETIME,
+  ngay_cap_nhat DATETIME,
   password NVARCHAR(255) NOT NULL,
   anh NVARCHAR(255),
   sdt NVARCHAR(255) NOT NULL,
   trang_thai BIT NOT NULL
 );
 -- Create vai_tro table
-CREATE TABLE vai_tro (
+CREATE TABLE quyen (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
-  ten NVARCHAR(255) NOT NULL
+  ten NVARCHAR(255) NOT NULL,
+  trang_thai BIT NOT NULL
 );
 -- Create phan_quyen table
 CREATE TABLE phan_quyen (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
   tai_khoan_id BIGINT,
-  role_id BIGINT,
+  quyen_id BIGINT,
   FOREIGN KEY (tai_khoan_id) REFERENCES tai_khoan(id),
-  FOREIGN KEY (role_id) REFERENCES vai_tro(id)
+  FOREIGN KEY (quyen_id) REFERENCES quyen(id)
 );
 
 
@@ -31,13 +33,15 @@ CREATE TABLE phan_quyen (
 -- Create kich_thuoc table
 CREATE TABLE kich_thuoc (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
-  gia_tri INT NOT NULL
+  gia_tri INT NOT NULL,
+  trang_thai BIT NOT NULL
 );
 
 -- Create danh_muc table
 CREATE TABLE danh_muc (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
-  ten NVARCHAR(255) NOT NULL
+  ten NVARCHAR(255) NOT NULL,
+  trang_thai BIT NOT NULL
 );
 
 -- Create kich_thuocmau_sacchi_tiet table
@@ -47,7 +51,8 @@ CREATE TABLE danh_muc (
 CREATE TABLE mau_sac (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
   gia_tri INT NOT NULL,
-  ten NVARCHAR(255) NOT NULL
+  ten NVARCHAR(255) NOT NULL,
+  trang_thai BIT NOT NULL
 );
 
 
@@ -61,15 +66,18 @@ CREATE TABLE thanh_toan (
 -- Create thuong_hieu table
 CREATE TABLE thuong_hieu (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
-  ten NVARCHAR(255) NOT NULL
+  ten NVARCHAR(255) NOT NULL,
+  trang_thai BIT NOT NULL
 );
 
 -- Create thong_tin_nguoi_dung table
 CREATE TABLE thong_tin_nguoi_dung (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
   dia_chi NVARCHAR(255) NOT NULL,
+  ngay_sinh DATE NOT NULL,
   sdt NVARCHAR(255) NOT NULL,
   ten NVARCHAR(255) NOT NULL,
+  ngay_cap_nhat DATETIME,
   tai_khoan_id BIGINT,
   FOREIGN KEY (tai_khoan_id) REFERENCES tai_khoan(id)
 );
@@ -83,10 +91,8 @@ CREATE TABLE san_pham (
   gia_ban float NOT NULL,
   so_luong INT NOT NULL,
   trang_thai INT NOT NULL,	
-  ngay_cap_nhat DATE,
-
-  anh NVARCHAR(255),
-
+ ngay_cap_nhat DATETIME,
+ mo_ta NVARCHAR(255) NOT NULL
  
 );
 
@@ -106,7 +112,7 @@ CREATE TABLE hoa_don (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
   ngay_tao DATE NOT NULL,
   ghi_chu NVARCHAR(255) NOT NULL,
-
+  ngay_cap_nhat DATETIME,
   trang_thai INT NOT NULL,
   tai_khoan_id BIGINT,
   thanh_toan_id BIGINT,
@@ -119,7 +125,7 @@ CREATE TABLE gio_hang (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
   ngay_tao DATE NOT NULL,
   ghi_chu NVARCHAR(255) NOT NULL,
-
+  ngay_cap_nhat DATETIME,
   trang_thai INT NOT NULL,
   tai_khoan_id BIGINT,
 
@@ -186,13 +192,7 @@ CREATE TABLE khuyen_mai (
  
 );
 
--- Create doc_nhat table
-CREATE TABLE doc_nhat (
-id BIGINT PRIMARY KEY IDENTITY(1,1),
-san_pham_id BIGINT,
-thuoc_tinh_doc_nhat NVARCHAR(255),
-FOREIGN KEY (san_pham_id) REFERENCES san_pham(id)
-);
+
 
 -- Create san_pham_khuyen_mai table
 CREATE TABLE san_pham_khuyen_mai (
@@ -213,21 +213,21 @@ FOREIGN KEY (khuyen_mai_id) REFERENCES khuyen_mai(id)
 );
 
 -- INSERT INTO tai_khoan
-INSERT INTO tai_khoan (username, email, ten, dia_chi, ngay_sinh, password, anh, sdt, trang_thai)
+INSERT INTO tai_khoan (username, email, ten, dia_chi, password, anh, sdt, trang_thai)
 VALUES
-('user1', 'user1@example.com', 'User 1', 'Address 1', '1990-01-01', 'password1', 'image1.jpg', '1234567890', 1),
-('user2', 'user2@example.com', 'User 2', 'Address 2', '1990-02-02', 'password2', 'image2.jpg', '1234567891', 1),
-('user3', 'user3@example.com', 'User 3', 'Address 3', '1990-03-03', 'password3', 'image3.jpg', '1234567892', 1),
-('user4', 'user4@example.com', 'User 4', 'Address 4', '1990-04-04', 'password4', 'image4.jpg', '1234567893', 1),
-('user5', 'user5@example.com', 'User 5', 'Address 5', '1990-05-05', 'password5', 'image5.jpg', '1234567894', 1),
-('user6', 'user6@example.com', 'User 6', 'Address 6', '1990-06-06', 'password6', 'image6.jpg', '1234567895', 1),
-('user7', 'user7@example.com', 'User 7', 'Address 7', '1990-07-07', 'password7', 'image7.jpg', '1234567896', 1),
-('user8', 'user8@example.com', 'User 8', 'Address 8', '1990-08-08', 'password8', 'image8.jpg', '1234567897', 1),
-('user9', 'user9@example.com', 'User 9', 'Address 9', '1990-09-09', 'password9', 'image9.jpg', '1234567898', 1),
-('user10', 'user10@example.com', 'User 10', 'Address 10', '1990-10-10', 'password10', 'image10.jpg', '1234567899', 1);
+('user1', 'user1@example.com', 'User 1', 'Address 1', 'password1', 'image1.jpg', '1234567890', 1),
+('user2', 'user2@example.com', 'User 2', 'Address 2', 'password2', 'image2.jpg', '1234567891', 1),
+('user3', 'user3@example.com', 'User 3', 'Address 3', 'password3', 'image3.jpg', '1234567892', 1),
+('user4', 'user4@example.com', 'User 4', 'Address 4', 'password4', 'image4.jpg', '1234567893', 1),
+('user5', 'user5@example.com', 'User 5', 'Address 5', 'password5', 'image5.jpg', '1234567894', 1),
+('user6', 'user6@example.com', 'User 6', 'Address 6', 'password6', 'image6.jpg', '1234567895', 1),
+('user7', 'user7@example.com', 'User 7', 'Address 7', 'password7', 'image7.jpg', '1234567896', 1),
+('user8', 'user8@example.com', 'User 8', 'Address 8', 'password8', 'image8.jpg', '1234567897', 1),
+('user9', 'user9@example.com', 'User 9', 'Address 9', 'password9', 'image9.jpg', '1234567898', 1),
+('user10', 'user10@example.com', 'User 10', 'Address 10', 'password10', 'image10.jpg', '1234567899', 1);
 
 -- INSERT INTO vai_tro
-INSERT INTO vai_tro (ten)
+INSERT INTO quyen(ten)
 VALUES
 ('Role 1'),
 ('Role 2'),
@@ -241,7 +241,7 @@ VALUES
 ('Role 10');
 
 -- INSERT INTO phan_quyen
-INSERT INTO phan_quyen (tai_khoan_id, role_id)
+INSERT INTO phan_quyen (tai_khoan_id, quyen_id)
 VALUES
 (1, 1),
 (2, 2),
@@ -325,32 +325,32 @@ VALUES
 ('Brand 10');
 
 -- INSERT INTO thong_tin_nguoi_dung
-INSERT INTO thong_tin_nguoi_dung (dia_chi, sdt, ten, tai_khoan_id)
+INSERT INTO thong_tin_nguoi_dung (dia_chi, sdt, ten, tai_khoan_id,ngay_sinh)
 VALUES
-('Address 1', '1234567890', 'User 1 Info', 1),
-('Address 2', '1234567891', 'User 2 Info', 2),
-('Address 3', '1234567892', 'User 3 Info', 3),
-('Address 4', '1234567893', 'User 4 Info', 4),
-('Address 5', '1234567894', 'User 5 Info', 5),
-('Address 6', '1234567895', 'User 6 Info', 6),
-('Address 7', '1234567896', 'User 7 Info', 7),
-('Address 8', '1234567897', 'User 8 Info', 8),
-('Address 9', '1234567898', 'User 9 Info', 9),
-('Address 10', '1234567899', 'User 10 Info', 10);
+('Address 1', '1234567890', 'User 1 Info', 1, '1920-01-09'),
+('Address 2', '1234567891', 'User 2 Info', 2, '1930-02-08'),
+('Address 3', '1234567892', 'User 3 Info', 3, '1940-03-07'),
+('Address 4', '1234567893', 'User 4 Info', 4, '1950-04-06'),
+('Address 5', '1234567894', 'User 5 Info', 5, '1960-05-05'),
+('Address 6', '1234567895', 'User 6 Info', 6, '1970-06-04'),
+('Address 7', '1234567896', 'User 7 Info', 7, '1980-07-03'),
+('Address 8', '1234567897', 'User 8 Info', 8, '1980-08-02'),
+('Address 9', '1234567898', 'User 9 Info', 9, '1990-09-01'),
+('Address 10', '1234567899', 'User 10 Info', 10, '1990-11-11');
 
 -- INSERT INTO san_pham
-INSERT INTO san_pham (ngay_tao, gia_nhap, ten, gia_ban, so_luong, trang_thai, ngay_cap_nhat, anh)
+INSERT INTO san_pham (ngay_tao, gia_nhap, ten, gia_ban, so_luong, trang_thai, ngay_cap_nhat)
 VALUES
-('2021-01-01', 10.0, 'Product 1', 20.0, 50, 1, '2021-01-01', 'product1.jpg'),
-('2021-02-02', 15.0, 'Product 2', 25.0, 60, 1, '2021-02-02', 'product2.jpg'),
-('2021-03-03', 20.0, 'Product 3', 30.0, 70, 1, '2021-03-03', 'product3.jpg'),
-('2021-04-04', 25.0, 'Product 4', 35.0, 80, 1, '2021-04-04', 'product4.jpg'),
-('2021-05-05', 30.0, 'Product 5', 40.0, 90, 1, '2021-05-05', 'product5.jpg'),
-('2021-06-06', 35.0, 'Product 6', 45.0, 100, 1, '2021-06-06', 'product6.jpg'),
-('2021-07-07', 40.0, 'Product 7', 50.0, 110, 1, '2021-07-07', 'product7.jpg'),
-('2021-08-08', 45.0, 'Product 8', 55.0, 120, 1, '2021-08-08', 'product8.jpg'),
-('2021-09-09', 50.0, 'Product 9', 60.0, 130, 1, '2021-09-09', 'product9.jpg'),
-('2021-10-10', 55.0, 'Product 10', 65.0, 140, 1, '2021-10-10', 'product10.jpg');
+('2021-01-01', 10.0, 'Product 1', 20.0, 50, 1, '2021-01-01'),
+('2021-02-02', 15.0, 'Product 2', 25.0, 60, 1, '2021-02-02'),
+('2021-03-03', 20.0, 'Product 3', 30.0, 70, 1, '2021-03-03'),
+('2021-04-04', 25.0, 'Product 4', 35.0, 80, 1, '2021-04-04'),
+('2021-05-05', 30.0, 'Product 5', 40.0, 90, 1, '2021-05-05'),
+('2021-06-06', 35.0, 'Product 6', 45.0, 100, 1, '2021-06-06'),
+('2021-07-07', 40.0, 'Product 7', 50.0, 110, 1, '2021-07-07'),
+('2021-08-08', 45.0, 'Product 8', 55.0, 120, 1, '2021-08-08'),
+('2021-09-09', 50.0, 'Product 9', 60.0, 130, 1, '2021-09-09'),
+('2021-10-10', 55.0, 'Product 10', 65.0, 140, 1, '2021-10-10');
 
 -- INSERT INTO kich_thuoc_mau_sac
 INSERT INTO kich_thuoc_mau_sac (so_luong, trang_thai, mau_sac_id, san_pham_id, kich_thuoc_id)
@@ -479,19 +479,6 @@ VALUES
 ('Promotion 9', 'Description 9', '2022-09-01', '2022-09-15', 0.9),
 ('Promotion 10', 'Description 10', '2022-10-01', '2022-10-15', 1.0);
 
--- INSERT INTO doc_nhat
-INSERT INTO doc_nhat (san_pham_id, thuoc_tinh_doc_nhat)
-VALUES
-(1, 'Unique Property 1'),
-(2, 'Unique Property 2'),
-(3, 'Unique Property 3'),
-(4, 'Unique Property 4'),
-(5, 'Unique Property 5'),
-(6, 'Unique Property 6'),
-(7, 'Unique Property 7'),
-(8, 'Unique Property 8'),
-(9, 'Unique Property 9'),
-(10, 'Unique Property 10');
 
 -- INSERT INTO san_pham_khuyen_mai
 INSERT INTO san_pham_khuyen_mai (san_pham_id, khuyen_mai_id)

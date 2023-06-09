@@ -1,4 +1,5 @@
---create database ShopShoe
+﻿--create database ShopShoe
+--use ShopShoe
 --drop database ShopShoe
 CREATE TABLE tai_khoan (
   id BIGINT PRIMARY KEY IDENTITY(1,1),
@@ -211,299 +212,137 @@ khuyen_mai_id BIGINT,
 FOREIGN KEY (hoa_don_id) REFERENCES hoa_don,
 FOREIGN KEY (khuyen_mai_id) REFERENCES khuyen_mai(id)
 );
-
--- INSERT INTO tai_khoan
-INSERT INTO tai_khoan (username, email, ten, dia_chi, password, anh, sdt, trang_thai)
+INSERT INTO quyen (ten, trang_thai)
 VALUES
-('user1', 'user1@example.com', 'User 1', 'Address 1', 'password1', 'image1.jpg', '1234567890', 1),
-('user2', 'user2@example.com', 'User 2', 'Address 2', 'password2', 'image2.jpg', '1234567891', 1),
-('user3', 'user3@example.com', 'User 3', 'Address 3', 'password3', 'image3.jpg', '1234567892', 1),
-('user4', 'user4@example.com', 'User 4', 'Address 4', 'password4', 'image4.jpg', '1234567893', 1),
-('user5', 'user5@example.com', 'User 5', 'Address 5', 'password5', 'image5.jpg', '1234567894', 1),
-('user6', 'user6@example.com', 'User 6', 'Address 6', 'password6', 'image6.jpg', '1234567895', 1),
-('user7', 'user7@example.com', 'User 7', 'Address 7', 'password7', 'image7.jpg', '1234567896', 1),
-('user8', 'user8@example.com', 'User 8', 'Address 8', 'password8', 'image8.jpg', '1234567897', 1),
-('user9', 'user9@example.com', 'User 9', 'Address 9', 'password9', 'image9.jpg', '1234567898', 1),
-('user10', 'user10@example.com', 'User 10', 'Address 10', 'password10', 'image10.jpg', '1234567899', 1);
-
--- INSERT INTO vai_tro
-INSERT INTO quyen(ten)
+  ('Quyền 1', 1),
+  ('Quyền 2', 1),
+  ('Quyền 3', 1),
+  ('Quyền 4', 1),
+  ('Quyền 5', 1);
+INSERT INTO tai_khoan (username, email, ten, dia_chi, ngay_tao, ngay_cap_nhat, password, anh, sdt, trang_thai)
 VALUES
-('Role 1'),
-('Role 2'),
-('Role 3'),
-('Role 4'),
-('Role 5'),
-('Role 6'),
-('Role 7'),
-('Role 8'),
-('Role 9'),
-('Role 10');
-
--- INSERT INTO phan_quyen
+  ('user1', 'user1@example.com', 'User 1', 'Địa chỉ 1', GETDATE(), GETDATE(), 'password1', 'anh1.jpg', '123456789', 1),
+  ('user2', 'user2@example.com', 'User 2', 'Địa chỉ 2', GETDATE(), GETDATE(), 'password2', 'anh2.jpg', '987654321', 1),
+  ('user3', 'user3@example.com', 'User 3', 'Địa chỉ 3', GETDATE(), GETDATE(), 'password3', 'anh3.jpg', '456123789', 1),
+  ('user4', 'user4@example.com', 'User 4', 'Địa chỉ 4', GETDATE(), GETDATE(), 'password4', 'anh4.jpg', '789123456', 1),
+  ('user5', 'user5@example.com', 'User 5', 'Địa chỉ 5', GETDATE(), GETDATE(), 'password5', 'anh5.jpg', '321987654', 1);
 INSERT INTO phan_quyen (tai_khoan_id, quyen_id)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
-
--- INSERT INTO kich_thuoc
-INSERT INTO kich_thuoc (gia_tri)
+  (1, 1),
+  (2, 2),
+  (3, 3),
+  (4, 4),
+  (5, 5);
+INSERT INTO danh_muc (ten, trang_thai)
 VALUES
-(1),
-(2),
-(3),
-(4),
-(5),
-(6),
-(7),
-(8),
-(9),
-(10);
-
--- INSERT INTO danh_muc
-INSERT INTO danh_muc (ten)
+  ('Danh mục 1', 1),
+  ('Danh mục 2', 1),
+  ('Danh mục 3', 1),
+  ('Danh mục 4', 1),
+  ('Danh mục 5', 1);
+INSERT INTO mau_sac (gia_tri, ten, trang_thai)
 VALUES
-('Category 1'),
-('Category 2'),
-('Category 3'),
-('Category 4'),
-('Category 5'),
-('Category 6'),
-('Category 7'),
-('Category 8'),
-('Category 9'),
-('Category 10');
-
--- INSERT INTO mau_sac
-INSERT INTO mau_sac (gia_tri, ten)
+  (1, 'Màu 1', 1),
+  (2, 'Màu 2', 1),
+  (3, 'Màu 3', 1),
+  (4, 'Màu 4', 1),
+  (5, 'Màu 5', 1);
+  INSERT INTO kich_thuoc (gia_tri, trang_thai)
 VALUES
-(1, 'Color 1'),
-(2, 'Color 2'),
-(3, 'Color 3'),
-(4, 'Color 4'),
-(5, 'Color 5'),
-(6, 'Color 6'),
-(7, 'Color 7'),
-(8, 'Color 8'),
-(9, 'Color 9'),
-(10, 'Color 10');
+  (36, 1),
+  (37, 1),
+  (38, 1),
+  (39, 1),
+  (40, 1);
 
--- INSERT INTO thanh_toan
 INSERT INTO thanh_toan (ten, trang_thai)
 VALUES
-('Payment 1', 'Active'),
-('Payment 2', 'Active'),
-('Payment 3', 'Active'),
-('Payment 4', 'Active'),
-('Payment 5', 'Active'),
-('Payment 6', 'Active'),
-('Payment 7', 'Active'),
-('Payment 8', 'Active'),
-('Payment 9', 'Active'),
-('Payment 10', 'Active');
-
--- INSERT INTO thuong_hieu
-INSERT INTO thuong_hieu (ten)
+  ('Thanh toán 1', 'Trạng thái 1'),
+  ('Thanh toán 2', 'Trạng thái 2'),
+  ('Thanh toán 3', 'Trạng thái 3'),
+  ('Thanh toán 4', 'Trạng thái 4'),
+  ('Thanh toán 5', 'Trạng thái 5');
+INSERT INTO thuong_hieu (ten, trang_thai)
 VALUES
-('Brand 1'),
-('Brand 2'),
-('Brand 3'),
-('Brand 4'),
-('Brand 5'),
-('Brand 6'),
-('Brand 7'),
-('Brand 8'),
-('Brand 9'),
-('Brand 10');
-
--- INSERT INTO thong_tin_nguoi_dung
-INSERT INTO thong_tin_nguoi_dung (dia_chi, sdt, ten, tai_khoan_id,ngay_sinh)
+  ('Thương hiệu 1', 1),
+  ('Thương hiệu 2', 1),
+  ('Thương hiệu 3', 1),
+  ('Thương hiệu 4', 1),
+  ('Thương hiệu 5', 1);
+INSERT INTO thong_tin_nguoi_dung (dia_chi, ngay_sinh, sdt, ten, ngay_cap_nhat, tai_khoan_id)
 VALUES
-('Address 1', '1234567890', 'User 1 Info', 1, '1920-01-09'),
-('Address 2', '1234567891', 'User 2 Info', 2, '1930-02-08'),
-('Address 3', '1234567892', 'User 3 Info', 3, '1940-03-07'),
-('Address 4', '1234567893', 'User 4 Info', 4, '1950-04-06'),
-('Address 5', '1234567894', 'User 5 Info', 5, '1960-05-05'),
-('Address 6', '1234567895', 'User 6 Info', 6, '1970-06-04'),
-('Address 7', '1234567896', 'User 7 Info', 7, '1980-07-03'),
-('Address 8', '1234567897', 'User 8 Info', 8, '1980-08-02'),
-('Address 9', '1234567898', 'User 9 Info', 9, '1990-09-01'),
-('Address 10', '1234567899', 'User 10 Info', 10, '1990-11-11');
-
--- INSERT INTO san_pham
-INSERT INTO san_pham (ngay_tao, gia_nhap, ten, gia_ban, so_luong, trang_thai, ngay_cap_nhat)
+  ('Địa chỉ 1', '1990-01-01', '123456789', 'Người dùng 1', GETDATE(), 1),
+  ('Địa chỉ 2', '1990-02-02', '987654321', 'Người dùng 2', GETDATE(), 2),
+  ('Địa chỉ 3', '1990-03-03', '456123789', 'Người dùng 3', GETDATE(), 3),
+  ('Địa chỉ 4', '1990-04-04', '789123456', 'Người dùng 4', GETDATE(), 4),
+  ('Địa chỉ 5', '1990-05-05', '321987654', 'Người dùng 5', GETDATE(), 5);
+INSERT INTO san_pham (ngay_tao, gia_nhap, ten, gia_ban, so_luong, trang_thai, ngay_cap_nhat, mo_ta)
 VALUES
-('2021-01-01', 10.0, 'Product 1', 20.0, 50, 1, '2021-01-01'),
-('2021-02-02', 15.0, 'Product 2', 25.0, 60, 1, '2021-02-02'),
-('2021-03-03', 20.0, 'Product 3', 30.0, 70, 1, '2021-03-03'),
-('2021-04-04', 25.0, 'Product 4', 35.0, 80, 1, '2021-04-04'),
-('2021-05-05', 30.0, 'Product 5', 40.0, 90, 1, '2021-05-05'),
-('2021-06-06', 35.0, 'Product 6', 45.0, 100, 1, '2021-06-06'),
-('2021-07-07', 40.0, 'Product 7', 50.0, 110, 1, '2021-07-07'),
-('2021-08-08', 45.0, 'Product 8', 55.0, 120, 1, '2021-08-08'),
-('2021-09-09', 50.0, 'Product 9', 60.0, 130, 1, '2021-09-09'),
-('2021-10-10', 55.0, 'Product 10', 65.0, 140, 1, '2021-10-10');
-
--- INSERT INTO kich_thuoc_mau_sac
+  (GETDATE(), 100, 'Sản phẩm 1', 200, 10, 1, GETDATE(), 'Mô tả sản phẩm 1'),
+  (GETDATE(), 150, 'Sản phẩm 2', 250, 15, 1, GETDATE(), 'Mô tả sản phẩm 2'),
+  (GETDATE(), 200, 'Sản phẩm 3', 300, 20, 1, GETDATE(), 'Mô tả sản phẩm 3'),
+  (GETDATE(), 250, 'Sản phẩm 4', 350, 25, 1, GETDATE(), 'Mô tả sản phẩm 4'),
+  (GETDATE(), 300, 'Sản phẩm 5', 400, 30, 1, GETDATE(), 'Mô tả sản phẩm 5');
 INSERT INTO kich_thuoc_mau_sac (so_luong, trang_thai, mau_sac_id, san_pham_id, kich_thuoc_id)
 VALUES
-(10, 1, 1, 1, 1),
-(20, 1, 2, 2, 2),
-(30, 1, 3, 3, 3),
-(40, 1, 4, 4, 4),
-(50, 1, 5, 5, 5),
-(60, 1, 6, 6, 6),
-(70, 1, 7, 7, 7),
-(80, 1, 8, 8, 8),
-(90, 1, 9, 9, 9),
-(100, 1, 10, 10, 10);
-
--- INSERT INTO hoa_don
-INSERT INTO hoa_don (ngay_tao, ghi_chu, trang_thai, tai_khoan_id, thanh_toan_id)
+  (2, 1, 1, 1, 1),
+  (3, 1, 2, 2, 2),
+  (4, 1, 3, 3, 3),
+  (5, 1, 4, 4, 4),
+  (6, 1, 5, 5, 5);
+  INSERT INTO hoa_don (ngay_tao, ghi_chu, ngay_cap_nhat, trang_thai, tai_khoan_id, thanh_toan_id)
 VALUES
-('2021-01-01', 'Note 1', 1, 1, 1),
-('2021-02-02', 'Note 2', 1, 2, 2),
-('2021-03-03', 'Note 3', 1, 3, 3),
-('2021-04-04', 'Note 4', 1, 4, 4),
-('2021-05-05', 'Note 5', 1, 5, 5),
-('2021-06-06', 'Note 6', 1, 6, 6),
-('2021-07-07', 'Note 7', 1, 7, 7),
-('2021-08-08', 'Note 8', 1, 8, 8),
-('2021-09-09', 'Note 9', 1, 9, 9),
-('2021-10-10', 'Note 10', 1, 10, 10);
-
--- INSERT INTO gio_hang
-INSERT INTO gio_hang (ngay_tao, ghi_chu, trang_thai, tai_khoan_id)
+  (GETDATE(), 'Ghi chú 1', GETDATE(), 1, 1, 1),
+  (GETDATE(), 'Ghi chú 2', GETDATE(), 1, 2, 2),
+  (GETDATE(), 'Ghi chú 3', GETDATE(), 1, 3, 3),
+  (GETDATE(), 'Ghi chú 4', GETDATE(), 1, 4, 4),
+  (GETDATE(), 'Ghi chú 5', GETDATE(), 1, 5, 5);
+INSERT INTO gio_hang (ngay_tao, ghi_chu, ngay_cap_nhat, trang_thai, tai_khoan_id)
 VALUES
-('2021-01-01', 'Note 1',
-1, 1),
-('2021-02-02', 'Note 2', 1, 2),
-('2021-03-03', 'Note 3', 1, 3),
-('2021-04-04', 'Note 4', 1, 4),
-('2021-05-05', 'Note 5', 1, 5),
-('2021-06-06', 'Note 6', 1, 6),
-('2021-07-07', 'Note 7', 1, 7),
-('2021-08-08', 'Note 8', 1, 8),
-('2021-09-09', 'Note 9', 1, 9),
-('2021-10-10', 'Note 10', 1, 10);
-
--- INSERT INTO hoa_don_chi_tiet
+  (GETDATE(), 'Ghi chú 1', GETDATE(), 1, 1),
+  (GETDATE(), 'Ghi chú 2', GETDATE(), 1, 2),
+  (GETDATE(), 'Ghi chú 3', GETDATE(), 1, 3),
+  (GETDATE(), 'Ghi chú 4', GETDATE(), 1, 4),
+  (GETDATE(), 'Ghi chú 5', GETDATE(), 1, 5);
 INSERT INTO hoa_don_chi_tiet (ghi_chu, so_luong, hoa_don_id, san_pham_id)
 VALUES
-('Note 1', 5, 1, 1),
-('Note 2', 10, 2, 2),
-('Note 3', 15, 3, 3),
-('Note 4', 20, 4, 4),
-('Note 5', 25, 5, 5),
-('Note 6', 30, 6, 6),
-('Note 7', 35, 7, 7),
-('Note 8', 40, 8, 8),
-('Note 9', 45, 9, 9),
-('Note 10', 50, 10, 10);
-
--- INSERT INTO san_pham_danh_muc
-INSERT INTO san_pham_danh_muc (san_pham_id, danh_muc_id)
+  ('Ghi chú 1', 2, 1, 1),
+  ('Ghi chú 2', 3, 2, 2),
+  ('Ghi chú 3', 4, 3, 3),
+  ('Ghi chú 4', 5, 4, 4),
+  ('Ghi chú 5', 6, 5, 5);
+INSERT INTO hoa_don_chi_tiet (ghi_chu, so_luong, hoa_don_id, san_pham_id)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
-
--- INSERT INTO san_pham_thuong_hieu
+  ('Ghi chú 1', 2, 1, 1),
+  ('Ghi chú 2', 3, 2, 2),
+  ('Ghi chú 3', 4, 3, 3),
+  ('Ghi chú 4', 5, 4, 4),
+  ('Ghi chú 5', 6, 5, 5);
+  INSERT INTO san_pham_danh_muc (san_pham_id, danh_muc_id)
+VALUES
+  (1, 1),
+  (2, 2),
+  (3, 3),
+  (4, 4),
+  (5, 5);
 INSERT INTO san_pham_thuong_hieu (san_pham_id, thuong_hieu_id)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
-
--- INSERT INTO san_pham_anh
+  (1, 1),
+  (2, 2),
+  (3, 3),
+  (4, 4),
+  (5, 5);
 INSERT INTO san_pham_anh (san_pham_id, anh)
 VALUES
-(1, 'product1_1.jpg'),
-(2, 'product2_1.jpg'),
-(3, 'product3_1.jpg'),
-(4, 'product4_1.jpg'),
-(5, 'product5_1.jpg'),
-(6, 'product6_1.jpg'),
-(7, 'product7_1.jpg'),
-(8, 'product8_1.jpg'),
-(9, 'product9_1.jpg'),
-(10, 'product10_1.jpg');
-
--- INSERT INTO gio_hang_chi_tiet
+  (1, 'anh1.jpg'),
+  (2, 'anh2.jpg'),
+  (3, 'anh3.jpg'),
+  (4, 'anh4.jpg'),
+  (5, 'anh5.jpg');
 INSERT INTO gio_hang_chi_tiet (gio_hang_id, san_pham_id, so_luong)
 VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3),
-(4, 4, 4),
-(5, 5, 5),
-(6, 6, 6),
-(7, 7, 7),
-(8, 8, 8),
-(9, 9, 9),
-(10, 10, 10);
-
--- INSERT INTO khuyen_mai
-INSERT INTO khuyen_mai (ten, mo_ta, bat_dau, ket_thuc, giam_gia)
-VALUES
-('Promotion 1', 'Description 1', '2022-01-01', '2022-01-15', 0.1),
-('Promotion 2', 'Description 2', '2022-02-01', '2022-02-15', 0.2),
-('Promotion 3', 'Description 3', '2022-03-01', '2022-03-15', 0.3),
-('Promotion 4', 'Description 4', '2022-04-01', '2022-04-15', 0.4),
-('Promotion 5', 'Description 5', '2022-05-01', '2022-05-15', 0.5),
-('Promotion 6', 'Description 6', '2022-06-01', '2022-06-15', 0.6),
-('Promotion 7', 'Description 7', '2022-07-01', '2022-07-15', 0.7),
-('Promotion 8', 'Description 8', '2022-08-01', '2022-08-15', 0.8),
-('Promotion 9', 'Description 9', '2022-09-01', '2022-09-15', 0.9),
-('Promotion 10', 'Description 10', '2022-10-01', '2022-10-15', 1.0);
-
-
--- INSERT INTO san_pham_khuyen_mai
-INSERT INTO san_pham_khuyen_mai (san_pham_id, khuyen_mai_id)
-VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
-
--- INSERT INTO hoa_don_khuyen_mai
-INSERT INTO hoa_don_khuyen_mai (hoa_don_id, khuyen_mai_id)
-VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
+  (1, 1, 2),
+  (2, 2, 3),
+  (3, 3, 4),
+  (4, 4, 5),
+  (5, 5, 6);

@@ -2,8 +2,6 @@ package com.poly.duanbangiay.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Objects;
-
 @Entity
 @Table(name = "thuong_hieu")
 public class ThuongHieu {

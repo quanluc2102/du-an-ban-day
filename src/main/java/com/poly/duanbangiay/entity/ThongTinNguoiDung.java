@@ -1,79 +1,35 @@
 package com.poly.duanbangiay.entity;
 
 import jakarta.persistence.*;
-
-import java.util.Objects;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "thong_tin_nguoi_dung", schema = "dbo", catalog = "ShopShoe")
+@Table(name = "thong_tin_nguoi_dung")
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ThongTinNguoiDung {
-    private long id;
-    private String diaChi;
-    private String sdt;
-    private String ten;
-    private Long taiKhoanId;
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
-    public long getId() {
-        return id;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    @Column(name = "diaChi")
+    private String diaChi;
 
-    @Basic
-    @Column(name = "dia_chi", nullable = false, length = 255)
-    public String getDiaChi() {
-        return diaChi;
-    }
+    @Column(name = "sdt")
+    private String sdt;
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
+    @Column(name = "ten")
+    private String ten;
 
-    @Basic
-    @Column(name = "sdt", nullable = false, length = 255)
-    public String getSdt() {
-        return sdt;
-    }
+    @ManyToOne
+    @JoinColumn(name = "tai_khoan_id",referencedColumnName = "id",nullable = true)
+    private TaiKhoan taiKhoan;
 
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
-    }
 
-    @Basic
-    @Column(name = "ten", nullable = false, length = 255)
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
-
-    @Basic
-    @Column(name = "tai_khoan_id", nullable = true)
-    public Long getTaiKhoanId() {
-        return taiKhoanId;
-    }
-
-    public void setTaiKhoanId(Long taiKhoanId) {
-        this.taiKhoanId = taiKhoanId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ThongTinNguoiDung that = (ThongTinNguoiDung) o;
-        return id == that.id && Objects.equals(diaChi, that.diaChi) && Objects.equals(sdt, that.sdt) && Objects.equals(ten, that.ten) && Objects.equals(taiKhoanId, that.taiKhoanId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, diaChi, sdt, ten, taiKhoanId);
-    }
 }

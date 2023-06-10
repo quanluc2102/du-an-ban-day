@@ -243,8 +243,6 @@ export type ActiveElement = import('../types/index.js').ActiveElement;
 export type InteractionItem = import('../core/core.interaction.js').InteractionItem;
 import Element from "../core/core.element.js";
 import Animations from "../core/core.animations.js";
-import {noop} from "../helpers/helpers.core.js";
-
 declare namespace positioners {
     /**
        * Average mode places the tooltip at the average position of the elements shown
@@ -287,3 +285,4 @@ declare namespace defaultCallbacks {
     export { noop as footer };
     export { noop as afterFooter };
 }
+import { noop } from "../helpers/helpers.core.js";

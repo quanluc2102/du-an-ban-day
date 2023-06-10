@@ -1,5 +1,4 @@
-import type {Point, SplinePoint} from '../types/geometric.js';
-
+import type { Point, SplinePoint } from '../types/geometric.js';
 /**
  * @private
  */

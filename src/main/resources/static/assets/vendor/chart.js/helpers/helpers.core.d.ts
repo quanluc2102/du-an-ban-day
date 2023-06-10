@@ -1,9 +1,8 @@
 /**
  * @namespace Chart.helpers
  */
-import type {AnyObject} from '../types/basic.js';
-import type {ActiveDataPoint, ChartEvent} from '../types/index.js';
-
+import type { AnyObject } from '../types/basic.js';
+import type { ActiveDataPoint, ChartEvent } from '../types/index.js';
 /**
  * An empty function that can be used, for example, for optional callback.
  */

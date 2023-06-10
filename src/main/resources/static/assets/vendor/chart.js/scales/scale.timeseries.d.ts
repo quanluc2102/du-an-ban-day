@@ -29,5 +29,4 @@ declare class TimeSeriesScale extends TimeScale {
        */
     private _getTimestampsForTable;
 }
-
 import TimeScale from "./scale.time.js";

@@ -253,6 +253,5 @@ declare class Chart {
      */
     _getActiveElements(e: ChartEvent, lastActive: import('../types/index.js').ActiveElement[], inChartArea: boolean, useFinalPosition: boolean): import('../types/index.js').ActiveElement[];
 }
-
 import Config from "./core.config.js";
 import PluginService from "./core.plugins.js";

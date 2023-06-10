@@ -1,5 +1,4 @@
-import type {Point} from '../types/geometric.js';
-
+import type { Point } from '../types/geometric.js';
 /**
  * @alias Chart.helpers.math
  * @namespace

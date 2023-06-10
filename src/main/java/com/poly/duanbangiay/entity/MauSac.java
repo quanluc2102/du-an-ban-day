@@ -1,19 +1,33 @@
 package com.poly.duanbangiay.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Objects;
 
 @Entity
+
 @Table(name = "mau_sac", schema = "dbo", catalog = "ShopShoe")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class MauSac {
-    private long id;
-    private int giaTri;
-    private String ten;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
+    private long id;
+
+    @Column(name = "gia_tri")
+    private int giaTri;
+
+    @Column(name = "ten")
+    private String ten;
+
     public long getId() {
         return id;
     }

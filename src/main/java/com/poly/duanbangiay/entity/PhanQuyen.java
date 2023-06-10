@@ -1,19 +1,47 @@
 package com.poly.duanbangiay.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "phan_quyen", schema = "dbo", catalog = "ShopShoe")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class PhanQuyen {
-    private long id;
+
     private Long taiKhoanId;
-    private Long roleId;
+    private Long quyenId;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
+    private long id;
+    @ManyToOne()
+    @JoinColumn(
+            name = "tai_khoan_id",
+            referencedColumnName = "id",
+            nullable = true
+    )
+
+    private TaiKhoan taiKhoan;
+
+    @ManyToOne()
+    @JoinColumn(
+            name = "quyen_id",
+            referencedColumnName = "id",
+            nullable = true
+    )
+
+    private Quyen quyen;
+
+
     public long getId() {
         return id;
     }
@@ -33,13 +61,13 @@ public class PhanQuyen {
     }
 
     @Basic
-    @Column(name = "role_id", nullable = true)
+    @Column(name = "quyen_id", nullable = true)
     public Long getRoleId() {
-        return roleId;
+        return quyenId;
     }
 
     public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+        this.quyenId = roleId;
     }
 
     @Override
@@ -47,11 +75,11 @@ public class PhanQuyen {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhanQuyen phanQuyen = (PhanQuyen) o;
-        return id == phanQuyen.id && Objects.equals(taiKhoanId, phanQuyen.taiKhoanId) && Objects.equals(roleId, phanQuyen.roleId);
+        return id == phanQuyen.id && Objects.equals(taiKhoanId, phanQuyen.taiKhoanId) && Objects.equals(quyenId, phanQuyen.quyenId);
     }
-
+    //
     @Override
     public int hashCode() {
-        return Objects.hash(id, taiKhoanId, roleId);
+        return Objects.hash(id, taiKhoanId, quyenId);
     }
 }

@@ -11,7 +11,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "san_pham", schema = "dbo", catalog = "ShopShoe")
+@Table(name = "san_pham")
 public class SanPham {
     @Id
     @Column(name = "id")

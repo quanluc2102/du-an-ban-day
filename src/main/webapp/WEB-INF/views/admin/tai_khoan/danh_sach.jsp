@@ -3,15 +3,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="pagetitle">
-    <h1>Quản Lý Hóa Đơn</h1>
+    <h1>Quản Lý Tài Khoản</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
             <li class="breadcrumb-item active">Tổng Quan</li>
-            <li class="breadcrumb-item active">Hóa Đơn</li>
+            <li class="breadcrumb-item active">Sản Phẩm</li>
         </ol>
     </nav>
-</div><!-- End Page Title -->
+</div>
+<!-- End Page Title -->
 
 <section class="section dashboard">
     <div class="row">
@@ -41,7 +42,8 @@
                         </div>
                         <div class="ps-3">
                             <h6>145</h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Tăng
+                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                                class="text-muted small pt-2 ps-1">Tăng
                     <i class="bi bi-arrow-up-circle-fill"></i></span>
 
                         </div>
@@ -76,7 +78,8 @@
                         </div>
                         <div class="ps-3">
                             <h6>$3,264</h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">Tăng
+                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                                class="text-muted small pt-2 ps-1">Tăng
                     <i class="bi bi-arrow-up-circle-fill"></i></span>
 
                         </div>
@@ -113,7 +116,8 @@
                         </div>
                         <div class="ps-3">
                             <h6>1244</h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Giảm
+                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
+                                class="text-muted small pt-2 ps-1">Giảm
                     <i class="bi bi-arrow-down-circle-fill"></i></span>
 
                         </div>
@@ -149,7 +153,8 @@
                         </div>
                         <div class="ps-3">
                             <h6>1244</h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Giảm
+                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
+                                class="text-muted small pt-2 ps-1">Giảm
                     <i class="bi bi-arrow-down-circle-fill"></i></span>
 
                         </div>
@@ -187,7 +192,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Danh Sách Hoá Đơn <span>| Gần Nhất</span></h5>
+                            <h5 class="card-title">Danh Sách Tài Khoản<span>| bán chạy nhất</span></h5>
 
                             <table class="table table-borderless datatable">
                                 <thead>
@@ -256,83 +261,193 @@
         <!-- Right side columns -->
         <div class="col-lg-4">
 
-            <!-- Recent Activity -->
-            <div class="card">
-                <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        <li class="dropdown-header text-start">
-                            <h6>Filter</h6>
-                        </li>
 
-                        <li><a class="dropdown-item" href="#">Today</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                </div>
+            <ul class="nav nav-tabs nav-tabs-bordered">
 
-                <div class="card-body">
-                    <h5 class="card-title">Thông Tin Chi Tiết <span>| xx</span></h5>
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Góc Nhìn
+                        Tổng
+                        Quan
+                    </button>
+                </li>
+
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh Sửa</button>
+                </li>
 
 
-                    <form class="row g-3">
-                        <div class="col-md-12">
-                            <label for="inputName5" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="inputName5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputEmail5" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputPassword5" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="inputPassword5">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddres5s" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inputState" class="form-label">State</label>
-                            <select id="inputState" class="form-select">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="inputZip" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
-                        </div>
-                    </form><!-- End Multi Columns Form -->
+            </ul>
+            <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                    <div class="">
 
 
-                </div>
+                        <div class="card-body">
+
+
+                            <form class="row g-3">
+                                <div class="col-md-12">
+                                    <H1><Strong>GIÀY SIÊU NHÂN ĐÁ BI</Strong></H1>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-decoration-line-through">450.000 VNĐ</h4>
+                                    <h3><Strong style="color: red;">300.000 VNĐ</Strong></h3>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <h6>Trạng Thái : <strong>Đang Sale</strong></h6>
+                                    <h6>Thương Hiệu : <strong>ananas</strong></h6>
+                                    <h6>Danh Mục : <strong>Giày Đá Bi</strong></h6>
+
+                                </div>
+                                <hr class="dashed-line">
+                                Má ngoài Suede (da lộn), má trong phủ vải canvas kèm theo các chi tiết phối trộn
+                                chất da Nappa nâu
+                                trầm điềm đạm là ý đồ sắp xếp làm nên Vintas Temperate Pack. Với tông màu cảm hứng
+                                từ cỏ cây cùng
+                                khí
+                                hậu dịu mát rõ nét của vùng Ôn Đới. Điểm chốt hạ thuyết phục cho những con người sâu
+                                sắc, mang tâm
+                                hồn
+                                yêu thiên nhiên vô bờ bến.
+
+                                <hr class="dashed-line">
+
+                                <a href="#" class="btn btn-secondary rounded-0 color-size"
+                                   style="background: red;"></a>
+                                <a href="#" class="btn btn-secondary rounded-0 color-size"
+                                   style="background: rgb(89, 55, 228);"></a>
+                                <a href="#" class="btn btn-secondary rounded-0 color-size"
+                                   style="background: rgb(208, 192, 192);"></a>
+                                <a href="#" class="btn btn-secondary rounded-0 color-size"
+                                   style="background: rgb(183, 12, 138);"></a>
+
+
+                                <hr class="dashed-line">
+
+                                <div class="col-8">
+
+                                    <div class="row">
+                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0"
+                                                                  href="#">23</a>
+                                        </div>
+                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0"
+                                                                  href="#">24</a>
+                                        </div>
+                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0"
+                                                                  href="#">25</a>
+                                        </div>
+                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0"
+                                                                  href="#">26</a>
+                                        </div>
+                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0 disabled"
+                                                                  href="#">27</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-4 d-flex align-items-center">
+                                    <input type="number" min="0" max="30" class="form-control" id="inputAddress2"
+                                           placeholder="30 sản phẩm">
+                                </div>
+
+                                <hr class="dashed-line">
+
+                            </form><!-- End Multi Columns Form -->
+
+
+                        </div>
+
+                    </div>
+                </div><!-- End Recent Activity -->
 
             </div>
-        </div><!-- End Recent Activity -->
+
+            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                <!-- Profile Edit Form -->
+                <form>
+                    <div class="row mb-3">
+                        <label class="col-md-4 col-lg-3 col-form-label">Ảnh Sản Phẩm</label>
+                        <div class="col-md-8 col-lg-9">
+                            <div class="row ">
+                                <div class="col-3 position-relative">
+                                    <img src="assets/img/profile-img.jpg" alt="Ảnh" class="img-fluid">
+                                    <a href="#" class="btn btn-danger btn-sm position-absolute bottom-0 end-0"
+                                       title="Xóa Ảnh"><i
+                                            class="bi bi-trash"></i></a>
+                                </div>
+                                <div class="col-3 position-relative">
+                                    <img src="assets/img/profile-img.jpg" alt="Ảnh" class="img-fluid">
+                                    <a href="#" class="btn btn-danger btn-sm position-absolute bottom-0 end-0"
+                                       title="Xóa Ảnh"><i
+                                            class="bi bi-trash"></i></a>
+                                </div>
+                            </div>
 
 
-    </div><!-- End Right side columns -->
+                            <div class="pt-2">
+                                <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
+                                        class="bi bi-upload"></i></a>
 
-    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Tên Sản Phẩm</label>
+                        <div class="col-md-8 col-lg-9">
+                            <input name="fullName" type="text" class="form-control" id="fullName"
+                                   value="Giay sieu nhan da fo">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="about" class="col-md-4 col-lg-3 col-form-label">Mô Tả</label>
+                        <div class="col-md-8 col-lg-9">
+                    <textarea name="about" class="form-control" id="about"
+                              style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="company" class="col-md-4 col-lg-3 col-form-label">Giá Bán</label>
+                        <div class="col-md-8 col-lg-9">
+                            <input name="company" type="number" class="form-control" id="company"
+                                   value="Lueilwitz, Wisoky and Leuschke">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">Thương Hiệu</label>
+                        <div class="col-md-8 col-lg-9">
+                            <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Country" class="col-md-4 col-lg-3 col-form-label">Danh Mục</label>
+                        <div class="col-md-8 col-lg-9">
+                            <input name="country" type="text" class="form-control" id="Country" value="USA">
+                        </div>
+                    </div>
+
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                    </div>
+                </form><!-- End Profile Edit Form -->
+
+            </div>
+
+
+        </div>
+    </div><!-- End Recent Activity -->
+
+
+
+
+
 </section>

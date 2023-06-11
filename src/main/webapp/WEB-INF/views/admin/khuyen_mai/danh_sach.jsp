@@ -3,12 +3,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="pagetitle">
-    <h1>Quản Lý Hóa Đơn</h1>
+    <h1>Quản Lý Khuyến mãi</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
             <li class="breadcrumb-item active">Tổng Quan</li>
-            <li class="breadcrumb-item active">Hóa Đơn</li>
+            <li class="breadcrumb-item active">Khuyến mãi</li>
         </ol>
     </nav>
 </div><!-- End Page Title -->
@@ -187,7 +187,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Danh Sách Hoá Đơn <span>| Gần Nhất</span></h5>
+                            <h5 class="card-title">Danh Sách Sản Phẩm <span>| bán chạy nhất</span></h5>
 
                             <table class="table table-borderless datatable">
                                 <thead>

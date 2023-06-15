@@ -271,7 +271,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="index.html">
+            <a class="nav-link " href="/tong_quan">
                 <i class="bi bi-grid"></i>
                 <span>Tổng Quan</span>
             </a>
@@ -283,25 +283,21 @@
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="components-alerts.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 1</span>
+                    <a href="/san_pham">
+                        <i class="bi bi-circle"></i><span>Quản Lý Sản Phẩm</span>
                     </a>
                 </li>
                 <li>
-                    <a href="components-accordion.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 2</span>
+                    <a href="/san_pham/thong_ke">
+                        <i class="bi bi-circle"></i><span>Thống Kê</span>
                     </a>
                 </li>
                 <li>
-                    <a href="components-badges.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 3</span>
+                    <a href="/san_pham/tuy_chon">
+                        <i class="bi bi-circle"></i><span>Tùy Chọn Sản Phẩm</span>
                     </a>
                 </li>
-                <li>
-                    <a href="components-breadcrumbs.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 4</span>
-                    </a>
-                </li>
+
 
             </ul>
         </li><!-- End Components Nav -->
@@ -312,8 +308,8 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="forms-elements.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 1</span>
+                    <a href="/hoa_don">
+                        <i class="bi bi-circle"></i><span>Quản Lý Hóa Đơn</span>
                     </a>
                 </li>
                 <li>
@@ -340,8 +336,8 @@
             </a>
             <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="tables-general.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 1</span>
+                    <a href="/danh_muc">
+                    <i class="bi bi-circle"></i><span>Quản Lý Danh Mục</span>
                     </a>
                 </li>
                 <li>
@@ -358,8 +354,8 @@
             </a>
             <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="charts-chartjs.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 1</span>
+                    <a href="/khuyen-mai">
+                        <i class="bi bi-circle"></i><span>Quản Lý Khuyến Mãi</span>
                     </a>
                 </li>
                 <li>
@@ -381,18 +377,18 @@
             </a>
             <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="icons-bootstrap.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 1</span>
+                    <a href="/tai_khoan/khach_hang">
+                        <i class="bi bi-circle"></i><span>Khách Hàng</span>
                     </a>
                 </li>
                 <li>
-                    <a href="icons-remix.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 2</span>
+                    <a href="/tai_khoan/nhan_vien">
+                        <i class="bi bi-circle"></i><span>Nhân Viên</span>
                     </a>
                 </li>
                 <li>
-                    <a href="icons-boxicons.html">
-                        <i class="bi bi-circle"></i><span>Lựa Chọn 3</span>
+                    <a href="/tai_khoan/admin">
+                        <i class="bi bi-circle"></i><span>ADMIN</span>
                     </a>
                 </li>
             </ul>

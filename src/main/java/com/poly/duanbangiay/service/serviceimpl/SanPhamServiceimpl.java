@@ -1,34 +1,62 @@
 package com.poly.duanbangiay.service.serviceimpl;
 
 import com.poly.duanbangiay.entity.SanPham;
+import com.poly.duanbangiay.repository.SanPhamRespository;
 import com.poly.duanbangiay.service.SanPhamService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class SanPhamServiceimpl implements SanPhamService {
+    @Autowired
+    SanPhamRespository sanPhamRespository;
     @Override
     public void add(SanPham sp) {
-
+        sp.setNgayTao(Date.valueOf(LocalDate.now()));
+        sp.setNgayCapNhat(Date.valueOf(LocalDate.now()));
+        sanPhamRespository.saveAndFlush(sp);
     }
 
     @Override
     public void delete(Long id) {
-
+        sanPhamRespository.deleteById(id);
     }
 
     @Override
     public void update(Long id, SanPham sp) {
-
+        SanPham a = sanPhamRespository.findById(id).get();
+        a.setTen(sp.getTen());
+        a.setGiaBan(sp.getGiaBan());
+        a.setGiaNhap(sp.getGiaNhap());
+        a.setMoTa(sp.getMoTa());
+        a.setSoLuong(sp.getSoLuong());
+        a.setNgayCapNhat(Date.valueOf(LocalDate.now()));
+        sanPhamRespository.flush();
     }
 
     @Override
     public List<SanPham> getAll() {
-        return null;
+        return sanPhamRespository.findAll();
     }
 
     @Override
     public SanPham getOne(Long id) {
-        return null;
+        return sanPhamRespository.findById(id).get();
+    }
+
+    @Override
+    public void chuyenTrangThai(SanPham sp) {
+        if(sp.getSoLuong()>0){
+            sp.setTrangThai(1);
+        }else if(sp.getSoLuong()==0){
+            sp.setTrangThai(0);
+        }else{
+            sp.setSoLuong(0);
+            sp.setTrangThai(0);
+        }
+        sanPhamRespository.flush();
     }
 }

@@ -32,4 +32,12 @@ public class SanPham {
     private Date ngayCapNhat;
     @Column(name = "mo_ta")
     private String moTa;
+
+    public String layTrangThai(){
+        if(trangThai==1){
+            return "Còn hàng";
+        }else{
+            return "Hết hàng";
+        }
+    }
 }

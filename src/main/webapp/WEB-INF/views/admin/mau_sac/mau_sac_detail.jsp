@@ -11,7 +11,7 @@
 </head>
 <body class="container">
 
-<form action="update/{${msd.id}}" method="post">
+<form action="/mau-sac/update/${msd.id}" method="post">
     <div class="form-group">
         Tên màu:<input type="text" name="ten" class="form-control" value="${msd.ten}">
     </div>

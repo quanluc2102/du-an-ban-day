@@ -35,15 +35,30 @@ public class MauSacController {
         return "redirect:/mau-sac/hien-thi";
     }
 
+    @PostMapping("update/{idud}")
+    public String update(Model model,
+                         @PathVariable("idud") Long idud,
+                         @RequestParam("ten") String ten,
+                         @RequestParam("giaTri") Integer giaTri,
+                         @RequestParam("trangThai") Boolean trangThai
+    ) {
+        MauSac mauSac = mauSacService.findOne(idud);
+        mauSac.setTen(ten);
+        mauSac.setGiaTri(giaTri);
+        mauSac.setTrangThai(trangThai);
+        mauSacService.update(mauSac);
+        return "redirect:/mau-sac/hien-thi";
+    }
+
     @GetMapping("delete/{idx}")
     public String xoa(Model model, @PathVariable("idx") Long idx) {
         mauSacService.delete(idx);
         return "redirect:/mau-sac/hien-thi";
     }
 
-    @GetMapping("detail/{idx}")
+    @GetMapping("detail/{iddt}")
     public String detail(Model model, @PathVariable("iddt") Long iddt) {
-        mauSacService.delete(iddt);
+        model.addAttribute("msd", mauSacService.detail(iddt));
         return "admin/mau_sac/mau_sac_detail";
 
     }

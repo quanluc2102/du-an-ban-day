@@ -43,7 +43,7 @@
         <tr>
             <td>${ms.ten}</td>
             <td>${ms.giaTri}</td>
-            <td>${ms.trangThai}</td>
+            <td>${ms.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}</td>
             <td>
                 <a href="/mau-sac/detail/${ms.id}" class="btn btn-success">Detail</a>
                 <a href="/mau-sac/delete/${ms.id}" class="btn btn-danger"

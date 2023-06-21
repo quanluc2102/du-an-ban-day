@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 
-@Table(name = "mau_sac", schema = "dbo", catalog = "ShopShoe")
+@Table(name = "mau_sac")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

@@ -2,8 +2,11 @@ package com.poly.duanbangiay.service;
 
 
 import com.poly.duanbangiay.entity.MauSac;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 
+@Service
 public interface MauSacService {
     void add(MauSac mauSac);
 
@@ -14,4 +17,5 @@ public interface MauSacService {
     MauSac detail(Long id);
 
     MauSac findOne(Long id);
+    List<MauSac> findAll();
 }

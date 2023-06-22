@@ -170,7 +170,7 @@
     <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="col-lg-7">
             <div class="row">
 
 
@@ -259,7 +259,7 @@
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
-        <div class="col-lg-4">
+        <div class="col-lg-5">
 
 
             <ul class="nav nav-tabs nav-tabs-bordered">
@@ -270,11 +270,14 @@
                         Quan
                     </button>
                 </li>
-
                 <li class="nav-item">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh Sửa</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh Sửa Thông Tin
+                    </button>
                 </li>
-
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#acc-edit">Chỉnh Sửa Tài Khoản
+                    </button>
+                </li>
 
             </ul>
             <div class="tab-content pt-2">
@@ -361,13 +364,13 @@
                         </div>
 
                     </div>
-                </div><!-- End Recent Activity -->
+                </div>
 
             </div>
 
             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
-                <!-- Profile Edit Form -->
+
                 <form>
                     <div class="row mb-3">
                         <label class="col-md-4 col-lg-3 col-form-label">Ảnh Sản Phẩm</label>
@@ -438,16 +441,19 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
                     </div>
-                </form><!-- End Profile Edit Form -->
+                </form>
+
+            </div>
+            <div class="tab-pane fade acc-edit pt-3 " id="acc-edit" >
+
+
+               <H1 class="mt-0">curd </H1>
 
             </div>
 
 
         </div>
-    </div><!-- End Recent Activity -->
-
-
-
+    </div>
 
 
 </section>

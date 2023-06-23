@@ -1,5 +1,6 @@
 package com.poly.duanbangiay.controller;
 
+import com.poly.duanbangiay.repository.TaiKhoanRepository;
 import com.poly.duanbangiay.service.serviceimpl.GioHangChiTietServiceImpl;
 import com.poly.duanbangiay.service.serviceimpl.GioHangServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class GioHangController {
     @Autowired
     private GioHangChiTietServiceImpl giohangchitietImpl;
 
+    @Autowired
+    private TaiKhoanRepository taikhoanRepo;
 
     @GetMapping("/index")
     public String thongTin(Model model){

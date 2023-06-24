@@ -2,10 +2,15 @@ package com.poly.duanbangiay.service.serviceimpl;
 
 
 import com.poly.duanbangiay.entity.KichThuoc;
+import com.poly.duanbangiay.entity.MauSac;
 import com.poly.duanbangiay.repository.KichThuocRepository;
 import com.poly.duanbangiay.service.KichThuocService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class KichThuocServiceImpl implements KichThuocService {
 
     @Autowired
@@ -38,5 +43,10 @@ public class KichThuocServiceImpl implements KichThuocService {
     @Override
     public KichThuoc findOne(Long id) {
         return kichThuocRepository.findById(id).get();
+    }
+
+    @Override
+    public List<KichThuoc> findAll() {
+        return kichThuocRepository.findAll();
     }
 }

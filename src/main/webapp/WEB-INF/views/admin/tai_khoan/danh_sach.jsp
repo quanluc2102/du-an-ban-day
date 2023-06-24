@@ -192,64 +192,43 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Danh Sách Tài Khoản<span>| bán chạy nhất</span></h5>
+                            <h5 class="card-title">Danh Sách Thông Tin Người Dùng<span>| Người Dùng</span></h5>
 
                             <table class="table table-borderless datatable">
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Khách Hàng</th>
-                                    <th scope="col">Sản Phẩm</th>
-                                    <th scope="col">Giá</th>
-                                    <th scope="col">Trạng Thái</th>
+                                    <th scope="col">Địa chỉ</th>
+                                    <th scope="col">SDT</th>
+                                    <th scope="col">Tên</th>
+                                    <th scope="col">Ngày sinh</th>
+                                    <th scope="col">Ngày cập nhật</th>
+                                    <th scope="col">Tài Khoản</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row"><a href="#">#2457</a></th>
-                                    <td>Brandon Jacob</td>
-                                    <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                    <td>$64</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2147</a></th>
-                                    <td>Bridie Kessler</td>
-                                    <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                    <td>$47</td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2049</a></th>
-                                    <td>Ashleigh Langosh</td>
-                                    <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                    <td>$147</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Angus Grady</td>
-                                    <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                    <td>$67</td>
-                                    <td><span class="badge bg-danger">Rejected</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Raheem Lehner</td>
-                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                    <td>$165</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Raheem Lehner</td>
-                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                    <td>$165</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
-                                </tbody>
-                            </table>
+                                <c:forEach items="${listND}" var="nd">
+                                    <tr>
+                                        <td scope="row">${nd.id}</td>
+                                        <td>${nd.diaChi}</td>
+                                        <td>${nd.sdt}</td>
+                                        <td>${nd.ten}</td>
+                                        <td>${nd.ngaySinh}</td>
+                                        <td>${nd.ngayCapNhat}</td>
+                                        <td>${nd.taiKhoan.username}</td>
+                                        <td>
+                                            <a href="/nguoi-dung/delete/${nd.id}">Delete</a>|
+                                            <a href="/nguoi-dung/detail/${nd.id}">Detail</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
 
+                                </tbody>
+
+                            </table>
+                            <div class="text-center">
+                                <a href="/nguoi-dung/create" class="btn btn-primary" type="submit">Save</a>
+                            </div>
                         </div>
 
                     </div>
@@ -272,7 +251,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh Sửa</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit"><link href="/nguoi-dung/detail/${nd.id}">Chỉnh Sửa</button>
                 </li>
 
 
@@ -289,71 +268,37 @@
 
                             <form class="row g-3">
                                 <div class="col-md-12">
-                                    <H1><Strong>GIÀY SIÊU NHÂN ĐÁ BI</Strong></H1>
+                                    <H1><Strong>Thông Tin Người Dùng</Strong></H1>
                                 </div>
-                                <div class="col-md-6">
-                                    <h4 class="text-decoration-line-through">450.000 VNĐ</h4>
-                                    <h3><Strong style="color: red;">300.000 VNĐ</Strong></h3>
+                                <div  class="col-md-12">
+                                    <strong> Tên : </strong>
+                                    <label style="margin-left: 20px">${nd.ten}</label>
                                 </div>
-
-                                <div class="col-md-6">
-                                    <h6>Trạng Thái : <strong>Đang Sale</strong></h6>
-                                    <h6>Thương Hiệu : <strong>ananas</strong></h6>
-                                    <h6>Danh Mục : <strong>Giày Đá Bi</strong></h6>
-
+                                <div  class="col-md-12">
+                                    <strong> Địa chỉ : </strong>
+                                    <label style="margin-left: 20px">${nd.diaChi}</label>
                                 </div>
-                                <hr class="dashed-line">
-                                Má ngoài Suede (da lộn), má trong phủ vải canvas kèm theo các chi tiết phối trộn
-                                chất da Nappa nâu
-                                trầm điềm đạm là ý đồ sắp xếp làm nên Vintas Temperate Pack. Với tông màu cảm hứng
-                                từ cỏ cây cùng
-                                khí
-                                hậu dịu mát rõ nét của vùng Ôn Đới. Điểm chốt hạ thuyết phục cho những con người sâu
-                                sắc, mang tâm
-                                hồn
-                                yêu thiên nhiên vô bờ bến.
-
-                                <hr class="dashed-line">
-
-                                <a href="#" class="btn btn-secondary rounded-0 color-size"
-                                   style="background: red;"></a>
-                                <a href="#" class="btn btn-secondary rounded-0 color-size"
-                                   style="background: rgb(89, 55, 228);"></a>
-                                <a href="#" class="btn btn-secondary rounded-0 color-size"
-                                   style="background: rgb(208, 192, 192);"></a>
-                                <a href="#" class="btn btn-secondary rounded-0 color-size"
-                                   style="background: rgb(183, 12, 138);"></a>
-
-
-                                <hr class="dashed-line">
-
-                                <div class="col-8">
-
-                                    <div class="row">
-                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0"
-                                                                  href="#">23</a>
-                                        </div>
-                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0"
-                                                                  href="#">24</a>
-                                        </div>
-                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0"
-                                                                  href="#">25</a>
-                                        </div>
-                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0"
-                                                                  href="#">26</a>
-                                        </div>
-                                        <div class="col-1 m-2"><a class=" btn btn-outline-dark rounded-0 disabled"
-                                                                  href="#">27</a>
-                                        </div>
-                                    </div>
+                                <div  class="col-md-12">
+                                    <strong> SDT : </strong>
+                                    <label style="margin-left: 20px">${nd.sdt}</label>
                                 </div>
-
-                                <div class="col-4 d-flex align-items-center">
-                                    <input type="number" min="0" max="30" class="form-control" id="inputAddress2"
-                                           placeholder="30 sản phẩm">
+                                <div  class="col-md-12">
+                                    <strong> Ngày Sinh : </strong>
+                                    <label style="margin-left: 20px">${nd.ngaySinh}</label>
                                 </div>
-
-                                <hr class="dashed-line">
+                                <div  class="col-md-12">
+                                    <strong> Ngày Cập Nhật : </strong>
+                                    <label style="margin-left: 20px">${nd.ngayCapNhat}</label>
+                                </div>
+                                <div  class="col-md-12">
+                                    <strong> Tài Khoản : </strong>
+<%--                                    <label style="margin-left: 20px">${nd.taiKhoan}</label>--%>
+                                    <select class="form-control" style="margin-left: 20px">
+                                        <c:forEach items="${listTK}" var="taiKhoan">
+                                        <option value="${taiKhoan.id}">${taiKhoan.username}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
 
                             </form><!-- End Multi Columns Form -->
 
@@ -368,76 +313,28 @@
             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                 <!-- Profile Edit Form -->
-                <form>
-                    <div class="row mb-3">
-                        <label class="col-md-4 col-lg-3 col-form-label">Ảnh Sản Phẩm</label>
-                        <div class="col-md-8 col-lg-9">
-                            <div class="row ">
-                                <div class="col-3 position-relative">
-                                    <img src="assets/img/profile-img.jpg" alt="Ảnh" class="img-fluid">
-                                    <a href="#" class="btn btn-danger btn-sm position-absolute bottom-0 end-0"
-                                       title="Xóa Ảnh"><i
-                                            class="bi bi-trash"></i></a>
-                                </div>
-                                <div class="col-3 position-relative">
-                                    <img src="assets/img/profile-img.jpg" alt="Ảnh" class="img-fluid">
-                                    <a href="#" class="btn btn-danger btn-sm position-absolute bottom-0 end-0"
-                                       title="Xóa Ảnh"><i
-                                            class="bi bi-trash"></i></a>
-                                </div>
-                            </div>
-
-
-                            <div class="pt-2">
-                                <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
-                                        class="bi bi-upload"></i></a>
-
-                            </div>
+                <form method="post" action="/nguoi-dung/update/${nd.id}">
+                    <section class="section profile" >
+                        <div class="form-control">
+                            <label  class="col-md-4 col-lg-3 col-form-label">Tên</label>
+                            <input name="ten" class="form-control" value="${nd.ten}">
+                            <label  class="col-md-4 col-lg-3 col-form-label">Ngày Sinh</label>
+                            <input name="ngaySinh" class="form-control" type="date" value="${nd.ngaySinh}">
+                            <label  class="col-md-4 col-lg-3 col-form-label">Địa Chỉ</label>
+                            <input name="diaChi" class="form-control" value="${nd.diaChi}">
+                            <label  class="col-md-4 col-lg-3 col-form-label">SDT</label>
+                            <input name="sdt" class="form-control" value="${nd.sdt}">
+                            <label  class="col-md-4 col-lg-3 col-form-label">Ngày cập nhật</label>
+                            <input name="ngayCapNhat" class="form-control" type="date" value="${nd.ngayCapNhat}">
+                            <label class="col-md-4 col-lg-3 col-form-label" >Tài khoản</label>
+                            <select class="form-control" name="taiKhoan">
+                                <c:forEach items="${listTK}" var="taiKhoan">
+                                    <option value="${taiKhoan.id}">${taiKhoan.username}</option>
+                                </c:forEach>
+                            </select>
+                            <input class="btn btn-primary" value="Update" type="submit" style="margin-top: 20px">
                         </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Tên Sản Phẩm</label>
-                        <div class="col-md-8 col-lg-9">
-                            <input name="fullName" type="text" class="form-control" id="fullName"
-                                   value="Giay sieu nhan da fo">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="about" class="col-md-4 col-lg-3 col-form-label">Mô Tả</label>
-                        <div class="col-md-8 col-lg-9">
-                    <textarea name="about" class="form-control" id="about"
-                              style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="company" class="col-md-4 col-lg-3 col-form-label">Giá Bán</label>
-                        <div class="col-md-8 col-lg-9">
-                            <input name="company" type="number" class="form-control" id="company"
-                                   value="Lueilwitz, Wisoky and Leuschke">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">Thương Hiệu</label>
-                        <div class="col-md-8 col-lg-9">
-                            <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="Country" class="col-md-4 col-lg-3 col-form-label">Danh Mục</label>
-                        <div class="col-md-8 col-lg-9">
-                            <input name="country" type="text" class="form-control" id="Country" value="USA">
-                        </div>
-                    </div>
-
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
-                    </div>
+                    </section>
                 </form><!-- End Profile Edit Form -->
 
             </div>

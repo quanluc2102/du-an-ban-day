@@ -1,9 +1,9 @@
 package com.poly.duanbangiay.repository;
 
-import com.poly.duanbangiay.entity.SanPham;
+import com.poly.duanbangiay.entity.ThongTinNguoiDung;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SanPhamRespository extends JpaRepository<SanPham,Long> {
+public interface ThongTinNguoiDungRespository extends JpaRepository<ThongTinNguoiDung,Long> {
 }

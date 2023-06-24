@@ -37,9 +37,6 @@ public class ThongTinNguoiDung {
     @JoinColumn(name = "tai_khoan_id")
     private TaiKhoan taiKhoan;
 
-<<<<<<< HEAD
-//test
-=======
     public ThongTinNguoiDung( String diaChi, String sdt, String ten, Date ngaySinh, Date ngayCapNhat, TaiKhoan taiKhoan) {
 
         this.diaChi = diaChi;
@@ -49,5 +46,4 @@ public class ThongTinNguoiDung {
         this.ngayCapNhat = ngayCapNhat;
         this.taiKhoan = taiKhoan;
     }
->>>>>>> GiangBranch
 }

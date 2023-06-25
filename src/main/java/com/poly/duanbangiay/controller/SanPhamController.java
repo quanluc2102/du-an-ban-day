@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("sanpham")
+@RequestMapping("san_pham")
 public class SanPhamController {
     @Autowired
     SanPhamServiceimpl sanPhamServiceimpl;

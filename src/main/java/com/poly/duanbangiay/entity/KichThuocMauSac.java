@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.util.Objects;
 
 @Entity
-@Table(name = "kich_thuoc_mau_sac", schema = "dbo", catalog = "ShopShoe")
+@Table(name = "kich_thuoc_mau_sac")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

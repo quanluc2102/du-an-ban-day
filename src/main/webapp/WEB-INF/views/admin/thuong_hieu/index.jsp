@@ -194,24 +194,18 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Tên</th>
-                                    <th scope="col">Giá nhập</th>
-                                    <th scope="col">Giá bán</th>
-                                    <th scope="col">Số lượng</th>
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${listSP}" var="sp">
+                                <c:forEach items="${listTH}" var="th">
                                     <tr>
-                                        <th scope="row">${sp.id}</th>
-                                        <td>${sp.ten}</td>
-                                        <td>${sp.giaNhap}</td>
-                                        <td>${sp.giaBan}</td>
-                                        <td>${sp.soLuong}</td>
-                                        <td>${sp.layTrangThai()}</td>
-                                        <td><button class="btn btn-danger"><a href="/san_pham/delete?id=${sp.id}" style="text-decoration: none;color: white">Delete</a></button>
-                                            <button class="btn btn-primary"><a href="/san_pham/detail?id=${sp.id}" style="text-decoration: none;color: white">Detail</a></button>
+                                        <th scope="row">${th.id}</th>
+                                        <td>${th.ten}</td>
+                                        <td>${th.layTrangThai()}</td>
+                                        <td><button class="btn btn-danger"><a href="/thuong_hieu/delete?id=${th.id}" style="text-decoration: none;color: white">Delete</a></button>
+                                            <button class="btn btn-primary"><a href="/thuong_hieu/detail?id=${th.id}" style="text-decoration: none;color: white">Detail</a></button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -221,7 +215,7 @@
                         </div>
 
                     </div>
-                    <button class="btn btn-primary"><a href="/sanpham/create" style="text-decoration: none;color: white">Add New</a></button>
+                    <button class="btn btn-primary"><a href="/thuong_hieu/create" style="text-decoration: none;color: white">Add New</a></button>
                 </div><!-- End Recent Sales -->
 
             </div>

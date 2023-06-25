@@ -13,10 +13,6 @@
 
 <form action="add" method="post">
     <div class="form-group">
-        Tên màu:<input type="text" name="ten" class="form-control">
-    </div>
-
-    <div class="form-group">
         Giá trị:<input type="text" name="giaTri" class="form-control">
     </div>
 
@@ -34,19 +30,17 @@
 
 <table class="table">
     <tr>
-        <td>Tên màu sắc</td>
         <td>Giá trị</td>
         <td>Trạng thái</td>
         <td>Action</td>
     </tr>
-    <c:forEach items="${listMauSac}" var="ms">
+    <c:forEach items="${listKichThuoc}" var="kt">
         <tr>
-            <td>${ms.ten}</td>
-            <td>${ms.giaTri}</td>
-            <td>${ms.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}</td>
+            <td>${kt.giaTri}</td>
+            <td>${kt.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}</td>
             <td>
-                <a href="/mau-sac/detail/${ms.id}" class="btn btn-success">Detail</a>
-                <a href="/mau-sac/delete/${ms.id}" class="btn btn-danger"
+                <a href="/kich-thuoc/detail/${kt.id}" class="btn btn-success">Detail</a>
+                <a href="/kich-thuoc/delete/${kt.id}" class="btn btn-danger"
                    onclick="return confirm('Bạn chắc chắn có muốn xóa??')">Remove</a>
             </td>
         </tr>

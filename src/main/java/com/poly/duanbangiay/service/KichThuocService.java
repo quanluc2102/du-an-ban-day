@@ -2,7 +2,10 @@ package com.poly.duanbangiay.service;
 
 
 import com.poly.duanbangiay.entity.KichThuoc;
+import com.poly.duanbangiay.entity.MauSac;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface KichThuocService {
@@ -15,4 +18,8 @@ public interface KichThuocService {
     KichThuoc detail(Long id);
 
     KichThuoc findOne(Long id);
+
+    List<KichThuoc> findAll();
+
+
 }

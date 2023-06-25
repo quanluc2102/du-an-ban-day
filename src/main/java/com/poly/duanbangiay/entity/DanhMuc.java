@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "danh_muc", schema = "dbo", catalog = "ShopShoe")
+@Table(name = "danh_muc")
 public class DanhMuc {
     @Id
     @Column(name = "id")
@@ -18,4 +18,12 @@ public class DanhMuc {
     private String ten;
     @Column(name = "trang_thai")
     private Integer trangThai;
+
+    public String layTrangThai(){
+        if(trangThai == 1){
+            return "Active";
+        }else{
+            return "Inactive";
+        }
+    }
 }

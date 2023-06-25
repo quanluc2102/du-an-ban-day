@@ -1,0 +1,56 @@
+package com.poly.duanbangiay.controller;
+
+import com.poly.duanbangiay.entity.DanhMuc;
+import com.poly.duanbangiay.entity.ThuongHieu;
+import com.poly.duanbangiay.service.serviceimpl.DanhMucServiceimpl;
+import com.poly.duanbangiay.service.serviceimpl.ThuongHieuServiceimpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequestMapping("thuong_hieu")
+public class ThuongHIeuController {
+    @Autowired
+    ThuongHieuServiceimpl serviceimpl;
+    @GetMapping("index")
+    public String index(Model model){
+        model.addAttribute("listTH",serviceimpl.getAll());
+        model.addAttribute("view", "/thuong_hieu/index.jsp");
+        return "admin/index";
+    }
+    @GetMapping("create")
+    public String create(Model model){
+        model.addAttribute("ThuongHieu",new ThuongHieu());
+        model.addAttribute("view", "/thuong_hieu/addNew.jsp");
+        return "admin/index";
+    }
+    @PostMapping("add")
+    public String add(Model model,
+                      @ModelAttribute("ThuongHieu") ThuongHieu thuongHieu){
+        serviceimpl.add(thuongHieu);
+        return "redirect:/thuong_hieu/index";
+    }
+    @GetMapping("delete")
+    public String delete(Model model,
+                         @RequestParam("id")Long id){
+        serviceimpl.delete(id);
+        return "redirect:/thuong_hieu/index";
+    }
+    @GetMapping("detail")
+    public String detail(Model model,
+                         @RequestParam("id")Long id){
+        model.addAttribute("th",serviceimpl.getOne(id));
+        model.addAttribute("ThuongHieu",serviceimpl.getOne(id));
+        model.addAttribute("view", "/thuong_hieu/detail1.jsp");
+        return "admin/index";
+    }
+    @PostMapping("update/{id}")
+    public String update(Model model,
+                         @PathVariable("id")Long id,
+                         @ModelAttribute("ThuongHieu") ThuongHieu thuongHieu){
+        serviceimpl.update(id,thuongHieu);
+        return "redirect:/thuong_hieu/index";
+    }
+}

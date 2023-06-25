@@ -61,6 +61,6 @@ public class TestViewControler {
     public String x(Model model) {
 
         model.addAttribute("view", "/tai_khoan/thong_tin_tai_khoan.jsp");
-        return "admin/index";
+        return "khach_hang/index";
     }
 }

@@ -212,6 +212,12 @@ khuyen_mai_id BIGINT,
 FOREIGN KEY (hoa_don_id) REFERENCES hoa_don,
 FOREIGN KEY (khuyen_mai_id) REFERENCES khuyen_mai(id)
 );
+
+use shopShoe
+
+ALTER TABLE khuyen_mai
+    ADD  kieu_khuyen_mai int not null;
+
 INSERT INTO quyen (ten, trang_thai)
 VALUES
   ('Quyền 1', 1),

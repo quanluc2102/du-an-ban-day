@@ -1,14 +1,15 @@
 package com.poly.duanbangiay.service;
 
+import com.poly.duanbangiay.entity.HoaDon;
 import com.poly.duanbangiay.entity.SanPham;
 
 import java.util.List;
 
-public interface HoaDon {
-    void add(HoaDon sp);
+public interface HoaDonService {
+    void add(HoaDonService sp);
     void delete(Long id);
-    void update(Long id,HoaDon sp);
-    List<SanPham> getAll();
+    void update(Long id, HoaDonService hoaDon);
+    List<HoaDon> getAll();
     SanPham getOne(Long id);
-    void chuyenTrangThai(HoaDon sp);
+    void chuyenTrangThai(HoaDonService hoaDon);
 }

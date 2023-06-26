@@ -313,7 +313,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="forms-layouts.html">
+                    <a href="/hoa_don_index">
                         <i class="bi bi-circle"></i><span>Lựa Chọn 2</span>
                     </a>
                 </li>

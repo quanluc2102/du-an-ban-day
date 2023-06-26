@@ -21,7 +21,7 @@ public class ThanhToan {
     @Column(name = "ten")
     private String ten;
 
-    @Column(name = "trangThai")
+    @Column(name = "trang_thai")
     private String trangThai;
 
 

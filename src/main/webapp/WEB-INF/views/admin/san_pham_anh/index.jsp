@@ -193,49 +193,27 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Tên</th>
-                                    <th scope="col">Giá nhập</th>
-                                    <th scope="col">Giá bán</th>
-                                    <th scope="col">Số lượng</th>
-                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Tên sản phâm</th>
+                                    <th scope="col">Ảnh</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${listSP}" var="sp">
+                                <c:forEach items="${listSPA}" var="spa">
                                     <tr>
-                                        <th scope="row">${sp.id}</th>
-                                        <td>${sp.ten}</td>
-                                        <td>${sp.giaNhap}</td>
-                                        <td>${sp.giaBan}</td>
-                                        <td>${sp.soLuong}</td>
-                                        <td>${sp.layTrangThai()}</td>
-                                        <td><button class="btn btn-danger"><a href="/san_pham/delete?id=${sp.id}" style="text-decoration: none;color: white">Delete</a></button>
-                                            <button class="btn btn-primary"><a href="/san_pham/detail?id=${sp.id}" style="text-decoration: none;color: white">Detail</a></button>
+                                        <th scope="row">${spa.id}</th>
+                                        <td>${spa.sanPham.ten}</td>
+                                        <td><img src="/assets/img/${spa.anh}" height="100px" width="100px"></td>
+                                        <td><button class="btn btn-danger"><a href="/san_pham_anh/delete?id=${sp.id}" style="text-decoration: none;color: white">Delete</a></button>
+                                            <button class="btn btn-primary"><a href="/san_pham_anh/detail?id=${sp.id}" style="text-decoration: none;color: white">Detail</a></button>
                                         </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
-
                         </div>
-                        <form method="post" enctype="multipart/form-data" action="import">
-                            <div>
-                                <label>Thêm từ excel file</label>
-                                <br>
-                                <input name="file" type="file">
-                            </div>
-                            <div>
-                                <button>
-                                    Save
-                                </button>
-                            </div>
-                        </form>
-
                     </div>
-                    <button class="btn btn-primary"><a href="/san_pham/create" style="text-decoration: none;color: white">Add New</a></button>
-                    <button class="btn btn-primary"><a href="/san_pham/export" style="text-decoration: none;color: white">Export</a></button>
-
+                    <button class="btn btn-primary"><a href="/san_pham_anh/create" style="text-decoration: none;color: white">Add New</a></button>
                 </div><!-- End Recent Sales -->
 
             </div>

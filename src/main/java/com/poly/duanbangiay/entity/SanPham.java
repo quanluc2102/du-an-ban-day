@@ -40,4 +40,15 @@ public class SanPham {
             return "Hết hàng";
         }
     }
+
+    public SanPham(Date ngayTao, double giaNhap, String ten, double giaBan, int soLuong, int trangThai, Date ngayCapNhat, String moTa) {
+        this.ngayTao = ngayTao;
+        this.giaNhap = giaNhap;
+        this.ten = ten;
+        this.giaBan = giaBan;
+        this.soLuong = soLuong;
+        this.trangThai = trangThai;
+        this.ngayCapNhat = ngayCapNhat;
+        this.moTa = moTa;
+    }
 }

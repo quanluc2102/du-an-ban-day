@@ -1,6 +1,7 @@
 package com.poly.duanbangiay.service;
 
 import com.poly.duanbangiay.entity.SanPham;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -11,4 +12,5 @@ public interface SanPhamService {
     List<SanPham> getAll();
     SanPham getOne(Long id);
     void chuyenTrangThai(SanPham sp);
+    void importExcel(MultipartFile file);
 }

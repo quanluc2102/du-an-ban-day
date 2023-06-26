@@ -1,11 +1,14 @@
 package com.poly.duanbangiay.service.serviceimpl;
 
 import com.poly.duanbangiay.entity.SanPham;
+import com.poly.duanbangiay.helper.SanPhamExcelSave;
 import com.poly.duanbangiay.repository.SanPhamRespository;
 import com.poly.duanbangiay.service.SanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -58,5 +61,21 @@ public class SanPhamServiceimpl implements SanPhamService {
             sp.setTrangThai(0);
         }
         sanPhamRespository.flush();
+    }
+
+    @Override
+    public void importExcel(MultipartFile file) {
+        try {
+            List<SanPham> tutorials = SanPhamExcelSave.excelToTutorials(file.getInputStream());
+
+
+            for(SanPham a :tutorials){
+                sanPhamRespository.save(a);
+                a.toString();
+            }
+            sanPhamRespository.flush();
+        } catch (IOException e) {
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
     }
 }

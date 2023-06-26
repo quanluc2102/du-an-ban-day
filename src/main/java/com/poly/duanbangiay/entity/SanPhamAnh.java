@@ -21,7 +21,7 @@ public class SanPhamAnh {
     @ManyToOne
     @JoinColumn(name = "san_pham_id", referencedColumnName = "id", nullable = true)
     private SanPham sanPham;
-
+    @Column(name = "anh")
     private String anh;
 
 

@@ -1,11 +1,24 @@
 package com.poly.duanbangiay.controller;
 
 import com.poly.duanbangiay.entity.SanPham;
+import com.poly.duanbangiay.helper.SanPhamExcelSave;
+import com.poly.duanbangiay.helper.SanPhamExport;
 import com.poly.duanbangiay.service.serviceimpl.SanPhamServiceimpl;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("san_pham")
@@ -52,5 +65,38 @@ public class SanPhamController {
         sanPhamServiceimpl.update(id,sp);
         sanPhamServiceimpl.chuyenTrangThai(sanPhamServiceimpl.getOne(id));
         return "redirect:/sanpham/index";
+    }
+
+    @PostMapping( value = "import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String importExcel(@RequestParam("file") MultipartFile file) throws IOException {
+        String message = "";
+        if (SanPhamExcelSave.hasExcelFormat(file)) {
+            try {
+                sanPhamServiceimpl.importExcel(file);
+            } catch (Exception e) {
+
+            }
+        }
+
+        message = "Please upload an excel file!";
+
+        return "redirect:/san_pham/index";
+    }
+
+    @GetMapping("export")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+
+        List listSP = sanPhamServiceimpl.getAll();
+
+        SanPhamExport excelExporter = new SanPhamExport(listSP);
+
+        excelExporter.export(response);
     }
 }

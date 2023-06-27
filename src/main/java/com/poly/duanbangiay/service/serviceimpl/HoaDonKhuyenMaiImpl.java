@@ -4,11 +4,21 @@ import com.poly.duanbangiay.entity.HoaDonKhuyenMai;
 import com.poly.duanbangiay.repository.HoaDonKhuyenMaiRepository;
 import com.poly.duanbangiay.service.HoaDonKhuyenMaiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
+@Service
 public class HoaDonKhuyenMaiImpl implements HoaDonKhuyenMaiService {
 
     @Autowired
     HoaDonKhuyenMaiRepository hoaDonKhuyenMaiRepository;
+
+    @Override
+    public List<HoaDonKhuyenMai> getAll() {
+        return hoaDonKhuyenMaiRepository.findAll();
+    }
 
     @Override
     public void add(HoaDonKhuyenMai hoaDonKhuyenMai) {
@@ -33,6 +43,13 @@ public class HoaDonKhuyenMaiImpl implements HoaDonKhuyenMaiService {
     public HoaDonKhuyenMai detail(Long id) {
         return hoaDonKhuyenMaiRepository.findById(id).get();
     }
+
+    @Override
+    public Optional<HoaDonKhuyenMai> detaill(Long id) {
+        return hoaDonKhuyenMaiRepository.findById(id);
+    }
+
+
 
     @Override
     public HoaDonKhuyenMai findOne(Long id) {

@@ -34,6 +34,17 @@ public class KhuyenMai {
     private Date ketThuc;
 
     @Column(name = "giam_gia")
-    private double giamGia;
+    private float giamGia;
 
+    @Column(name = "kieu_khuyen_mai")
+    private int kieuKhuyenMai;
+
+    public KhuyenMai(String ten, String moTa, Date batDau, Date ketThuc, float giamGia, int kieuKhuyenMai) {
+        this.ten = ten;
+        this.moTa = moTa;
+        this.batDau = batDau;
+        this.ketThuc = ketThuc;
+        this.giamGia = giamGia;
+        this.kieuKhuyenMai = kieuKhuyenMai;
+    }
 }

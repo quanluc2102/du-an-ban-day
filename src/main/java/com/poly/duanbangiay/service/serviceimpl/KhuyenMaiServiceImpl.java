@@ -4,11 +4,21 @@ import com.poly.duanbangiay.entity.KhuyenMai;
 import com.poly.duanbangiay.repository.KhuyenMaiRepository;
 import com.poly.duanbangiay.service.KhuyenMaiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
+@Service
 public class KhuyenMaiServiceImpl implements KhuyenMaiService {
 
     @Autowired
     KhuyenMaiRepository khuyenMaiRepository;
+
+    @Override
+    public ArrayList<KhuyenMai> getAll() {
+        return (ArrayList<KhuyenMai>) khuyenMaiRepository.findAll();
+    }
 
     @Override
     public void add(KhuyenMai khuyenMai) {
@@ -21,21 +31,24 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
     }
 
     @Override
-    public void update(KhuyenMai khuyenMai) {
-        KhuyenMai khuyenMai1 = khuyenMaiRepository.findById(khuyenMai.getId()).get();
-        khuyenMai1.setBatDau(khuyenMai.getBatDau());
-        khuyenMai1.setGiamGia(khuyenMai.getGiamGia());
-        khuyenMai1.setKetThuc(khuyenMai.getKetThuc());
-        khuyenMai1.setTen(khuyenMai.getTen());
-        khuyenMai1.setMoTa(khuyenMai.getMoTa());
-        this.khuyenMaiRepository.save(khuyenMai1);
-
+    public void update(Long id, KhuyenMai km) {
+        Optional<KhuyenMai>khuyenMai = khuyenMaiRepository.findById(id);
+        khuyenMai.get().setTen(km.getTen());
+        khuyenMai.get().setMoTa(km.getMoTa());
+        khuyenMai.get().setBatDau(km.getBatDau());
+        khuyenMai.get().setKetThuc(km.getKetThuc());
+        khuyenMai.get().setGiamGia(km.getGiamGia());
+        khuyenMai.get().setKieuKhuyenMai(km.getKieuKhuyenMai());
+        khuyenMaiRepository.flush();
     }
+
+
 
     @Override
-    public KhuyenMai detail(Long id) {
-        return khuyenMaiRepository.findById(id).get();
+    public Optional<KhuyenMai> detail(Long id) {
+        return khuyenMaiRepository.findById(id);
     }
+
 
     @Override
     public KhuyenMai findOne(Long id) {

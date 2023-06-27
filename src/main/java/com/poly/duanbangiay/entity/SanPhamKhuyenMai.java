@@ -5,7 +5,7 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "san_pham_khuyen_mai", schema = "dbo", catalog = "ShopShoe")
+@Table(name = "san_pham_khuyen_mai")
 @Getter
 @Setter
 @NoArgsConstructor

@@ -3,15 +3,18 @@ package com.poly.duanbangiay.service;
 import com.poly.duanbangiay.entity.KhuyenMai;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 @Service
 public interface KhuyenMaiService {
+    ArrayList<KhuyenMai>getAll();
     void add(KhuyenMai khuyenMai);
 
     void delete(Long id);
 
-    void update(KhuyenMai khuyenMai);
+    void update(Long id,KhuyenMai km);
 
-    KhuyenMai detail(Long id);
-
+    Optional<KhuyenMai>detail(Long id);
     KhuyenMai findOne(Long id);
 }

@@ -18,7 +18,15 @@ public class KichThuocController {
     @GetMapping("hien-thi")
     public String hienThi(Model model) {
         model.addAttribute("listKichThuoc", kichThuocService.findAll());
-        return "admin/kich_thuoc/kich_thuoc_add";
+        model.addAttribute("view", "/kich_thuoc/index.jsp");
+        return "admin/index";
+    }
+
+    @GetMapping("create")
+    public String addView(Model model) {
+        model.addAttribute("listKichThuoc", kichThuocService.findAll());
+        model.addAttribute("view", "/kich_thuoc/kich_thuoc_add.jsp");
+        return "admin/index";
     }
 
     @PostMapping("add")
@@ -52,10 +60,12 @@ public class KichThuocController {
         return "redirect:/kich-thuoc/hien-thi";
     }
 
-    @GetMapping("detail/{iddt}")
+    @GetMapping("hien-thi/{iddt}")
     public String detail(Model model, @PathVariable("iddt") Long iddt) {
         model.addAttribute("ktd", kichThuocService.detail(iddt));
-        return "admin/kich_thuoc/kich_thuoc_detail";
+        model.addAttribute("listKichThuoc", kichThuocService.findAll());
+        model.addAttribute("view", "/kich_thuoc/index.jsp");
+        return "admin/index";
 
     }
 }

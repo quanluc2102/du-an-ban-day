@@ -187,64 +187,81 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Danh Sách Sản Phẩm <span>| bán chạy nhất</span></h5>
+                            <h5 class="card-title">Danh Sách Khuyến Mãi <span>| bán chạy nhất</span></h5>
+
+
 
                             <table class="table table-borderless datatable">
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Khách Hàng</th>
-                                    <th scope="col">Sản Phẩm</th>
-                                    <th scope="col">Giá</th>
-                                    <th scope="col">Trạng Thái</th>
+                                    <th scope="col">Tên</th>
+                                    <th scope="col">Ngày bắt đầu</th>
+                                    <th scope="col">Ngày kết thúc</th>
+                                    <th scope="col">Giảm giá</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
+
                                 <tbody>
                                 <tr>
-                                    <th scope="row"><a href="#">#2457</a></th>
-                                    <td>Brandon Jacob</td>
-                                    <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                    <td>$64</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
+                                    <c:forEach items="${listKM}" var="km" varStatus="stt">
+                                      <td>${stt.index+1}</td>
+                                        <td>${km.ten}</td>
+                                        <td>${km.batDau}</td>
+                                        <td>${km.ketThuc}</td>
+                                        <td>${km.giamGia}</td>
+                                        <td>
+                                            <a href="" class="btn btn-primary">Delete</a>
+                                            <a href="" class="btn btn-success">Detail</a>
+                                        </td>
+                                    </c:forEach>
                                 </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2147</a></th>
-                                    <td>Bridie Kessler</td>
-                                    <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                    <td>$47</td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2049</a></th>
-                                    <td>Ashleigh Langosh</td>
-                                    <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                    <td>$147</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Angus Grady</td>
-                                    <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                    <td>$67</td>
-                                    <td><span class="badge bg-danger">Rejected</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Raheem Lehner</td>
-                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                    <td>$165</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Raheem Lehner</td>
-                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                    <td>$165</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
+<%--                                <tr>--%>
+<%--                                    <th scope="row"><a href="#">#2457</a></th>--%>
+<%--                                    <td>Brandon Jacob</td>--%>
+<%--                                    <td><a href="#" class="text-primary">At praesentium minu</a></td>--%>
+<%--                                    <td>$64</td>--%>
+<%--                                    <td><span class="badge bg-success">Approved</span></td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <th scope="row"><a href="#">#2147</a></th>--%>
+<%--                                    <td>Bridie Kessler</td>--%>
+<%--                                    <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>--%>
+<%--                                    <td>$47</td>--%>
+<%--                                    <td><span class="badge bg-warning">Pending</span></td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <th scope="row"><a href="#">#2049</a></th>--%>
+<%--                                    <td>Ashleigh Langosh</td>--%>
+<%--                                    <td><a href="#" class="text-primary">At recusandae consectetur</a></td>--%>
+<%--                                    <td>$147</td>--%>
+<%--                                    <td><span class="badge bg-success">Approved</span></td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <th scope="row"><a href="#">#2644</a></th>--%>
+<%--                                    <td>Angus Grady</td>--%>
+<%--                                    <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>--%>
+<%--                                    <td>$67</td>--%>
+<%--                                    <td><span class="badge bg-danger">Rejected</span></td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <th scope="row"><a href="#">#2644</a></th>--%>
+<%--                                    <td>Raheem Lehner</td>--%>
+<%--                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>--%>
+<%--                                    <td>$165</td>--%>
+<%--                                    <td><span class="badge bg-success">Approved</span></td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <th scope="row"><a href="#">#2644</a></th>--%>
+<%--                                    <td>Raheem Lehner</td>--%>
+<%--                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>--%>
+<%--                                    <td>$165</td>--%>
+<%--                                    <td><span class="badge bg-success">Approved</span></td>--%>
+<%--                                </tr>--%>
                                 </tbody>
                             </table>
-
+                            <button
                         </div>
 
                     </div>

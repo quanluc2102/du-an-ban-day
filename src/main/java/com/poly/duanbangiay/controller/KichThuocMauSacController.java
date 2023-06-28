@@ -33,7 +33,8 @@ public class KichThuocMauSacController {
         model.addAttribute("listSanPham", sanPhamServiceimpl.getAll());
         model.addAttribute("listMauSac", mauSacService.findAll());
         model.addAttribute("listKichThuocMauSac", kichThuocMauSacService.findAll());
-        return "admin/kich_thuoc_mau_sac/kich_thuoc_mau_sac_add";
+        model.addAttribute("view", "/kich_thuoc_mau_sac/index.jsp");
+        return "admin/index";
     }
 
     @PostMapping("add")
@@ -81,13 +82,15 @@ public class KichThuocMauSacController {
         return "redirect:/kich-thuoc-mau-sac/hien-thi";
     }
 
-    @GetMapping("detail/{iddt}")
+    @GetMapping("hien-thi/{iddt}")
     public String detail(Model model, @PathVariable("iddt") Long iddt) {
         model.addAttribute("listKichThuoc", kichThuocService.findAll());
         model.addAttribute("listSanPham", sanPhamServiceimpl.getAll());
         model.addAttribute("listMauSac", mauSacService.findAll());
         model.addAttribute("ktmsd", kichThuocMauSacService.detail(iddt));
-        return "admin/kich_thuoc_mau_sac/kich_thuoc_mau_sac_detail";
+        model.addAttribute("listKichThuocMauSac", kichThuocMauSacService.findAll());
+        model.addAttribute("view", "/kich_thuoc_mau_sac/index.jsp");
+        return "admin/index";
 
     }
 }

@@ -22,12 +22,12 @@ public class KichThuocController {
         return "admin/index";
     }
 
-    @GetMapping("create")
-    public String addView(Model model) {
-        model.addAttribute("listKichThuoc", kichThuocService.findAll());
-        model.addAttribute("view", "/kich_thuoc/kich_thuoc_add.jsp");
-        return "admin/index";
-    }
+//    @GetMapping("create")
+//    public String addView(Model model) {
+//        model.addAttribute("listKichThuoc", kichThuocService.findAll());
+//        model.addAttribute("view", "/kich_thuoc/kich_thuoc_add.jsp");
+//        return "admin/index";
+//    }
 
     @PostMapping("add")
     public String themMoi(Model model,

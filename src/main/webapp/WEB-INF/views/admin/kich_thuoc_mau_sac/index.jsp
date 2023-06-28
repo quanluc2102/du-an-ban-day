@@ -114,7 +114,6 @@
 <%--                    </ul>--%>
 
 
-
 <%--                    <div class="tab-content pt-2" id="myTabContent">--%>
 <%--                        <div class="tab-pane fade show active" id="home" role="tabpanel"--%>
 <%--                             aria-labelledby="home-tab">--%>
@@ -145,7 +144,6 @@
 <%--                        </div>--%>
 
 
-
 <%--                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">--%>
 <%--                            <form action="add" method="post">--%>
 <%--                                <div class="form-group">--%>
@@ -170,7 +168,6 @@
 <%--                                <button class="btn btn-success">Thêm</button>--%>
 <%--                            </form>--%>
 <%--                        </div>--%>
-
 
 
 <%--                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">--%>
@@ -199,9 +196,6 @@
 
 <%--    </div>--%>
 <%--</section>--%>
-
-
-
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -245,21 +239,27 @@
                         <div class="card-body">
                             <h5 class="card-title">Danh Sách Sản Phẩm <span>| bán chạy nhất</span></h5>
 
-                            <table class="table table-borderless datatable">
+                            <table class="table">
                                 <tr>
-                                    <td>Tên màu sắc</td>
-                                    <td>Giá trị</td>
+                                    <td>Số lượng</td>
+                                    <td>Trạng thái</td>
+                                    <td>Màu sắc</td>
+                                    <td>Sản phẩm</td>
+                                    <td>Kích thước</td>
                                     <td>Trạng thái</td>
                                     <td>Action</td>
                                 </tr>
-                                <c:forEach items="${listMauSac}" var="ms">
+                                <c:forEach items="${listKichThuocMauSac}" var="ktms">
                                     <tr>
-                                        <td>${ms.ten}</td>
-                                        <td>${ms.giaTri}</td>
-                                        <td>${ms.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}</td>
+                                        <td>${ktms.soLuong}</td>
+                                        <td>${ktms.trangThai}</td>
+                                        <td>${ktms.mauSac.ten}</td>
+                                        <td>${ktms.sanPham.ten}</td>
+                                        <td>${ktms.kichThuoc.giaTri}</td>
+                                        <td>${ktms.trangThai==1?"Đang hoạt động":"Ngưng hoạt động"}</td>
                                         <td>
-                                            <a href="/mau-sac/hien-thi/${ms.id}" class="btn btn-success">Detail</a>
-                                            <a href="/mau-sac/delete/${ms.id}" class="btn btn-danger"
+                                            <a href="/kich-thuoc-mau-sac/hien-thi/${ktms.id}" class="btn btn-success">Detail</a>
+                                            <a href="/kich-thuoc-mau-sac/delete/${ktms.id}" class="btn btn-danger"
                                                onclick="return confirm('Bạn chắc chắn có muốn xóa??')">Remove</a>
                                         </td>
                                     </tr>
@@ -324,54 +324,103 @@
                     <div class="tab-content pt-2" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel"
                              aria-labelledby="home-tab">
-                            <form action="/mau-sac/update/${msd.id}" method="post">
+                            <form action="/kich-thuoc-mau-sac/update/${ktmsd.id}" method="post">
                                 <div class="form-group">
-                                    Tên màu:<input type="text" name="ten" class="form-control" value="${msd.ten}">
-                                </div>
-
-                                <div class="form-group">
-                                    Giá trị:<input type="text" name="giaTri" class="form-control" value="${msd.giaTri}">
+                                    Số lượng:<input type="number" name="soLuong" class="form-control"
+                                                    value="${ktmsd.soLuong}">
                                 </div>
 
                                 <div class="form-check">
                                     Trạng thái:
                                     <div>
-                                        <input type="radio" name="trangThai" value="true"
-                                               class="form-check-input" ${msd.trangThai==true?"checked":""}> Đang hoạt
+                                        <input type="radio" name="trangThai" value="1"
+                                               class="form-check-input" ${ktmsd.trangThai==1?"checked":""}> Đang hoạt
                                         động
                                     </div>
                                     <div>
-                                        <input type="radio" name="trangThai" value="false"
-                                               class="form-check-input" ${msd.trangThai==false?"checked":""}> Ngưng hoạt
+                                        <input type="radio" name="trangThai" value="2"
+                                               class="form-check-input" ${ktmsd.trangThai==2?"checked":""}> Ngưng hoạt
                                         động
                                     </div>
                                 </div>
-                                <button class="btn btn-success">Update</button>
+
+                                <div>
+                                    Màu sắc
+                                    <select class="form-select" name="mauSac" aria-label="Default select example">
+                                        <c:forEach items="${listMauSac}" var="ms">
+                                            <option value="${ms.id}" ${ktmsd.mauSac.id==ms.id?"selected":""}>${ms.ten}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    Kích thước
+                                    <select class="form-select" name="kichThuoc" aria-label="Default select example">
+                                        <c:forEach items="${listKichThuoc}" var="kt">
+                                            <option value="${kt.id}" ${ktmsd.kichThuoc.id==kt.id?"selected":""}>${kt.giaTri}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    Kích thước
+                                    <select class="form-select" name="sanPham" aria-label="Default select example">
+                                        <c:forEach items="${listSanPham}" var="sp">
+                                            <option value="${sp.id}" ${ktmsd.kichThuoc.id==sp.id?"selected":""}>${sp.ten}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+                                <button class="btn btn-warning">Update</button>
                             </form>
                         </div>
 
 
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <form action="/mau-sac/add" method="post">
+                            <form action="/kich-thuoc-mau-sac/add" method="post">
                                 <div class="form-group">
-                                    Tên màu:<input type="text" name="ten" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    Giá trị:<input type="text" name="giaTri" class="form-control">
+                                    Số lượng:<input type="number" name="soLuong" class="form-control">
                                 </div>
 
                                 <div class="form-check">
                                     Trạng thái:
                                     <div>
-                                        <input type="radio" name="trangThai" value="true" class="form-check-input"> Đang
+                                        <input type="radio" name="trangThai" value="1" class="form-check-input"> Đang
                                         hoạt động
                                     </div>
                                     <div>
-                                        <input type="radio" name="trangThai" value="false" class="form-check-input">
-                                        Ngưng hoạt động
+                                        <input type="radio" name="trangThai" value="2" class="form-check-input"> Ngưng
+                                        hoạt động
                                     </div>
                                 </div>
+
+                                <div>
+                                    Màu sắc
+                                    <select class="form-select" name="mauSac" aria-label="Default select example">
+                                        <c:forEach items="${listMauSac}" var="ms">
+                                            <option value="${ms.id}">${ms.ten}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    Kích thước
+                                    <select class="form-select" name="kichThuoc" aria-label="Default select example">
+                                        <c:forEach items="${listKichThuoc}" var="kt">
+                                            <option value="${kt.id}">${kt.giaTri}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    Kích thước
+                                    <select class="form-select" name="sanPham" aria-label="Default select example">
+                                        <c:forEach items="${listSanPham}" var="sp">
+                                            <option value="${sp.id}">${sp.ten}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
                                 <button class="btn btn-success">Thêm</button>
                             </form>
                         </div>
@@ -379,10 +428,14 @@
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <form class="row g-3" action="/kich-thuoc/update/${ktd.id}" method="post">
                                 <div class="form-group">
-                                    Tên màu: ${msd.ten}
-                                </div><div class="form-group">
-                                Giá trị: ${msd.giaTri}
-                            </div>
+                                    Kích thước: ${ktmsd.kichThuoc.giaTri}
+                                </div>
+                                <div class="form-group">
+                                    Sản phẩm: ${ktmsd.sanPham.ten}
+                                </div>
+                                <div class="form-group">
+                                    Tên màu: ${ktmsd.mauSac.ten}
+                                </div>
                                 <div class="form-group">
                                     Trạng thái: ${msd.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}
                                 </div>

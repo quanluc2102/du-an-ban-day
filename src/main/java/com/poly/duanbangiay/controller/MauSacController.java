@@ -23,11 +23,11 @@ public class MauSacController {
         return "admin/index";
     }
 
-    @GetMapping("create")
-    public String create(Model model) {
-        model.addAttribute("view", "/mau_sac/mau_sac_add.jsp");
-        return "admin/index";
-    }
+//    @GetMapping("create")
+//    public String create(Model model) {
+//        model.addAttribute("view", "/mau_sac/mau_sac_add.jsp");
+//        return "admin/index";
+//    }
 
     @PostMapping("add")
     public String themMoi(Model model,

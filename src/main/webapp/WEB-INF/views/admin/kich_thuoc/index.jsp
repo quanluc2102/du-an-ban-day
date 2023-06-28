@@ -90,26 +90,89 @@
 
                 <div class="card-body">
                     <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <!-- Default Tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">Sửa
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">Thêm mới
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                                    aria-selected="false">Chi tiết
+                            </button>
+                        </li>
+                    </ul>
 
 
-                    <form class="row g-3" action="/kich-thuoc/update/${ktd.id}" method="post">
-                        <div class="form-group">
-                            Giá trị:<input type="text" name="giaTri" class="form-control" value="${ktd.giaTri}">
+
+
+                    <div class="tab-content pt-2" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                             aria-labelledby="home-tab">
+                            <form class="row g-3" action="/kich-thuoc/update/${ktd.id}" method="post">
+                                <div class="form-group">
+                                    Giá trị:<input type="text" name="giaTri" class="form-control"
+                                                   value="${ktd.giaTri}">
+                                </div>
+
+                                <div class="form-check">
+                                    Trạng thái:
+                                    <div>
+                                        <input type="radio" name="trangThai" value="true"
+                                               class="form-check-input" ${ktd.trangThai==true?"checked":""}>
+                                        Đang hoạt động
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="trangThai" value="false"
+                                               class="form-check-input" ${ktd.trangThai==false?"checked":""}>
+                                        Ngưng hoạt động
+                                    </div>
+                                </div>
+                                <button class="btn btn-success">Cập nhật</button>
+                            </form><!-- End Multi Columns Form -->
                         </div>
 
-                        <div class="form-check">
-                            Trạng thái:
-                            <div>
-                                <input type="radio" name="trangThai" value="true"
-                                       class="form-check-input" ${ktd.trangThai==true?"checked":""}> Đang hoạt động
-                            </div>
-                            <div>
-                                <input type="radio" name="trangThai" value="false"
-                                       class="form-check-input" ${ktd.trangThai==false?"checked":""}> Ngưng hoạt động
-                            </div>
+
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <form action="/kich-thuoc/add" method="post">
+                                <div class="form-group">
+                                    Giá trị:<input type="text" name="giaTri" class="form-control">
+                                </div>
+                                <div class="form-check">
+                                    Trạng thái:
+                                    <div>
+                                        <input type="radio" name="trangThai" value="true" class="form-check-input"> Đang
+                                        hoạt động
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="trangThai" value="false" class="form-check-input">
+                                        Ngưng hoạt động
+                                    </div>
+                                </div>
+                                <button class="btn btn-success">Thêm</button>
+                            </form>
                         </div>
-                        <button class="btn btn-success">Cập nhật</button>
-                    </form><!-- End Multi Columns Form -->
+
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <form class="row g-3" action="/kich-thuoc/update/${ktd.id}" method="post">
+                                <div class="form-group">
+                                    Giá trị: ${ktd.giaTri}
+                                </div>
+                                <div class="form-group">
+                                    Trạng thái: ${ktd.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}
+                                </div>
+                            </form><!-- End Multi Columns Form -->
+                        </div>
+                    </div><!-- End Default Tabs -->
 
 
                 </div>
@@ -122,3 +185,4 @@
 
     </div>
 </section>
+

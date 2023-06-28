@@ -18,7 +18,15 @@ public class MauSacController {
     @GetMapping("hien-thi")
     public String hienThi(Model model) {
         model.addAttribute("listMauSac", mauSacService.findAll());
-        return "admin/mau_sac/mau_sac_add";
+        model.addAttribute("view", "/mau_sac/index.jsp");
+
+        return "admin/index";
+    }
+
+    @GetMapping("create")
+    public String create(Model model) {
+        model.addAttribute("view", "/mau_sac/mau_sac_add.jsp");
+        return "admin/index";
     }
 
     @PostMapping("add")
@@ -56,10 +64,12 @@ public class MauSacController {
         return "redirect:/mau-sac/hien-thi";
     }
 
-    @GetMapping("detail/{iddt}")
+    @GetMapping("hien-thi/{iddt}")
     public String detail(Model model, @PathVariable("iddt") Long iddt) {
         model.addAttribute("msd", mauSacService.detail(iddt));
-        return "admin/mau_sac/mau_sac_detail";
+        model.addAttribute("view", "/mau_sac/index.jsp");
+        model.addAttribute("listMauSac", mauSacService.findAll());
+        return "admin/index";
 
     }
 }

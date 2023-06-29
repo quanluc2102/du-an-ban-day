@@ -6,10 +6,10 @@ import com.poly.duanbangiay.entity.SanPham;
 import java.util.List;
 
 public interface HoaDonService {
-    void add(HoaDonService sp);
+    void add(HoaDon sp);
     void delete(Long id);
-    void update(Long id, HoaDonService hoaDon);
+    void update(HoaDon hoaDon);
     List<HoaDon> getAll();
-    SanPham getOne(Long id);
+    HoaDon getOne(Long id);
     void chuyenTrangThai(HoaDonService hoaDon);
 }

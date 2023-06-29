@@ -1,12 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <div class="pagetitle">
     <h1>Quản Lý Hóa Đơn</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.jsp">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
             <li class="breadcrumb-item active">Tổng Quan</li>
             <li class="breadcrumb-item active">Hóa Đơn</li>
         </ol>
@@ -187,70 +186,49 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Danh Sách Hoá Đơn <span>| Gần Nhất</span></h5>
+                            <h5 class="card-title">Danh Sách Hóa Đơn<span>| bán chạy nhất</span></h5>
 
-                            <table class="table table-borderless datatable">
+                            <table class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Khách Hàng</th>
-                                    <th scope="col">Sản Phẩm</th>
-                                    <th scope="col">Giá</th>
-                                    <th scope="col">Trạng Thái</th>
+                                    <th scope="col">Ghi chú</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Id hóa đơn</th>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Giá bán</th>
+                                    <th scope="col">Thành tiền</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row"><a href="#">#2457</a></th>
-                                    <td>Brandon Jacob</td>
-                                    <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                    <td>$64</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2147</a></th>
-                                    <td>Bridie Kessler</td>
-                                    <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                    <td>$47</td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2049</a></th>
-                                    <td>Ashleigh Langosh</td>
-                                    <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                    <td>$147</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Angus Grady</td>
-                                    <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                    <td>$67</td>
-                                    <td><span class="badge bg-danger">Rejected</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Raheem Lehner</td>
-                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                    <td>$165</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Raheem Lehner</td>
-                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                    <td>$165</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
-                                </tr>
+                                <c:forEach items="${listHDById}" var="hdct">
+                                    <tr onclick="goToPage('/hoa_don_chi_tiet/hien-thi/${hd.id}')">
+                                        <th scope="row">${hd.id}</th>
+                                        <td>${hdct.ghiChu}</td>
+                                        <td>${hdct.soLuong}</td>
+                                        <td>${hdct.hd.id}</td>
+                                        <td>${hdct.sp.ten}</td>
+                                        <td><fmt:formatNumber value="${hdct.sp.giaBan}" type="currency" currencyCode="VND" /></td>
+                                        <td>
+                                        <fmt:formatNumber value="${hdct.sp.giaBan * hdct.soLuong}" type="currency" currencyCode="VND" /></td>
+                                        <td><button class="btn btn-danger"><a href="/hoa_don/delete?id=${hd.id}" style="text-decoration: none;color: white"><i class='bx bx-trash'></i></a></button>
+                                            <button class="btn btn-light"><a href="/hoa_don/detail/${hd.id}" style="text-decoration: none;color: black" ><i class='bx bx-info-circle'></i></a></button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
 
+                            <h3>Tổng tiền khách phải trả : <fmt:formatNumber value="${tongTien}" type="currency" currencyCode="VND" /></h3>
                         </div>
 
                     </div>
+                    <button class="btn btn-primary"><a href="/hoa_don/create" style="text-decoration: none;color: white">Add New</a></button>
                 </div><!-- End Recent Sales -->
 
             </div>
+
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
@@ -272,59 +250,56 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">Thông Tin Chi Tiết <span>| xx</span></h5>
+                    <h5 class="card-title">Thông Tin hóa đơn <span>| xx</span></h5>
 
 
-                    <form class="row g-3">
-                        <div class="col-md-12">
-                            <label for="inputName5" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="inputName5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputEmail5" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputPassword5" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="inputPassword5">
-                        </div>
+                    <form class="row g-3" action="/hoa_don/update/${hddt.id}" method="post">
                         <div class="col-12">
-                            <label for="inputAddres5s" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inputState" class="form-label">State</label>
-                            <select id="inputState" class="form-select">
-                                <option selected>Choose...</option>
-                                <option>...</option>
+                            <label for="inputState1" class="form-label">Bán bởi</label>
+                            <select id="inputState1" class="form-select" name="taiKhoan">
+                                <c:forEach items="${listTaiKhoan}" var="tk">
+                                    <option value="${tk.id}" ${hddt.taiKhoan.id==tk.id?"selected":""}>${tk.ten}</option></c:forEach>
                             </select>
                         </div>
-                        <div class="col-md-2">
-                            <label for="inputZip" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
+                        <div class="col-md-6">
+                            <label for="inputEmail5" class="form-label">Ngày cập nhật</label>
+                            <input type="date" class="form-control" id="inputEmail5" value="${hddt.ngayCapNhat}" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword5" class="form-label">Ngày tạo</label>
+                            <input type="date" class="form-control" id="inputPassword5" value="${hddt.ngayTao}" disabled>
                         </div>
                         <div class="col-12">
+                            <label for="inputState" class="form-label">Phương thức thanh toán</label>
+                            <select id="inputState" class="form-select" name="thanhToan">
+                                <c:forEach items="${listThanhToan}" var="tt">
+                                    <option value="${tt.id}" ${hddt.thanhToan.id==tt.id?"selected":""}>${tt.ten}</option></c:forEach>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress2" class="form-label">Ghi chú</label>
+                            <input type="text" class="form-control" id="inputAddress2"  value="${hddt.ghiChu}" name="ghiChu">
+                        </div>
+                        <div class="col-12">
+                            <label  class="form-label">Trạng thái hóa đơn</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
+                                <input type="radio" class="form-check-input" id="radio1" name="trangThai" value="0" ${hddt.trangThai==0?"checked":""}> <span class="text-primary small pt-1 fw-bold">Đang chờ</span>
+                                <label class="form-check-label" for="radio1"></label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="radio2" name="trangThai" value="1" ${hddt.trangThai==1?"checked":""}><span class="text-success small pt-1 fw-bold">Đã thanh toán</span>
+                                <label class="form-check-label" for="radio2"></label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="radio3" name="trangThai" value="2" ${hddt.trangThai==2?"checked":""}><span class="text-secondary small pt-1 fw-bold">Ngưng hoạt dộng</span>
+                                <label class="form-check-label"></label>
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
+                            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                            <button type="reset" class="btn btn-secondary">Làm mới</button>
                         </div>
                     </form><!-- End Multi Columns Form -->
-
 
                 </div>
 

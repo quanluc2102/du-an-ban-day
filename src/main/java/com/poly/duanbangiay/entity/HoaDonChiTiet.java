@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "hoa_don_chi_tiet", schema = "dbo", catalog = "ShopShoe")
+@Table(name = "hoa_don_chi_tiet")
 public class HoaDonChiTiet {
     @Id
     @Column(name = "id")

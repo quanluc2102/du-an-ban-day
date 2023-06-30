@@ -11,7 +11,7 @@
         </ol>
     </nav>
 </div><!-- End Page Title -->
-<form method="post" action="/san-pham-khuyen-mai/update/${spkm.id}">
+<form method="post" action="/san_pham_khuyen_mai/update/${spkm.id}">
     <section class="section profile" >
         <div class="form-control">
             <div>

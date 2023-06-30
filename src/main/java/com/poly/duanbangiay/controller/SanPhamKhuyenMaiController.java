@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/san-pham-khuyen-mai")
+@RequestMapping("/san_pham_khuyen_mai")
 public class SanPhamKhuyenMaiController {
     @Autowired
     private SanPhamKhuyenMaiServiceImpl sanPhamKhuyenMaiServiceImpl;
@@ -49,7 +49,7 @@ public class SanPhamKhuyenMaiController {
     public String xoa(Model model,
                       @PathVariable("id")Long id){
         sanPhamKhuyenMaiServiceImpl.delete(id);
-        return "redirect:/san-pham-khuyen-mai/index";
+        return "redirect:/san_pham_khuyen_mai/index";
     }
     @PostMapping("/add")
     public String add(Model model,
@@ -59,19 +59,21 @@ public class SanPhamKhuyenMaiController {
     spkm.setSanPhamId(sanPhamId);
     spkm.setKhuyenMaiId(khuyenMaiId);
     sanPhamKhuyenMaiServiceImpl.add(spkm);
-        return "redirect:/san-pham-khuyen-mai/index";
+        return "redirect:/san_pham_khuyen_mai/index";
 
     }
     @GetMapping("/detail/{id}")
     public String detail(Model model,
                       @PathVariable("id")Long id){
         Optional<SanPhamKhuyenMai>spkm = sanPhamKhuyenMaiServiceImpl.detail(id);
+        List<SanPhamKhuyenMai> list = sanPhamKhuyenMaiServiceImpl.getAll();
         List<SanPham>listSanPham = sanPhamServiceimpl.getAll();
         List<KhuyenMai>listKhuyenMai = khuyenMaiServiceimpl.getAll();
+        model.addAttribute("listSPKM",list);
         model.addAttribute("listSP",listSanPham);
         model.addAttribute("listKM",listKhuyenMai);
         model.addAttribute("spkm",spkm.get());
-        model.addAttribute("view","/san_pham_khuyen_mai/update.jsp");
+        model.addAttribute("view","/san_pham_khuyen_mai/index.jsp");
         return "admin/index";
 
     }
@@ -85,7 +87,7 @@ public class SanPhamKhuyenMaiController {
         spkm.setSanPhamId(sanPhamId);
         spkm.setKhuyenMaiId(khuyenMaiId);
         sanPhamKhuyenMaiServiceImpl.add(spkm);
-        return "redirect:/san-pham-khuyen-mai/index";
+        return "redirect:/san_pham_khuyen_mai/index";
 
     }
 }

@@ -11,7 +11,7 @@
         </ol>
     </nav>
 </div><!-- End Page Title -->
-<form method="post" action="/khuyen-mai/update/${km.id}">
+<form method="post" action="/khuyen_mai/update/${km.id}">
     <section class="section profile" >
         <div class="form-control">
             <label  class="col-md-4 col-lg-3 col-form-label">Tên</label>

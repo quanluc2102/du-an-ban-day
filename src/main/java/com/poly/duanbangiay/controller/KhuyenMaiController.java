@@ -14,7 +14,7 @@ import java.util.Locale;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/khuyen-mai")
+@RequestMapping("/khuyen_mai")
 public class KhuyenMaiController {
     @Autowired
     private KhuyenMaiServiceImpl khuyenMaiServiceImpl;
@@ -43,7 +43,7 @@ public class KhuyenMaiController {
                       @RequestParam("kieuKhuyenMai")int kieuKhuyenMai){
 
     khuyenMaiServiceImpl.add(new KhuyenMai(ten,moTa,batDau,ketThuc,giamGia,kieuKhuyenMai));
-    return "redirect:/khuyen-mai/index";
+    return "redirect:/khuyen_mai/index";
     }
     @GetMapping("/xoa/{id}")
     public String xoa(Model model,
@@ -55,8 +55,10 @@ public class KhuyenMaiController {
     public String detail(Model model,
                          @PathVariable("id")Long id){
         Optional<KhuyenMai>km = khuyenMaiServiceImpl.detail(id);
+        ArrayList<KhuyenMai>list = khuyenMaiServiceImpl.getAll();
+        model.addAttribute("listKM",list);
         model.addAttribute("km",km.get());
-        model.addAttribute("view","/khuyen_mai/update.jsp");
+        model.addAttribute("view","/khuyen_mai/index.jsp");
         return "admin/index";
     }
     @PostMapping("/update/{id}")
@@ -77,6 +79,6 @@ public class KhuyenMaiController {
       km.setGiamGia(giamGia);
       km.setKieuKhuyenMai(kieuKhuyenMai);
       khuyenMaiServiceImpl.add(km);
-        return "redirect:/khuyen-mai/index";
+        return "redirect:/khuyen_mai/index";
     }
 }

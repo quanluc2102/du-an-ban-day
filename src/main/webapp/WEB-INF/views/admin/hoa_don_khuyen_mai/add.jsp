@@ -11,7 +11,7 @@
         </ol>
     </nav>
 </div><!-- End Page Title -->
-<form method="post" action="/hoa-don-khuyen-mai/add">
+<form method="post" action="/hoa_don_khuyen_mai/add">
     <section class="section profile" >
         <div class="form-control">
             <div>

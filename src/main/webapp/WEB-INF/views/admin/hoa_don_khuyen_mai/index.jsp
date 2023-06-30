@@ -1,11 +1,306 @@
 
 
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+
+<%--<div class="pagetitle">--%>
+<%--    <h1>Quản Lý hóa đơn khuyến mại</h1>--%>
+<%--    <nav>--%>
+<%--        <ol class="breadcrumb">--%>
+<%--            <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>--%>
+<%--            <li class="breadcrumb-item active">Tổng Quan</li>--%>
+<%--            <li class="breadcrumb-item active">Sản Phẩm</li>--%>
+<%--        </ol>--%>
+<%--    </nav>--%>
+<%--</div><!-- End Page Title -->--%>
+
+<%--<section class="section dashboard">--%>
+<%--    <div class="row">--%>
+<%--        <!-- Sales Card -->--%>
+<%--        <div class="col-xxl-3 col-md-6">--%>
+<%--            <div class="card info-card sales-card">--%>
+
+<%--                <div class="filter">--%>
+<%--                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>--%>
+<%--                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">--%>
+<%--                        <li class="dropdown-header text-start">--%>
+<%--                            <h6>Bộ Lọc</h6>--%>
+<%--                        </li>--%>
+
+<%--                        <li><a class="dropdown-item" href="#">Hôm Nay</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">Tháng Này</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">Năm Nay</a></li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+
+<%--                <div class="card-body">--%>
+<%--                    <h5 class="card-title">Thông Tin Nhanh <span>| Hôm Nay</span></h5>--%>
+
+<%--                    <div class="d-flex align-items-center">--%>
+<%--                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">--%>
+<%--                            <i class="bi bi-cart"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="ps-3">--%>
+<%--                            <h6>145</h6>--%>
+<%--                            <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Tăng--%>
+<%--                    <i class="bi bi-arrow-up-circle-fill"></i></span>--%>
+
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+
+<%--            </div>--%>
+<%--        </div><!-- End Sales Card -->--%>
+
+<%--        <!-- Revenue Card -->--%>
+<%--        <div class="col-xxl-3 col-md-6">--%>
+<%--            <div class="card info-card revenue-card">--%>
+
+<%--                <div class="filter">--%>
+<%--                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>--%>
+<%--                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">--%>
+<%--                        <li class="dropdown-header text-start">--%>
+<%--                            <h6>Bộ Lọc</h6>--%>
+<%--                        </li>--%>
+<%--                        <li><a class="dropdown-item" href="#">Hôm Nay</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">Tháng Này</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">Năm Nay</a></li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+
+<%--                <div class="card-body">--%>
+<%--                    <h5 class="card-title">Thông Tin Nhanh <span>| Hôm Nay</span></h5>--%>
+
+<%--                    <div class="d-flex align-items-center">--%>
+<%--                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">--%>
+<%--                            <i class="bi bi-currency-dollar"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="ps-3">--%>
+<%--                            <h6>$3,264</h6>--%>
+<%--                            <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">Tăng--%>
+<%--                    <i class="bi bi-arrow-up-circle-fill"></i></span>--%>
+
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+
+<%--            </div>--%>
+<%--        </div><!-- End Revenue Card -->--%>
+
+<%--        <!-- Customers Card -->--%>
+<%--        <div class="col-xxl-3 col-xl-12">--%>
+
+<%--            <div class="card info-card customers-card">--%>
+
+<%--                <div class="filter">--%>
+<%--                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>--%>
+<%--                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">--%>
+<%--                        <li class="dropdown-header text-start">--%>
+<%--                            <h6>Bộ Lọc</h6>--%>
+<%--                        </li>--%>
+
+<%--                        <li><a class="dropdown-item" href="#">Hôm Nay</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">Tháng Này</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">Năm Nay</a></li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+
+<%--                <div class="card-body">--%>
+<%--                    <h5 class="card-title">Thông Tin Nhanh <span>| Năm Nay</span></h5>--%>
+
+<%--                    <div class="d-flex align-items-center">--%>
+<%--                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">--%>
+<%--                            <i class="bi bi-people"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="ps-3">--%>
+<%--                            <h6>1244</h6>--%>
+<%--                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Giảm--%>
+<%--                    <i class="bi bi-arrow-down-circle-fill"></i></span>--%>
+
+<%--                        </div>--%>
+<%--                    </div>--%>
+
+<%--                </div>--%>
+<%--            </div>--%>
+
+<%--        </div>--%>
+<%--        <div class="col-xxl-3 col-xl-12">--%>
+
+<%--            <div class="card info-card customers-card">--%>
+
+<%--                <div class="filter">--%>
+<%--                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>--%>
+<%--                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">--%>
+<%--                        <li class="dropdown-header text-start">--%>
+<%--                            <h6>Bộ Lọc</h6>--%>
+<%--                        </li>--%>
+
+<%--                        <li><a class="dropdown-item" href="#">Hôm Nay</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">Tháng Này</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">Năm Nay</a></li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+
+<%--                <div class="card-body">--%>
+<%--                    <h5 class="card-title">Thông Tin Nhanh <span>| Năm Nay</span></h5>--%>
+
+<%--                    <div class="d-flex align-items-center">--%>
+<%--                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">--%>
+<%--                            <i class="bi bi-people"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="ps-3">--%>
+<%--                            <h6>1244</h6>--%>
+<%--                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Giảm--%>
+<%--                    <i class="bi bi-arrow-down-circle-fill"></i></span>--%>
+
+<%--                        </div>--%>
+<%--                    </div>--%>
+
+<%--                </div>--%>
+<%--            </div>--%>
+
+<%--        </div>--%>
+
+<%--    </div>--%>
+
+<%--    <div class="row">--%>
+
+<%--        <!-- Left side columns -->--%>
+<%--        <div class="col-lg-8">--%>
+<%--            <div class="row">--%>
+
+
+<%--                <!-- Recent Sales -->--%>
+<%--                <div class="col-12">--%>
+<%--                    <div class="card recent-sales overflow-auto">--%>
+
+<%--                        <div class="filter">--%>
+<%--                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>--%>
+<%--                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">--%>
+<%--                                <li class="dropdown-header text-start">--%>
+<%--                                    <h6>Bộ Lọc</h6>--%>
+<%--                                </li>--%>
+<%--                                <li><a class="dropdown-item" href="#">Bán Chạy Nhất</a></li>--%>
+<%--                                <li><a class="dropdown-item" href="#">Bán Ế Nhất</a></li>--%>
+<%--                                <li><a class="dropdown-item" href="#">Tồn Kho Nhiều</a></li>--%>
+<%--                                <li><a class="dropdown-item" href="#">Đang Giảm Giá</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </div>--%>
+
+<%--                        <div class="card-body">--%>
+<%--                            <h5 class="card-title">Danh Sách Sản Phẩm <span>| bán chạy nhất</span></h5>--%>
+
+<%--                            <form>--%>
+
+<%--                                <table class="table table-borderless datatable">--%>
+<%--                                    <thead>--%>
+<%--                                    <tr>--%>
+<%--                                        <th scope="col">#</th>--%>
+<%--                                        <th scope="col">Hóa đơn</th>--%>
+<%--                                        <th scope="col">Khuyến mại</th>--%>
+<%--                                        <th scope="col">Action</th>--%>
+<%--                                    </tr>--%>
+<%--                                    </thead>--%>
+<%--                                    <tbody>--%>
+<%--                                    <c:forEach items="${listHDKM}" var="hdkm">--%>
+<%--                                        <tr>--%>
+<%--                                            <td scope="row">${hdkm.id}</td>--%>
+<%--                                            <td>${hdkm.hoaDon.ghiChu}</td>--%>
+<%--                                            <td>${hdkm.khuyenMai.ten}</td>--%>
+<%--                                            <td>--%>
+<%--                                                <a href="/hoa_don_khuyen_mai/xoa/${hdkm.id}" class="btn btn-danger">Delete</a>--%>
+<%--                                                <a href="/hoa_don_khuyen_mai/detail/${hdkm.id}" class="btn btn-success">Detail</a>--%>
+<%--                                              <a href="" class="btn btn btn-primary">--%>
+<%--                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">--%>
+<%--                                                      <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>--%>
+<%--                                                      <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>--%>
+<%--                                                  </svg>--%>
+<%--                                              </a>--%>
+<%--                                            </td>--%>
+<%--                                        </tr>--%>
+<%--                                    </c:forEach>--%>
+<%--                                    </tbody>--%>
+<%--                                </table>--%>
+
+<%--                                <div class="text-center">--%>
+<%--                                    <a href="/hoa-don-khuyen-mai/create" class="btn btn-primary" type="submit">Save</a>--%>
+<%--                                </div>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+
+<%--                    </div>--%>
+
+<%--                </div><!-- End Recent Sales -->--%>
+
+<%--            </div>--%>
+
+<%--        </div><!-- End Left side columns -->--%>
+
+<%--        <!-- Right side columns -->--%>
+<%--        <div class="col-lg-4">--%>
+
+<%--            <!-- Recent Activity -->--%>
+<%--            <div class="card">--%>
+<%--                <div class="filter">--%>
+<%--                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>--%>
+<%--                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">--%>
+<%--                        <li class="dropdown-header text-start">--%>
+<%--                            <h6>Filter</h6>--%>
+<%--                        </li>--%>
+
+<%--                        <li><a class="dropdown-item" href="#">Today</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">This Month</a></li>--%>
+<%--                        <li><a class="dropdown-item" href="#">This Year</a></li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+
+<%--                <div class="card-body">--%>
+<%--                    <h5 class="card-title">Thông tin chi tiết <span>| xx</span></h5>--%>
+<%--                    <!-- Default Tabs -->--%>
+<%--                    <ul class="nav nav-tabs" id="myTab" role="tablist">--%>
+
+
+<%--                        <li class="nav-item" role="presentation">--%>
+<%--                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"--%>
+<%--                                    data-bs-target="#contact" type="button" role="tab" aria-controls="contact"--%>
+<%--                                    aria-selected="false">Chi tiết--%>
+<%--                            </button>--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
+
+<%--                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">--%>
+<%--                            <form class="row g-3" action="/hoa_don_khuyen_mai/detail/${hdkm.id}" method="post">--%>
+<%--                                <div class="form-group">--%>
+<%--                                    id: ${hdkm.id}--%>
+<%--                                </div><div class="form-group">--%>
+<%--                               Hóa đơn: ${hdkm.hoaDon.ghiChu}--%>
+<%--                            </div>--%>
+<%--                                <div class="form-group">--%>
+<%--                                   Khuyến mãi: ${hdkm.khuyenMai.ten}--%>
+<%--                                </div>--%>
+<%--                            </form><!-- End Multi Columns Form -->--%>
+<%--                        </div>--%>
+<%--                    </div><!-- End Default Tabs -->--%>
+
+
+<%--                </div>--%>
+
+<%--            </div>--%>
+<%--        </div><!-- End Recent Activity -->--%>
+
+
+<%--    </div><!-- End Right side columns -->--%>
+
+<%--    </div>--%>
+<%--</section>--%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="pagetitle">
-    <h1>Quản Lý hóa đơn khuyến mại</h1>
+    <h1>Quản Lý hóa đơn khuyến mãi</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
@@ -13,7 +308,8 @@
             <li class="breadcrumb-item active">Sản Phẩm</li>
         </ol>
     </nav>
-</div><!-- End Page Title -->
+</div>
+<!-- End Page Title -->
 
 <section class="section dashboard">
     <div class="row">
@@ -43,7 +339,8 @@
                         </div>
                         <div class="ps-3">
                             <h6>145</h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Tăng
+                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                                class="text-muted small pt-2 ps-1">Tăng
                     <i class="bi bi-arrow-up-circle-fill"></i></span>
 
                         </div>
@@ -68,7 +365,6 @@
                         <li><a class="dropdown-item" href="#">Năm Nay</a></li>
                     </ul>
                 </div>
-
                 <div class="card-body">
                     <h5 class="card-title">Thông Tin Nhanh <span>| Hôm Nay</span></h5>
 
@@ -78,7 +374,8 @@
                         </div>
                         <div class="ps-3">
                             <h6>$3,264</h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">Tăng
+                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                                class="text-muted small pt-2 ps-1">Tăng
                     <i class="bi bi-arrow-up-circle-fill"></i></span>
 
                         </div>
@@ -115,7 +412,8 @@
                         </div>
                         <div class="ps-3">
                             <h6>1244</h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Giảm
+                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
+                                class="text-muted small pt-2 ps-1">Giảm
                     <i class="bi bi-arrow-down-circle-fill"></i></span>
 
                         </div>
@@ -135,7 +433,6 @@
                         <li class="dropdown-header text-start">
                             <h6>Bộ Lọc</h6>
                         </li>
-
                         <li><a class="dropdown-item" href="#">Hôm Nay</a></li>
                         <li><a class="dropdown-item" href="#">Tháng Này</a></li>
                         <li><a class="dropdown-item" href="#">Năm Nay</a></li>
@@ -151,7 +448,8 @@
                         </div>
                         <div class="ps-3">
                             <h6>1244</h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Giảm
+                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
+                                class="text-muted small pt-2 ps-1">Giảm
                     <i class="bi bi-arrow-down-circle-fill"></i></span>
 
                         </div>
@@ -167,7 +465,7 @@
     <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="col-lg-7">
             <div class="row">
 
 
@@ -189,7 +487,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Danh Sách Sản Phẩm <span>| bán chạy nhất</span></h5>
+                            <h5 class="card-title">Danh Sách Thông Tin hóa đơn khuyến mại<span>| Người Dùng</span></h5>
 
                             <form>
 
@@ -209,8 +507,14 @@
                                             <td>${hdkm.hoaDon.ghiChu}</td>
                                             <td>${hdkm.khuyenMai.ten}</td>
                                             <td>
-                                                <a href="/hoa-don-khuyen-mai/xoa/${hdkm.id}" class="btn btn-danger">Delete</a>
-                                                <a href="/hoa-don-khuyen-mai/detail/${hdkm.id}" class="btn btn-success">Detail</a>
+                                                <a href="/hoa_don_khuyen_mai/xoa/${hdkm.id}" class="btn btn-danger">Delete</a>
+                                                <a href="/hoa_don_khuyen_mai/detail/${hdkm.id}" class="btn btn-success">Detail</a>
+<%--                                                <a href="/hoa_don_khuyen_mai/detail/${hdkm.id}" class="btn btn btn-primary">--%>
+<%--                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">--%>
+<%--                                                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>--%>
+<%--                                                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>--%>
+<%--                                                    </svg>--%>
+<%--                                                </a>--%>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -218,100 +522,123 @@
                                 </table>
 
                                 <div class="text-center">
-                                    <a href="/hoa-don-khuyen-mai/create" class="btn btn-primary" type="submit">Save</a>
+                                    <a href="/hoa_don_khuyen_mai/create" class="btn btn-primary" type="submit">Save</a>
                                 </div>
                             </form>
                         </div>
 
                     </div>
-
                 </div><!-- End Recent Sales -->
 
             </div>
-
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
-        <div class="col-lg-4">
-
-            <!-- Recent Activity -->
-            <div class="card">
-                <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        <li class="dropdown-header text-start">
-                            <h6>Filter</h6>
-                        </li>
-
-                        <li><a class="dropdown-item" href="#">Today</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                </div>
-
-                <div class="card-body">
-                    <h5 class="card-title">Thông Tin Chi Tiết <span>| xx</span></h5>
+        <div class="col-lg-5">
 
 
-                    <form class="row g-3">
-                        <div class="col-md-12">
-                            <label for="inputName5" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="inputName5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputEmail5" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputPassword5" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="inputPassword5">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddres5s" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inputState" class="form-label">State</label>
-                            <select id="inputState" class="form-select">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="inputZip" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
-                        </div>
-                    </form><!-- End Multi Columns Form -->
+            <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Góc Nhìn
+                        Tổng
+                        Quan
+                    </button>
+                </li>
+
+                <li class="nav-item">
+
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit"><link href="/hoa_don_khuyen_mai/detail/${hdkm.id}">Chỉnh Sửa</button>
+
+                </li>
+
+            </ul>
+            <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                    <div class="">
 
 
+                        <div class="card-body">
+
+
+                            <form class="row g-3">
+                                <div class="col-md-12">
+                                    <H1><Strong>Thông Tin HDKM</Strong></H1>
+                                </div>
+                                <div>
+                                    Sản phẩm
+                                    <select class="form-select" name="hoaDon" aria-label="Default select example">
+                                        <c:forEach items="${listHD}" var="hoaDon">
+                                            <option value="${hoaDon.id}" ${hdkm.hoaDon.id==hoaDon.id?"selected":""}>${hoaDon.ghiChu}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    Khuyến mãi
+                                    <select class="form-select" name="khuyenMai" aria-label="Default select example">
+                                        <c:forEach items="${listKM}" var="khuyenMai">
+                                            <option value="${khuyenMai.id}"${hdkm.khuyenMai.id==khuyenMai.id?"selected":""}>${khuyenMai.ten}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+
+                            </form><!-- End Multi Columns Form -->
+
+
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
-        </div><!-- End Recent Activity -->
+
+            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                <form method="post" action="/hoa_don_khuyen_mai/update/${hdkm.id}">
+                    <section class="section profile" >
+                        <div>
+                            Sản phẩm
+                            <select class="form-select" name="hoaDon" aria-label="Default select example">
+                                <c:forEach items="${listHD}" var="hoaDon">
+                                    <option value="${hoaDon.id}" ${hdkm.hoaDon.id==hoaDon.id?"selected":""}>${hoaDon.ghiChu}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+
+                        <div>
+                            Khuyến mãi
+                            <select class="form-select" name="khuyenMai" aria-label="Default select example">
+                                <c:forEach items="${listKM}" var="khuyenMai">
+                                    <option value="${khuyenMai.id}"${hdkm.khuyenMai.id==khuyenMai.id?"selected":""}>${khuyenMai.ten}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <input class="btn btn-primary" value="Update" type="submit" style="margin-top: 20px">
+
+                    </section>
+                </form><!-- End Profile Edit Form -->
 
 
-    </div><!-- End Right side columns -->
 
+            </div>
+            <div class="tab-pane fade acc-edit pt-3 " id="acc-edit" >
+
+
+                <H1 class="mt-0">curd </H1>
+
+                <!-- Profile Edit Form -->
+
+
+
+            </div>
+
+
+        </div>
     </div>
-</section>
 
+
+</section>

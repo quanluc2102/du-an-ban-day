@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/hoa-don-khuyen-mai")
+@RequestMapping("/hoa_don_khuyen_mai")
 public class HoaDonKhuyenMaiController {
     @Autowired
     private HoaDonKhuyenMaiImpl hoaDonKhuyenMaiServiceimpl;
@@ -45,7 +45,7 @@ public class HoaDonKhuyenMaiController {
     public String xoa(Model model,
                       @PathVariable("id")Long id){
         hoaDonKhuyenMaiServiceimpl.delete(id);
-        return "redirect:/hoa-don-khuyen-mai/index";
+        return "redirect:/hoa_don_khuyen_mai/index";
     }
     @PostMapping("/add")
     public String add(Model model,
@@ -55,18 +55,20 @@ public class HoaDonKhuyenMaiController {
       hdkm.setHoaDon(hoaDon);
       hdkm.setKhuyenMai(khuyenMai);
        hoaDonKhuyenMaiServiceimpl.add(hdkm);
-        return "redirect:/hoa-don-khuyen-mai/index";
+        return "redirect:/hoa_don_khuyen_mai/index";
 
     }
     @GetMapping("/detail/{id}")
     public String detail(Model model,
                          @PathVariable("id")Long id){
         Optional<HoaDonKhuyenMai> hdkm = hoaDonKhuyenMaiServiceimpl.detaill(id);
+        List<HoaDonKhuyenMai> list = hoaDonKhuyenMaiServiceimpl.getAll();
         List<KhuyenMai>listKhuyenMai = khuyenMaiServiceimpl.getAll();
+        model.addAttribute("listHDKM",list);
         model.addAttribute("listHD",hoaDonServiceimpl.getAll());
         model.addAttribute("listKM",listKhuyenMai);
         model.addAttribute("hdkm",hdkm.get());
-        model.addAttribute("view","/hoa_don_khuyen_mai/update.jsp");
+        model.addAttribute("view","/hoa_don_khuyen_mai/index.jsp");
         return "admin/index";
 
     }
@@ -80,7 +82,7 @@ public class HoaDonKhuyenMaiController {
         hdkm.setHoaDon(hoaDon);
         hdkm.setKhuyenMai(khuyenMai);
         hoaDonKhuyenMaiServiceimpl.add(hdkm);
-        return "redirect:/hoa-don-khuyen-mai/index";
+        return "redirect:/hoa_don_khuyen_mai/index";
 
     }
 }

@@ -209,9 +209,9 @@
                                             <td>${km.batDau}</td>
                                             <td>${km.ketThuc}</td>
                                             <td>${km.giamGia}</td>
-                                            <td><button class="btn btn-danger"><a href="/khuyen-mai/xoa/${km.id}" style="text-decoration: none;color: white">Delete</a></button>
+                                            <td><button class="btn btn-danger"><a href="/khuyen_mai/xoa/${km.id}" style="text-decoration: none;color: white">Delete</a></button>
 
-                                                <button class="btn btn-primary"><a href="/khuyen-mai/detail/${km.id}" style="text-decoration: none;color: white">Detail</a></button>
+                                                <button class="btn btn-primary"><a href="/khuyen_mai/detail/${km.id}" style="text-decoration: none;color: white">Detail</a></button>
                                             </td>
                                         </tr>
 
@@ -221,7 +221,7 @@
 
                             </table>
                             <div class="text-center">
-                                <a href="/khuyen-mai/create" class="btn btn-primary" type="submit">Save</a>
+                                <a href="/khuyen_mai/create" class="btn btn-primary" type="submit">Save</a>
                             </div>
                         </div>
 
@@ -252,58 +252,31 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">Thông Tin Chi Tiết <span>| xx</span></h5>
+                    <h5 class="card-title">Chỉnh sửa <span>| xx</span></h5>
 
-
-                    <form class="row g-3">
-                        <div class="col-md-12">
-                            <label for="inputName5" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="inputName5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputEmail5" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputPassword5" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="inputPassword5">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddres5s" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inputState" class="form-label">State</label>
-                            <select id="inputState" class="form-select">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="inputZip" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
+                    <form method="post" action="/khuyen_mai/update/${km.id}">
+                        <section class="section profile" >
+                            <div class="form-control">
+                                <label  class="col-md-4 col-lg-3 col-form-label">Tên</label>
+                                <input name="ten" class="form-control" value="${km.ten}">
+                                <label  class="col-md-4 col-lg-3 col-form-label">Mô tả</label>
+                                <input name="moTa" class="form-control" value="${km.moTa}">
+                                <label  class="col-md-4 col-lg-3 col-form-label">Ngày bắt đầu</label>
+                                <input name="batDau" class="form-control" type="date" value="${km.batDau}">
+                                <label  class="col-md-4 col-lg-3 col-form-label">Ngày kết thúc </label>
+                                <input name="ketThuc" class="form-control" type="date" value="${km.ketThuc}">
+                                <label  class="col-md-4 col-lg-3 col-form-label">Giảm giá</label>
+                                <input name="giamGia" class="form-control" value="${km.giamGia}">
+                                <label  class="col-md-4 col-lg-3 col-form-label">Kiểu khuyến mại</label>
+                                <select name="kieuKhuyenMai" >
+                                    <option value="1" ${km.kieuKhuyenMai==1?"selected":""}>Phần trăm</option>
+                                    <option value="2" ${km.kieuKhuyenMai==2?"selected":""}>Giá</option>
+                                    <option value="3"${km.kieuKhuyenMai==3?"selected":""}>Theo giỏ hàng</option>
+                                </select>
+                                <input class="btn btn-primary" value="Update" type="submit" style="margin-top: 20px">
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
-                        </div>
-                    </form><!-- End Multi Columns Form -->
+                        </section>
+                    </form>
 
 
                 </div>

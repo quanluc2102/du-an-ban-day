@@ -52,8 +52,8 @@
 <%--                                        <td>${ms.giaTri}</td>--%>
 <%--                                        <td>${ms.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}</td>--%>
 <%--                                        <td>--%>
-<%--                                            <a href="/mau-sac/hien-thi/${ms.id}" class="btn btn-success">Detail</a>--%>
-<%--                                            <a href="/mau-sac/delete/${ms.id}" class="btn btn-danger"--%>
+<%--                                            <a href="/mau_sac/hien_thi/${ms.id}" class="btn btn-success">Detail</a>--%>
+<%--                                            <a href="/mau_sac/delete/${ms.id}" class="btn btn-danger"--%>
 <%--                                               onclick="return confirm('Bạn chắc chắn có muốn xóa??')">Remove</a>--%>
 <%--                                        </td>--%>
 <%--                                    </tr>--%>
@@ -63,7 +63,7 @@
 <%--                        </div>--%>
 
 <%--                    </div>--%>
-<%--                    <button class="btn btn-primary"><a href="/mau-sac/create"--%>
+<%--                    <button class="btn btn-primary"><a href="/mau_sac/create"--%>
 <%--                                                       style="text-decoration: none;color: white">Add New</a></button>--%>
 
 <%--                </div><!-- End Recent Sales -->--%>
@@ -114,11 +114,10 @@
 <%--                    </ul>--%>
 
 
-
 <%--                    <div class="tab-content pt-2" id="myTabContent">--%>
 <%--                        <div class="tab-pane fade show active" id="home" role="tabpanel"--%>
 <%--                             aria-labelledby="home-tab">--%>
-<%--                            <form action="/mau-sac/update/${msd.id}" method="post">--%>
+<%--                            <form action="/mau_sac/update/${msd.id}" method="post">--%>
 <%--                                <div class="form-group">--%>
 <%--                                    Tên màu:<input type="text" name="ten" class="form-control" value="${msd.ten}">--%>
 <%--                                </div>--%>
@@ -143,7 +142,6 @@
 <%--                                <button class="btn btn-success">Update</button>--%>
 <%--                            </form>--%>
 <%--                        </div>--%>
-
 
 
 <%--                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">--%>
@@ -172,7 +170,6 @@
 <%--                        </div>--%>
 
 
-
 <%--                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">--%>
 <%--                            <form class="row g-3" action="/kich-thuoc/update/${ktd.id}" method="post">--%>
 <%--                                <div class="form-group">--%>
@@ -199,9 +196,6 @@
 
 <%--    </div>--%>
 <%--</section>--%>
-
-
-
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -258,17 +252,22 @@
                                         <td>${ms.giaTri}</td>
                                         <td>${ms.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}</td>
                                         <td>
-                                            <a href="/mau-sac/hien-thi/${ms.id}" class="btn btn-success">Detail</a>
-                                            <a href="/mau-sac/delete/${ms.id}" class="btn btn-danger"
+                                            <a href="/mau_sac/hien_thi/${ms.id}" class="btn btn-success">Detail</a>
+                                            <a href="/mau_sac/delete/${ms.id}" class="btn btn-danger"
                                                onclick="return confirm('Bạn chắc chắn có muốn xóa??')">Remove</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
                             </table>
-
                         </div>
+                        <form method="post" enctype="multipart/form-data" action="import">
+                            Thêm từ file excel: <input class="form-control" name="file" type="file">
+                            <button>Thêm</button>
+                        </form>
 
                     </div>
+
+
                     <button class="btn btn-primary"><a href="/kich-thuoc/create"
                                                        style="text-decoration: none;color: white">Add New</a></button>
 
@@ -324,7 +323,7 @@
                     <div class="tab-content pt-2" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel"
                              aria-labelledby="home-tab">
-                            <form action="/mau-sac/update/${msd.id}" method="post">
+                            <form action="/mau_sac/update/${msd.id}" method="post">
                                 <div class="form-group">
                                     Tên màu:<input type="text" name="ten" class="form-control" value="${msd.ten}">
                                 </div>
@@ -352,7 +351,7 @@
 
 
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <form action="/mau-sac/add" method="post">
+                            <form action="/mau_sac/add" method="post">
                                 <div class="form-group">
                                     Tên màu:<input type="text" name="ten" class="form-control">
                                 </div>
@@ -380,9 +379,10 @@
                             <form class="row g-3" action="/kich-thuoc/update/${ktd.id}" method="post">
                                 <div class="form-group">
                                     Tên màu: ${msd.ten}
-                                </div><div class="form-group">
-                                Giá trị: ${msd.giaTri}
-                            </div>
+                                </div>
+                                <div class="form-group">
+                                    Giá trị: ${msd.giaTri}
+                                </div>
                                 <div class="form-group">
                                     Trạng thái: ${msd.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}
                                 </div>

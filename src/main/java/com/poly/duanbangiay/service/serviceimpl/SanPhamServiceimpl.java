@@ -67,8 +67,6 @@ public class SanPhamServiceimpl implements SanPhamService {
     public void importExcel(MultipartFile file) {
         try {
             List<SanPham> tutorials = SanPhamExcelSave.excelToTutorials(file.getInputStream());
-
-
             for(SanPham a :tutorials){
                 sanPhamRespository.save(a);
                 a.toString();

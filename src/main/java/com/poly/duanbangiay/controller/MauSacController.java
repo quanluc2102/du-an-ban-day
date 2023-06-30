@@ -2,20 +2,25 @@ package com.poly.duanbangiay.controller;
 
 
 import com.poly.duanbangiay.entity.MauSac;
+import com.poly.duanbangiay.helper.MauSacExcelSave;
 import com.poly.duanbangiay.service.serviceimpl.MauSacServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
-@RequestMapping("mau-sac")
+@RequestMapping("mau_sac")
 public class MauSacController {
 
     @Autowired
     MauSacServiceImpl mauSacService;
 
-    @GetMapping("hien-thi")
+    @GetMapping("hien_thi")
     public String hienThi(Model model) {
         model.addAttribute("listMauSac", mauSacService.findAll());
         model.addAttribute("view", "/mau_sac/index.jsp");
@@ -40,7 +45,7 @@ public class MauSacController {
         mauSac.setGiaTri(giaTri);
         mauSac.setTrangThai(trangThai);
         mauSacService.add(mauSac);
-        return "redirect:/mau-sac/hien-thi";
+        return "redirect:/mau_sac/hien_thi";
     }
 
     @PostMapping("update/{idud}")
@@ -55,16 +60,16 @@ public class MauSacController {
         mauSac.setGiaTri(giaTri);
         mauSac.setTrangThai(trangThai);
         mauSacService.update(mauSac);
-        return "redirect:/mau-sac/hien-thi";
+        return "redirect:/mau_sac/hien_thi";
     }
 
     @GetMapping("delete/{idx}")
     public String xoa(Model model, @PathVariable("idx") Long idx) {
         mauSacService.delete(idx);
-        return "redirect:/mau-sac/hien-thi";
+        return "redirect:/mau_sac/hien_thi";
     }
 
-    @GetMapping("hien-thi/{iddt}")
+    @GetMapping("hien_thi/{iddt}")
     public String detail(Model model, @PathVariable("iddt") Long iddt) {
         model.addAttribute("msd", mauSacService.detail(iddt));
         model.addAttribute("view", "/mau_sac/index.jsp");
@@ -72,4 +77,19 @@ public class MauSacController {
         return "admin/index";
 
     }
+
+    @PostMapping(value = "import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String importExcel(@RequestParam("file") MultipartFile file) throws IOException {
+        String message = "";
+        if (MauSacExcelSave.hasExcelFormat(file)) {
+            try {
+                mauSacService.imPortExcel(file);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        message = "Please upload an excel file!";
+        return "redirect:/mau_sac/hien_thi";
+    }
+
 }

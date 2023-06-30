@@ -42,13 +42,13 @@ public class SanPhamController {
                       @ModelAttribute("SanPham") SanPham sp){
         sanPhamServiceimpl.add(sp);
         sanPhamServiceimpl.chuyenTrangThai(sp);
-        return "redirect:/sanpham/index";
+        return "redirect:/san_pham/index";
     }
     @GetMapping("delete")
     public String delete(Model model,
                          @RequestParam("id") Long id){
         sanPhamServiceimpl.delete(id);
-        return "redirect:/sanpham/index";
+        return "redirect:/san_pham/index";
     }
     @GetMapping("detail")
     public String detail(Model model,

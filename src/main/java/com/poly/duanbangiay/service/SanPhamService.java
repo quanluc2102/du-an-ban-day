@@ -11,6 +11,6 @@ public interface SanPhamService {
     void update(Long id,SanPham sp);
     List<SanPham> getAll();
     SanPham getOne(Long id);
-    void chuyenTrangThai(SanPham sp);
+    void chuyenSoLuong(SanPham sp);
     void importExcel(MultipartFile file);
 }

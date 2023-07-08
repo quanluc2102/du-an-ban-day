@@ -41,7 +41,7 @@ public class SanPhamController {
     public String add(Model model,
                       @ModelAttribute("SanPham") SanPham sp){
         sanPhamServiceimpl.add(sp);
-        sanPhamServiceimpl.chuyenTrangThai(sp);
+        sanPhamServiceimpl.chuyenSoLuong(sp);
         return "redirect:/san_pham/index";
     }
     @GetMapping("delete")
@@ -63,7 +63,7 @@ public class SanPhamController {
                          @PathVariable("id") Long id,
                          @ModelAttribute("SanPham") SanPham sp){
         sanPhamServiceimpl.update(id,sp);
-        sanPhamServiceimpl.chuyenTrangThai(sanPhamServiceimpl.getOne(id));
+        sanPhamServiceimpl.chuyenSoLuong(sanPhamServiceimpl.getOne(id));
         return "redirect:/sanpham/index";
     }
 

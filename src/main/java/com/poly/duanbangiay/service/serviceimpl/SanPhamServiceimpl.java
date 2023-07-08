@@ -51,14 +51,9 @@ public class SanPhamServiceimpl implements SanPhamService {
     }
 
     @Override
-    public void chuyenTrangThai(SanPham sp) {
-        if(sp.getSoLuong()>0){
-            sp.setTrangThai(1);
-        }else if(sp.getSoLuong()==0){
-            sp.setTrangThai(0);
-        }else{
+    public void chuyenSoLuong(SanPham sp) {
+        if(sp.getSoLuong()<0){
             sp.setSoLuong(0);
-            sp.setTrangThai(0);
         }
         sanPhamRespository.flush();
     }

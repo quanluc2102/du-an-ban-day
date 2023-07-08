@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -204,8 +205,8 @@
                                         <th scope="row">${spth.id}</th>
                                         <td>${spth.sanPhamId.ten}</td>
                                         <td>${spth.thuongHieuId.ten}</td>
-                                        <td><button class="btn btn-danger"><a href="/san_pham_thuong_hieu/delete?id=${sp.id}" style="text-decoration: none;color: white">Delete</a></button>
-                                            <button class="btn btn-primary"><a href="/san_pham_thuong_hieu/detail?id=${sp.id}" style="text-decoration: none;color: white">Detail</a></button>
+                                        <td><button class="btn btn-danger"><a href="/san_pham_thuong_hieu/delete?id=${spth.id}" style="text-decoration: none;color: white">Delete</a></button>
+                                            <button class="btn btn-primary"><a href="/san_pham_thuong_hieu/detail?id=${spth.id}" style="text-decoration: none;color: white">Detail</a></button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -244,55 +245,28 @@
                     <h5 class="card-title">Thông Tin Chi Tiết <span>| xx</span></h5>
 
 
-                    <form class="row g-3">
+                    <form:form cssClass="row g-3" modelAttribute="SanPhamThuongHieu" method="post" action="update/${spth.id}">
                         <div class="col-md-12">
-                            <label for="inputName5" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="inputName5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputEmail5" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail5">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputPassword5" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="inputPassword5">
+                            <label class="form-label">Sản phẩm</label>
+                            <form:select cssClass="form-control" path="sanPhamId">
+                                <c:forEach items="${listSP}" var="sp">
+                                    <form:option value="${sp.id}" label="${sp.ten}"></form:option>
+                                </c:forEach>
+                            </form:select>
                         </div>
                         <div class="col-12">
-                            <label for="inputAddres5s" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inputState" class="form-label">State</label>
-                            <select id="inputState" class="form-select">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="inputZip" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
-                            </div>
+                            <label for="inputAddres5s" class="form-label">Thương hiệu</label>
+                            <form:select cssClass="form-control" id="inputAddres5s" path="thuongHieuId">
+                                <c:forEach items="${listTH}" var="th">
+                                    <form:option value="${th.id}" label="${th.ten}"></form:option>
+                                </c:forEach>
+                            </form:select>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
-                    </form><!-- End Multi Columns Form -->
+                    </form:form>
+                    <!-- End Multi Columns Form -->
 
 
                 </div>

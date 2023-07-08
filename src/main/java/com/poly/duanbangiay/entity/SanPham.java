@@ -33,14 +33,20 @@ public class SanPham {
     @Column(name = "mo_ta")
     private String moTa;
 
-    public String layTrangThai(){
-        if(trangThai==1){
+    public String laySoLuong(){
+        if(soLuong>=1){
             return "Còn hàng";
         }else{
             return "Hết hàng";
         }
     }
-
+    public String layTrangThai(){
+        if(trangThai==1){
+            return "Active";
+        }else{
+            return "Inactive";
+        }
+    }
     public SanPham(Date ngayTao, double giaNhap, String ten, double giaBan, int soLuong, int trangThai, Date ngayCapNhat, String moTa) {
         this.ngayTao = ngayTao;
         this.giaNhap = giaNhap;

@@ -50,8 +50,8 @@
                                         <td>${kt.giaTri}</td>
                                         <td>${kt.trangThai==true?"Đang hoạt động":"Ngưng hoạt động"}</td>
                                         <td>
-                                            <a href="/kich-thuoc/hien-thi/${kt.id}" class="btn btn-success">Chi tiết</a>
-                                            <a href="/kich-thuoc/delete/${kt.id}" class="btn btn-danger"
+                                            <a href="/kich_thuoc/hien_thi/${kt.id}" class="btn btn-success">Chi tiết</a>
+                                            <a href="/kich_thuoc/delete/${kt.id}" class="btn btn-danger"
                                                onclick="return confirm('Bạn chắc chắn có muốn xóa??')">Xóa</a>
                                         </td>
                                     </tr>
@@ -59,9 +59,12 @@
                             </table>
 
                         </div>
-
+                        <form method="post" enctype="multipart/form-data" action="import">
+                            Thêm từ file excel: <input class="form-control" name="file" type="file">
+                            <button>Thêm</button>
+                        </form>
                     </div>
-                    <button class="btn btn-primary"><a href="/kich-thuoc/create"
+                    <button class="btn btn-primary"><a href="/kich_thuoc/create"
                                                        style="text-decoration: none;color: white">Add New</a></button>
 
                 </div><!-- End Recent Sales -->
@@ -113,12 +116,10 @@
                     </ul>
 
 
-
-
                     <div class="tab-content pt-2" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel"
                              aria-labelledby="home-tab">
-                            <form class="row g-3" action="/kich-thuoc/update/${ktd.id}" method="post">
+                            <form class="row g-3" action="/kich_thuoc/update/${ktd.id}" method="post">
                                 <div class="form-group">
                                     Giá trị:<input type="text" name="giaTri" class="form-control"
                                                    value="${ktd.giaTri}">
@@ -143,7 +144,7 @@
 
 
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <form action="/kich-thuoc/add" method="post">
+                            <form action="/kich_thuoc/add" method="post">
                                 <div class="form-group">
                                     Giá trị:<input type="text" name="giaTri" class="form-control">
                                 </div>
@@ -163,7 +164,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                            <form class="row g-3" action="/kich-thuoc/update/${ktd.id}" method="post">
+                            <form class="row g-3" action="/kich_thuoc/update/${ktd.id}" method="post">
                                 <div class="form-group">
                                     Giá trị: ${ktd.giaTri}
                                 </div>

@@ -2,12 +2,14 @@ package com.poly.duanbangiay.service.serviceimpl;
 
 
 import com.poly.duanbangiay.entity.KichThuoc;
-import com.poly.duanbangiay.entity.MauSac;
+import com.poly.duanbangiay.helper.KichThuocExcelSave;
 import com.poly.duanbangiay.repository.KichThuocRepository;
 import com.poly.duanbangiay.service.KichThuocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -48,5 +50,22 @@ public class KichThuocServiceImpl implements KichThuocService {
     @Override
     public List<KichThuoc> findAll() {
         return kichThuocRepository.findAll();
+    }
+
+    @Override
+    public void imPortExcel(MultipartFile file) {
+        try {
+            List<KichThuoc> importEX = KichThuocExcelSave.excelImport(file.getInputStream());
+            for (KichThuoc kichThuoc : importEX) {
+                add(kichThuoc);
+                kichThuoc.toString();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
+        {
+
+        }
     }
 }

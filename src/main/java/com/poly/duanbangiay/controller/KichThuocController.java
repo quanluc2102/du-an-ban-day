@@ -2,20 +2,26 @@ package com.poly.duanbangiay.controller;
 
 
 import com.poly.duanbangiay.entity.KichThuoc;
+import com.poly.duanbangiay.helper.KichThuocExcelSave;
+import com.poly.duanbangiay.helper.MauSacExcelSave;
 import com.poly.duanbangiay.service.serviceimpl.KichThuocServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
-@RequestMapping("kich-thuoc")
+@RequestMapping("kich_thuoc")
 public class KichThuocController {
 
     @Autowired
     KichThuocServiceImpl kichThuocService;
 
-    @GetMapping("hien-thi")
+    @GetMapping("hien_thi")
     public String hienThi(Model model) {
         model.addAttribute("listKichThuoc", kichThuocService.findAll());
         model.addAttribute("view", "/kich_thuoc/index.jsp");
@@ -38,7 +44,7 @@ public class KichThuocController {
         kichThuoc.setGiaTri(giaTri);
         kichThuoc.setTrangThai(trangThai);
         kichThuocService.add(kichThuoc);
-        return "redirect:/kich-thuoc/hien-thi";
+        return "redirect:/kich_thuoc/hien_thi";
     }
 
     @PostMapping("update/{idud}")
@@ -51,21 +57,35 @@ public class KichThuocController {
         kichThuoc.setGiaTri(giaTri);
         kichThuoc.setTrangThai(trangThai);
         kichThuocService.update(kichThuoc);
-        return "redirect:/kich-thuoc/hien-thi";
+        return "redirect:/kich_thuoc/hien_thi";
     }
 
     @GetMapping("delete/{idx}")
     public String xoa(Model model, @PathVariable("idx") Long idx) {
         kichThuocService.delete(idx);
-        return "redirect:/kich-thuoc/hien-thi";
+        return "redirect:/kich_thuoc/hien_thi";
     }
 
-    @GetMapping("hien-thi/{iddt}")
+    @GetMapping("hien_thi/{iddt}")
     public String detail(Model model, @PathVariable("iddt") Long iddt) {
         model.addAttribute("ktd", kichThuocService.detail(iddt));
         model.addAttribute("listKichThuoc", kichThuocService.findAll());
         model.addAttribute("view", "/kich_thuoc/index.jsp");
         return "admin/index";
 
+    }
+
+    @PostMapping(value = "import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String importExcel(@RequestParam("file") MultipartFile file) throws IOException {
+        String message = "";
+        if (KichThuocExcelSave.hasExcelFormat(file)) {
+            try {
+                kichThuocService.imPortExcel(file);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        message = "Please upload an excel file!";
+        return "redirect:/kich_thuoc/hien_thi";
     }
 }

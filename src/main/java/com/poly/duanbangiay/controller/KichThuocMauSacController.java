@@ -5,17 +5,23 @@ import com.poly.duanbangiay.entity.KichThuoc;
 import com.poly.duanbangiay.entity.KichThuocMauSac;
 import com.poly.duanbangiay.entity.MauSac;
 import com.poly.duanbangiay.entity.SanPham;
+import com.poly.duanbangiay.helper.KichThuocExcelSave;
+import com.poly.duanbangiay.helper.MauSacExcelSave;
 import com.poly.duanbangiay.service.serviceimpl.KichThuocMauSacServiceImpl;
 import com.poly.duanbangiay.service.serviceimpl.KichThuocServiceImpl;
 import com.poly.duanbangiay.service.serviceimpl.MauSacServiceImpl;
 import com.poly.duanbangiay.service.serviceimpl.SanPhamServiceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
-@RequestMapping("kich-thuoc-mau-sac")
+@RequestMapping("kich_thuoc_mau_sac")
 public class KichThuocMauSacController {
 
     @Autowired
@@ -27,7 +33,7 @@ public class KichThuocMauSacController {
     @Autowired
     SanPhamServiceimpl sanPhamServiceimpl;
 
-    @GetMapping("hien-thi")
+    @GetMapping("hien_thi")
     public String hienThi(Model model) {
         model.addAttribute("listKichThuoc", kichThuocService.findAll());
         model.addAttribute("listSanPham", sanPhamServiceimpl.getAll());
@@ -53,7 +59,7 @@ public class KichThuocMauSacController {
         kichThuocMauSac.setSoLuong(soLuong);
         kichThuocMauSac.setTrangThai(trangThai);
         kichThuocMauSacService.add(kichThuocMauSac);
-        return "redirect:/kich-thuoc-mau-sac/hien-thi";
+        return "redirect:/kich_thuoc_mau_sac/hien_thi";
     }
 
     @PostMapping("update/{idud}")
@@ -73,16 +79,16 @@ public class KichThuocMauSacController {
         kichThuocMauSac.setSoLuong(soLuong);
         kichThuocMauSac.setTrangThai(trangThai);
         kichThuocMauSacService.add(kichThuocMauSac);
-        return "redirect:/kich-thuoc-mau-sac/hien-thi";
+        return "redirect:/kich_thuoc_mau_sac/hien_thi";
     }
 
     @GetMapping("delete/{idx}")
     public String xoa(Model model, @PathVariable("idx") Long idx) {
         kichThuocMauSacService.delete(idx);
-        return "redirect:/kich-thuoc-mau-sac/hien-thi";
+        return "redirect:/kich_thuoc_mau_sac/hien_thi";
     }
 
-    @GetMapping("hien-thi/{iddt}")
+    @GetMapping("hien_thi/{iddt}")
     public String detail(Model model, @PathVariable("iddt") Long iddt) {
         model.addAttribute("listKichThuoc", kichThuocService.findAll());
         model.addAttribute("listSanPham", sanPhamServiceimpl.getAll());
@@ -93,4 +99,19 @@ public class KichThuocMauSacController {
         return "admin/index";
 
     }
+
+    @PostMapping(value = "import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String importExcel(@RequestParam("file") MultipartFile file) throws IOException {
+        String message = "";
+        if (KichThuocExcelSave.hasExcelFormat(file)) {
+            try {
+                kichThuocMauSacService.imPortExcel(file);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        message = "Please upload an excel file!";
+        return "redirect:/kich_thuoc_mau_sac/hien_thi";
+    }
+
 }

@@ -3,6 +3,7 @@ package com.poly.duanbangiay.service;
 import com.poly.duanbangiay.entity.KichThuocMauSac;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,4 +21,7 @@ public interface KichThuocMauSacService {
     KichThuocMauSac findOne(Long id);
 
     List<KichThuocMauSac> findAll();
+
+    void imPortExcel(MultipartFile file);
+
 }

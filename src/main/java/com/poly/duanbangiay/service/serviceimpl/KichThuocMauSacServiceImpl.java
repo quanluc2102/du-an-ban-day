@@ -1,13 +1,19 @@
 package com.poly.duanbangiay.service.serviceimpl;
 
 
+import com.poly.duanbangiay.entity.KichThuoc;
 import com.poly.duanbangiay.entity.KichThuocMauSac;
+import com.poly.duanbangiay.entity.MauSac;
+import com.poly.duanbangiay.helper.KichThuocExcelSave;
+import com.poly.duanbangiay.helper.KichThuocMauSacExcelSave;
 import com.poly.duanbangiay.repository.KichThuocMauSacRepository;
 import com.poly.duanbangiay.repository.KichThuocRepository;
 import com.poly.duanbangiay.service.KichThuocMauSacService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -50,5 +56,22 @@ public class KichThuocMauSacServiceImpl implements KichThuocMauSacService {
     @Override
     public List<KichThuocMauSac> findAll() {
         return kichThuocMauSacRepository.findAll();
+    }
+
+    @Override
+    public void imPortExcel(MultipartFile file) {
+        try {
+            List<KichThuocMauSac> importEX = KichThuocMauSacExcelSave.excelImport(file.getInputStream());
+            for (KichThuocMauSac kichThuocMauSac : importEX) {
+                kichThuocMauSacRepository.save(kichThuocMauSac);
+                kichThuocMauSac.toString();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
+        {
+
+        }
     }
 }

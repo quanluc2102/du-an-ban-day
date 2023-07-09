@@ -258,14 +258,17 @@
                                         <td>${ktms.kichThuoc.giaTri}</td>
                                         <td>${ktms.trangThai==1?"Đang hoạt động":"Ngưng hoạt động"}</td>
                                         <td>
-                                            <a href="/kich-thuoc-mau-sac/hien-thi/${ktms.id}" class="btn btn-success">Detail</a>
-                                            <a href="/kich-thuoc-mau-sac/delete/${ktms.id}" class="btn btn-danger"
+                                            <a href="/kich_thuoc_mau_sac/hien_thi/${ktms.id}" class="btn btn-success">Detail</a>
+                                            <a href="/kich_thuoc_mau_sac/delete/${ktms.id}" class="btn btn-danger"
                                                onclick="return confirm('Bạn chắc chắn có muốn xóa??')">Remove</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
                             </table>
-
+                            <form method="post" enctype="multipart/form-data" action="import">
+                                Thêm từ file excel: <input class="form-control" name="file" type="file">
+                                <button>Thêm</button>
+                            </form>
                         </div>
 
                     </div>
@@ -377,7 +380,7 @@
 
 
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <form action="/kich-thuoc-mau-sac/add" method="post">
+                            <form action="/kich_thuoc_mau_sac/add" method="post">
                                 <div class="form-group">
                                     Số lượng:<input type="number" name="soLuong" class="form-control">
                                 </div>
@@ -426,7 +429,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                            <form class="row g-3" action="/kich-thuoc/update/${ktd.id}" method="post">
+                            <form class="row g-3" action="/kich_thuoc_mau_sac/update/${ktd.id}" method="post">
                                 <div class="form-group">
                                     Kích thước: ${ktmsd.kichThuoc.giaTri}
                                 </div>

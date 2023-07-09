@@ -255,8 +255,8 @@
                             </form:select>
                         </div>
                         <div class="col-12">
-                            <label for="inputAddres5s" class="form-label">Thương hiệu</label>
-                            <form:select cssClass="form-control" id="inputAddres5s" path="thuongHieuId">
+                            <label class="form-label">Thương hiệu</label>
+                            <form:select cssClass="form-control" path="thuongHieuId">
                                 <c:forEach items="${listTH}" var="th">
                                     <form:option value="${th.id}" label="${th.ten}"></form:option>
                                 </c:forEach>

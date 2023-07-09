@@ -216,6 +216,7 @@
                         </div>
                     </div>
                     <button class="btn btn-primary"><a href="/san_pham_danh_muc/create" style="text-decoration: none;color: white">Add New</a></button>
+                    <button class="btn btn-primary"><a href="/san_pham_danh_muc/create_multi" style="text-decoration: none;color: white">Add Multi</a></button>
 
                 </div><!-- End Recent Sales -->
 
@@ -255,8 +256,8 @@
                             </form:select>
                         </div>
                         <div class="col-12">
-                            <label for="inputAddres5s" class="form-label">Danh mục</label>
-                            <form:select cssClass="form-control" id="inputAddres5s" path="danhMuc">
+                            <label class="form-label">Danh mục</label>
+                            <form:select cssClass="form-control" path="danhMuc">
                                     <c:forEach items="${listDM}" var="dm">
                                         <form:option value="${dm.id}" label="${dm.ten}"></form:option>
                                     </c:forEach>

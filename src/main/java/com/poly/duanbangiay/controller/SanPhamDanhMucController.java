@@ -39,10 +39,33 @@ public class SanPhamDanhMucController {
         return "admin/index";
     }
 
+    @GetMapping("create_multi")
+    public String createMulti(Model model){
+        model.addAttribute("SanPhamDanhMuc",new SanPhamDanhMuc());
+        model.addAttribute("listSP",sanPhamServiceimpl.getAll());
+        model.addAttribute("listDM",danhMucServiceimpl.getAll());
+        model.addAttribute("view", "/san_pham_danh_muc/addMulti.jsp");
+        return "admin/index";
+    }
+
     @PostMapping("add")
     public String add(Model model,
                       @ModelAttribute("SanPhamDanhMuc") SanPhamDanhMuc sanPhamDanhMuc){
         sanPhamDanhMucServiceimpl.add(sanPhamDanhMuc);
+        return "redirect:/san_pham_danh_muc/index";
+    }
+
+    @PostMapping("add_multi")
+    public String addMulti(Model model,
+                      @ModelAttribute("SanPhamDanhMuc") SanPhamDanhMuc sanPhamDanhMuc,
+                           @RequestParam("sanPham") String sanPham){
+        String[] sp = sanPham.split(",");
+        for(String a:sp){
+            SanPhamDanhMuc b = new SanPhamDanhMuc();
+            b.setSanPham(sanPhamServiceimpl.getOne(Long.valueOf(a)));
+            b.setDanhMuc(sanPhamDanhMuc.getDanhMuc());
+            sanPhamDanhMucServiceimpl.add(b);
+        }
         return "redirect:/san_pham_danh_muc/index";
     }
 

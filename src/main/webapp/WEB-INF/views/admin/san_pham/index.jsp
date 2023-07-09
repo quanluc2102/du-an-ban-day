@@ -197,6 +197,7 @@
                                     <th scope="col">Giá nhập</th>
                                     <th scope="col">Giá bán</th>
                                     <th scope="col">Số lượng</th>
+                                    <th scope="col">Tình trạng</th>
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -209,6 +210,7 @@
                                         <td>${sp.giaNhap}</td>
                                         <td>${sp.giaBan}</td>
                                         <td>${sp.soLuong}</td>
+                                        <td>${sp.laySoLuong()}</td>
                                         <td>${sp.layTrangThai()}</td>
                                         <td><button class="btn btn-danger"><a href="/san_pham/delete?id=${sp.id}" style="text-decoration: none;color: white">Delete</a></button>
                                             <button class="btn btn-primary"><a href="/san_pham/detail?id=${sp.id}" style="text-decoration: none;color: white">Detail</a></button>

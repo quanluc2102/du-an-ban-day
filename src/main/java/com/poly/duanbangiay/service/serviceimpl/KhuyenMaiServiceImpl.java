@@ -1,12 +1,16 @@
 package com.poly.duanbangiay.service.serviceimpl;
 
 import com.poly.duanbangiay.entity.KhuyenMai;
+import com.poly.duanbangiay.helper.KhuyenMaiExcelSave;
 import com.poly.duanbangiay.repository.KhuyenMaiRepository;
 import com.poly.duanbangiay.service.KhuyenMaiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -53,5 +57,19 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
     @Override
     public KhuyenMai findOne(Long id) {
         return khuyenMaiRepository.findById(id).get();
+    }
+
+    @Override
+    public void imPortExcel(MultipartFile file) {
+       try {
+           List<KhuyenMai> importEX = KhuyenMaiExcelSave.excelImport(file.getInputStream());
+           for (KhuyenMai khuyenMai: importEX){
+               add(khuyenMai);
+               khuyenMai.toString();
+           }
+       }catch (IOException e){
+           e.printStackTrace();
+           throw new RuntimeException("fail to store excel data:" + e.getMessage());
+       }
     }
 }

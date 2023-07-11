@@ -2,6 +2,7 @@ package com.poly.duanbangiay.service;
 
 import com.poly.duanbangiay.entity.KhuyenMai;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -17,4 +18,5 @@ public interface KhuyenMaiService {
 
     Optional<KhuyenMai>detail(Long id);
     KhuyenMai findOne(Long id);
+    void imPortExcel(MultipartFile file);
 }

@@ -1,19 +1,26 @@
 package com.poly.duanbangiay.controller;
 
 import com.poly.duanbangiay.entity.KhuyenMai;
+import com.poly.duanbangiay.helper.KhuyenMaiExcelSave;
 import com.poly.duanbangiay.service.KhuyenMaiService;
 import com.poly.duanbangiay.service.serviceimpl.KhuyenMaiServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Optional;
 
 @Controller
+@EnableScheduling
 @RequestMapping("/khuyen_mai")
 public class KhuyenMaiController {
     @Autowired
@@ -49,7 +56,7 @@ public class KhuyenMaiController {
     public String xoa(Model model,
                          @PathVariable("id")Long id){
         khuyenMaiServiceImpl.delete(id);
-        return "redirect:/khuyen-mai/index";
+        return "redirect:/khuyen_mai/index";
     }
     @GetMapping("/detail/{id}")
     public String detail(Model model,
@@ -81,4 +88,22 @@ public class KhuyenMaiController {
       khuyenMaiServiceImpl.add(km);
         return "redirect:/khuyen_mai/index";
     }
+    @PostMapping(value = "import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String importExecel(@RequestParam("file")MultipartFile file)
+        throws IOException{
+        String message ="";
+        if(KhuyenMaiExcelSave.hasExcelFormat(file)){
+            try {
+                khuyenMaiServiceImpl.imPortExcel(file);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        message = "Please upload an excel file!";
+        return "redirect:/khuyen_mai/index";
+    }
+        @Scheduled(cron = " 0 48 1 * * *")
+        public void task(){
+        System.out.println("123");
+        }
 }

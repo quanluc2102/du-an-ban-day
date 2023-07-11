@@ -15,7 +15,7 @@
     <section class="section profile" >
         <div class="form-control">
             <div>
-                Sản phẩm
+                Hóa đơn
                 <select class="form-select" name="hoaDon" aria-label="Default select example">
                     <c:forEach items="${listHD}" var="hoaDon">
                         <option value="${hoaDon.id}" ${hdkm.hoaDon.id==hoaDon.id?"selected":""}>${hoaDon.ghiChu}</option>

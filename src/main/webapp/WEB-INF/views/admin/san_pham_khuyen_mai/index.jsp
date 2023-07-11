@@ -189,7 +189,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Danh Sách Sản Phẩm <span>| bán chạy nhất</span></h5>
+                            <h5 class="card-title">Danh Sách Sản Phẩm Khuyến Mại <span>| bán chạy nhất</span></h5>
 
                             <form>
 
@@ -250,33 +250,98 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">Chỉnh sửa  <span>| xx</span></h5>
+                    <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <!-- Default Tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">Sửa
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">Thêm mới
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                                    aria-selected="false">Chi tiết
+                            </button>
+                        </li>
+                    </ul>
 
 
-                    <form method="post" action="/san_pham_khuyen_mai/update/${spkm.id}">
-                        <section class="section profile" >
-                            <div class="form-control">
-                                <div>
-                                    Sản phẩm
-                                    <select class="form-select" name="sanPhamId" aria-label="Default select example">
-                                        <c:forEach items="${listSP}" var="sanPhamId">
-                                            <option value="${sanPhamId.id}" ${spkm.sanPhamId.id==sanPhamId.id?"selected":""}>${sanPhamId.ten}</option>
-                                        </c:forEach>
-                                    </select>
+                    <div class="tab-content pt-2" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                             aria-labelledby="home-tab">
+                            <form method="post" action="/san_pham_khuyen_mai/update/${spkm.id}">
+                                <section class="section profile" >
+                                    <div class="form-control">
+                                        <div>
+                                            Sản phẩm
+                                            <select class="form-select" name="sanPhamId" aria-label="Default select example">
+                                                <c:forEach items="${listSP}" var="sanPhamId">
+                                                    <option value="${sanPhamId.id}" ${spkm.sanPhamId.id==sanPhamId.id?"selected":""}>${sanPhamId.ten}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            Khuyến mãi
+                                            <select class="form-select" name="khuyenMaiId" aria-label="Default select example">
+                                                <c:forEach items="${listKM}" var="khuyenMaiId">
+                                                    <option value="${khuyenMaiId.id}"${spkm.khuyenMaiId.id==khuyenMaiId.id?"selected":""}>${khuyenMaiId.ten}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <input class="btn btn-primary" value="Update" type="submit" style="margin-top: 20px">
+                                    </div>
+                                </section>
+                            </form>
+                        </div>
+
+
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <form method="post" action="/san_pham_khuyen_mai/add">
+                                <section class="section profile" >
+                                    <div class="form-control">
+                                        <div>
+                                            Sản phẩm
+                                            <select class="form-select" name="sanPhamId" aria-label="Default select example">
+                                                <c:forEach items="${listSP}" var="sanPhamId">
+                                                    <option value="${sanPhamId.id}">${sanPhamId.ten}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            Khuyến mãi
+                                            <select class="form-select" name="khuyenMaiId" aria-label="Default select example">
+                                                <c:forEach items="${listKM}" var="khuyenMaiId">
+                                                    <option value="${khuyenMaiId.id}">${khuyenMaiId.ten}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <input class="btn btn-primary" value="Add" type="submit" style="margin-top: 20px">
+                                    </div>
+                                </section>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <form class="row g-3" action="/san_pham_khuyen_mai/update/${spkm.id}" method="post">
+                                <div class="form-group">
+                                    Sản phẩm: ${spkm.sanPhamId.ten}
                                 </div>
-
-                                <div>
-                                    Khuyến mãi
-                                    <select class="form-select" name="khuyenMaiId" aria-label="Default select example">
-                                        <c:forEach items="${listKM}" var="khuyenMaiId">
-                                            <option value="${khuyenMaiId.id}"${spkm.khuyenMaiId.id==khuyenMaiId.id?"selected":""}>${khuyenMaiId.ten}</option>
-                                        </c:forEach>
-                                    </select>
+                                <div class="form-group">
+                                   Khuyến Mại: ${spkm.khuyenMaiId.ten}
                                 </div>
-                                <input class="btn btn-primary" value="Update" type="submit" style="margin-top: 20px">
-                            </div>
-                        </section>
-                    </form>
+                            </form><!-- End Multi Columns Form -->
+                        </div>
+                    </div><!-- End Default Tabs -->
+
 
                 </div>
 
@@ -288,5 +353,3 @@
 
     </div>
 </section>
-
-

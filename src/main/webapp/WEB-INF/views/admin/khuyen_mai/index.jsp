@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="pagetitle">
-    <h1>Quản Lý Sản Phẩm</h1>
+    <h1>Quản Lý Khuyến Mãi</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>

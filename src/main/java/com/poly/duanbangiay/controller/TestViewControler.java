@@ -1,12 +1,15 @@
 package com.poly.duanbangiay.controller;
 
+import com.poly.duanbangiay.repository.HoaDonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class TestViewControler {
-
+@Autowired
+    HoaDonRepository hoaDonRepository;
     @GetMapping("/tong_quan")
     public String tongQuan(Model model) {
 
@@ -27,6 +30,11 @@ public class TestViewControler {
         model.addAttribute("view", "/danh_muc/danh_sach.jsp");
         return "admin/index";
     }
+    @GetMapping("/hoa_don_chi_tiet")
+    public String hoaDonChiTiet(Model model) {
+        model.addAttribute("view", "/hoa_don_chi_tiet/index.jsp");
+        return "admin/index";
+    }
 
     @GetMapping("/xem_sua_san_pham")
     public String xemSP(Model model) {
@@ -34,11 +42,16 @@ public class TestViewControler {
         model.addAttribute("view", "/san_pham/xem_sua_san_pham.jsp");
         return "admin/index";
     }
-
     @GetMapping("/hoa_don")
     public String hd(Model model) {
 
         model.addAttribute("view", "/hoa_don/danh_sach.jsp");
+        return "admin/index";
+    }
+    @GetMapping("/hoa_don_index")
+    public String hdindex(Model model) {
+model.addAttribute("listHoaDon",hoaDonRepository.findAll());
+        model.addAttribute("view", "/hoa_don/index.jsp");
         return "admin/index";
     }
 

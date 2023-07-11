@@ -1,6 +1,7 @@
 package com.poly.duanbangiay.controller;
 
 import com.poly.duanbangiay.entity.HoaDonChiTiet;
+import com.poly.duanbangiay.repository.SanPhamAnhRespository;
 import com.poly.duanbangiay.service.serviceimpl.HoaDonChiTietimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,8 @@ import java.util.List;
 public class HoaDonChiTietController {
     @Autowired
     HoaDonChiTietimpl hoaDonChiTietimpl;
+    @Autowired
+    SanPhamAnhRespository sanPhamAnhRespository;
     @GetMapping("hien-thi/{idHD}")
     public String hienthi(Model model, @PathVariable("idHD") Long idHD){
         List<HoaDonChiTiet> listHDCT = hoaDonChiTietimpl.getAllByIdHD(idHD);
@@ -28,6 +31,7 @@ public class HoaDonChiTietController {
         }
         model.addAttribute("listHDById",listHDCT);
         model.addAttribute("tongTien",tongTien);
+        model.addAttribute("spa",sanPhamAnhRespository.findFirstBySanPham_id(idHD));
         model.addAttribute("view", "/hoa_don_chi_tiet/index.jsp");
         return "admin/index";
     }

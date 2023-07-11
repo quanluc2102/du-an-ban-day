@@ -196,7 +196,6 @@
                                     <th scope="col">Số lượng</th>
                                     <th scope="col">Id hóa đơn</th>
                                     <th scope="col">Tên sản phẩm</th>
-                                    <th scope="col">Ảnh sản phẩm</th>
                                     <th scope="col">Giá bán</th>
                                     <th scope="col">Thành tiền</th>
                                     <th scope="col">Action</th>
@@ -210,7 +209,6 @@
                                         <td>${hdct.soLuong}</td>
                                         <td>${hdct.hd.id}</td>
                                         <td>${hdct.sp.ten}</td>
-                                        <td><img src="/assets/img/${spa.anh}" height="100px" width="100px"></td>
                                         <td><fmt:formatNumber value="${hdct.sp.giaBan}" type="currency" currencyCode="VND" /></td>
                                         <td>
                                         <fmt:formatNumber value="${hdct.sp.giaBan * hdct.soLuong}" type="currency" currencyCode="VND" /></td>

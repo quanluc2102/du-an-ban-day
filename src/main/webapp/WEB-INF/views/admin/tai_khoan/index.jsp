@@ -170,7 +170,7 @@
     <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="col-lg-7">
             <div class="row">
 
 
@@ -230,8 +230,16 @@
                             <div class="text-center">
                                 <a href="/tai-khoan/create" class="btn btn-primary" type="submit">Save</a>
                             </div>
-                        </div>
+                            <form method="post" enctype="multipart/form-data" action="import">
+                                <div>
+                                    <label>Thêm từ excel file</label>
+                                    <br>
+                                    <input name="file" type="file">
+                                </div>
+                            </form>
 
+                        </div>
+                        <button class="btn btn-primary"><a href="/tai-khoan/export" style="text-decoration: none;color: white">Export</a></button>
                     </div>
                 </div><!-- End Recent Sales -->
 
@@ -252,13 +260,11 @@
                 </li>
 
                 <li class="nav-item">
-
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit"><link href="/tai-khoan/detail/${tk.id}">Chỉnh Sửa</button>
-
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit"><link href="/tai-khoan/detail/${tk.id}">Chỉnh sửa</button>
                 </li>
 
             </ul>
-            <div class="tab-content pt-2">
+            <div class="tab-content pt-2" style="background-color: white">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
 
@@ -330,7 +336,7 @@
                     <section class="section profile" >
                         <div class="form-control">
                             <label  class="col-md-4 col-lg-3 col-form-label">User Name</label>
-                            <input name="username" class="form-control" value="${tk.userName}">
+                            <input name="username" class="form-control" value="${tk.username}">
                             <label  class="col-md-4 col-lg-3 col-form-label">Email</label>
                             <input name="email" class="form-control" value="${tk.email}">
                             <label  class="col-md-4 col-lg-3 col-form-label">Tên</label>
@@ -342,10 +348,10 @@
                             <label  class="col-md-4 col-lg-3 col-form-label">Ngày cập nhật</label>
                             <input name="ngayCapNhat" class="form-control" type="date" value="${tk.ngayCapNhat}">
                             <label  class="col-md-4 col-lg-3 col-form-label">PassWord</label>
-                            <input name="password" class="form-control" value="${tk.passWord}">
+                            <input name="password" class="form-control" value="${tk.password}">
                             <div>
                                 <label  class="col-md-4 col-lg-3 col-form-label">IMG</label><br>
-                                <input name="anh" type="file" value="${tk.file}">
+                                <input name="anh" type="file" value="${tk.anh}">
                             </div>
                             <label  class="col-md-4 col-lg-3 col-form-label">SDT</label>
                             <input name="sdt" class="form-control" value="${tk.sdt}">

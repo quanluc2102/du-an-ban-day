@@ -2,12 +2,17 @@ package com.poly.duanbangiay.service.serviceimpl;
 
 
 import com.poly.duanbangiay.entity.TaiKhoan;
+import com.poly.duanbangiay.helper.TaiKhoanExcelSave;
+import com.poly.duanbangiay.helper.TaiKhoanExport;
 import com.poly.duanbangiay.repository.TaiKhoanResponsitory;
 import com.poly.duanbangiay.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,5 +54,19 @@ public class TaiKhoanServiceimpl implements TaiKhoanService {
     @Override
     public Optional<TaiKhoan> detail(Long id) {
         return taiKhoanResponsitory.findById(id);
+    }
+
+    @Override
+    public void importExcel(MultipartFile file) {
+        try {
+            List<TaiKhoan> tutorials = TaiKhoanExcelSave.excelToTutorials(file.getInputStream());
+            for(TaiKhoan a :tutorials){
+                taiKhoanResponsitory.save(a);
+                a.toString();
+            }
+            taiKhoanResponsitory.flush();
+        } catch (IOException e) {
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
     }
 }

@@ -170,7 +170,7 @@
     <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-7">
+        <div class="col-lg-8">
             <div class="row">
 
 
@@ -215,7 +215,7 @@
                                         <td>${nd.ten}</td>
                                         <td>${nd.ngaySinh}</td>
                                         <td>${nd.ngayCapNhat}</td>
-                                        <td>${nd.taiKhoan.username}</td>
+                                        <td><img src="/assets/img/${nd.taiKhoan.anh}" height="100px" width="100px"></td>
                                         <td>
                                             <a href="/nguoi-dung/delete/${nd.id}">Delete</a>|
                                             <a href="/nguoi-dung/detail/${nd.id}">Detail</a>
@@ -238,7 +238,7 @@
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
-        <div class="col-lg-5">
+        <div class="col-lg-4">
 
 
             <ul class="nav nav-tabs nav-tabs-bordered">
@@ -249,17 +249,11 @@
                         Quan
                     </button>
                 </li>
+
                 <li class="nav-item">
-<<<<<<< HEAD
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh Sửa Thông Tin
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#acc-edit">Chỉnh Sửa Tài Khoản
-                    </button>
-=======
+
                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit"><link href="/nguoi-dung/detail/${nd.id}">Chỉnh Sửa</button>
->>>>>>> GiangBranch
+
                 </li>
 
             </ul>
@@ -299,10 +293,10 @@
                                 </div>
                                 <div  class="col-md-12">
                                     <strong> Tài Khoản : </strong>
-<%--                                    <label style="margin-left: 20px">${nd.taiKhoan}</label>--%>
+                                    <%--                                    <label style="margin-left: 20px">${nd.taiKhoan}</label>--%>
                                     <select class="form-control" style="margin-left: 20px">
                                         <c:forEach items="${listTK}" var="taiKhoan">
-                                        <option value="${taiKhoan.id}">${taiKhoan.username}</option>
+                                            <option value="${taiKhoan.id}"><img src="/assets/img/${nd.taiKhoan.anh}" height="100px" width="100px"></option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -319,87 +313,6 @@
 
             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
-<<<<<<< HEAD
-
-                <form>
-                    <div class="row mb-3">
-                        <label class="col-md-4 col-lg-3 col-form-label">Ảnh Sản Phẩm</label>
-                        <div class="col-md-8 col-lg-9">
-                            <div class="row ">
-                                <div class="col-3 position-relative">
-                                    <img src="assets/img/profile-img.jpg" alt="Ảnh" class="img-fluid">
-                                    <a href="#" class="btn btn-danger btn-sm position-absolute bottom-0 end-0"
-                                       title="Xóa Ảnh"><i
-                                            class="bi bi-trash"></i></a>
-                                </div>
-                                <div class="col-3 position-relative">
-                                    <img src="assets/img/profile-img.jpg" alt="Ảnh" class="img-fluid">
-                                    <a href="#" class="btn btn-danger btn-sm position-absolute bottom-0 end-0"
-                                       title="Xóa Ảnh"><i
-                                            class="bi bi-trash"></i></a>
-                                </div>
-                            </div>
-
-
-                            <div class="pt-2">
-                                <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
-                                        class="bi bi-upload"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Tên Sản Phẩm</label>
-                        <div class="col-md-8 col-lg-9">
-                            <input name="fullName" type="text" class="form-control" id="fullName"
-                                   value="Giay sieu nhan da fo">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="about" class="col-md-4 col-lg-3 col-form-label">Mô Tả</label>
-                        <div class="col-md-8 col-lg-9">
-                    <textarea name="about" class="form-control" id="about"
-                              style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="company" class="col-md-4 col-lg-3 col-form-label">Giá Bán</label>
-                        <div class="col-md-8 col-lg-9">
-                            <input name="company" type="number" class="form-control" id="company"
-                                   value="Lueilwitz, Wisoky and Leuschke">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">Thương Hiệu</label>
-                        <div class="col-md-8 col-lg-9">
-                            <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="Country" class="col-md-4 col-lg-3 col-form-label">Danh Mục</label>
-                        <div class="col-md-8 col-lg-9">
-                            <input name="country" type="text" class="form-control" id="Country" value="USA">
-                        </div>
-                    </div>
-
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
-                    </div>
-                </form>
-
-            </div>
-            <div class="tab-pane fade acc-edit pt-3 " id="acc-edit" >
-
-
-               <H1 class="mt-0">curd </H1>
-=======
-                <!-- Profile Edit Form -->
                 <form method="post" action="/nguoi-dung/update/${nd.id}">
                     <section class="section profile" >
                         <div class="form-control">
@@ -416,14 +329,25 @@
                             <label class="col-md-4 col-lg-3 col-form-label" >Tài khoản</label>
                             <select class="form-control" name="taiKhoan">
                                 <c:forEach items="${listTK}" var="taiKhoan">
-                                    <option value="${taiKhoan.id}">${taiKhoan.username}</option>
+                                    <option value="${taiKhoan.id}"><img src="/assets/img/${nd.taiKhoan.anh}" height="100px" width="100px"></option>
                                 </c:forEach>
                             </select>
                             <input class="btn btn-primary" value="Update" type="submit" style="margin-top: 20px">
                         </div>
                     </section>
                 </form><!-- End Profile Edit Form -->
->>>>>>> GiangBranch
+
+
+
+            </div>
+            <div class="tab-pane fade acc-edit pt-3 " id="acc-edit" >
+
+
+                <H1 class="mt-0">curd </H1>
+
+                <!-- Profile Edit Form -->
+
+
 
             </div>
 

@@ -19,6 +19,11 @@ public class DanhMuc {
     @Column(name = "trang_thai")
     private Integer trangThai;
 
+    public DanhMuc(String ten, Integer trangThai) {
+        this.ten = ten;
+        this.trangThai = trangThai;
+    }
+
     public String layTrangThai(){
         if(trangThai == 1){
             return "Active";

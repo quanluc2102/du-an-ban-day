@@ -57,4 +57,13 @@ public class SanPham {
         this.ngayCapNhat = ngayCapNhat;
         this.moTa = moTa;
     }
+
+    public SanPham(double giaNhap, String ten, double giaBan, int soLuong, int trangThai, String moTa) {
+        this.giaNhap = giaNhap;
+        this.ten = ten;
+        this.giaBan = giaBan;
+        this.soLuong = soLuong;
+        this.trangThai = trangThai;
+        this.moTa = moTa;
+    }
 }

@@ -28,18 +28,19 @@ public class SanPhamController {
     @GetMapping("index")
     public String index(Model model){
         model.addAttribute("listSP",sanPhamServiceimpl.getAll());
-        model.addAttribute("view", "/san_pham/index.jsp");
-        return "admin/index";
-    }
-    @GetMapping("create")
-    public String create(Model model){
         model.addAttribute("SanPham",new SanPham());
-        model.addAttribute("view", "/san_pham/addNew.jsp");
+        model.addAttribute("view", "/san_pham/index.jsp");
         return "admin/index";
     }
     @PostMapping("add")
     public String add(Model model,
-                      @ModelAttribute("SanPham") SanPham sp){
+                      @RequestParam("ten") String ten,
+                      @RequestParam("giaNhap") double giaNhap,
+                      @RequestParam("giaBan")double giaBan,
+                      @RequestParam("soLuong") Integer soLuong,
+                      @RequestParam("moTa") String moTa,
+                      @RequestParam("trangThai") Integer trangThai){
+        SanPham sp = new SanPham(giaNhap,ten,giaBan,soLuong,trangThai,moTa);
         sanPhamServiceimpl.add(sp);
         sanPhamServiceimpl.chuyenSoLuong(sp);
         return "redirect:/san_pham/index";
@@ -53,9 +54,10 @@ public class SanPhamController {
     @GetMapping("detail")
     public String detail(Model model,
                          @RequestParam("id") Long id){
+        model.addAttribute("listSP",sanPhamServiceimpl.getAll());
         model.addAttribute("SanPham",sanPhamServiceimpl.getOne(id));
         model.addAttribute("sp",sanPhamServiceimpl.getOne(id));
-        model.addAttribute("view", "/san_pham/detail1.jsp");
+        model.addAttribute("view", "/san_pham/index.jsp");
         return "admin/index";
     }
     @PostMapping("update/{id}")
@@ -64,7 +66,7 @@ public class SanPhamController {
                          @ModelAttribute("SanPham") SanPham sp){
         sanPhamServiceimpl.update(id,sp);
         sanPhamServiceimpl.chuyenSoLuong(sanPhamServiceimpl.getOne(id));
-        return "redirect:/sanpham/index";
+        return "redirect:/san_pham/index";
     }
 
     @PostMapping( value = "import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

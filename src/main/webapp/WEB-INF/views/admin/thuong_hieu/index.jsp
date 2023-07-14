@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -241,58 +242,79 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">Thông Tin Chi Tiết <span>| xx</span></h5>
+                    <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <!-- Default Tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">Sửa
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">Thêm mới
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                                    aria-selected="false">Chi tiết
+                            </button>
+                        </li>
+                    </ul>
 
 
-                    <form class="row g-3">
-                        <div class="col-md-12">
-                            <label for="inputName5" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="inputName5">
+
+                    <div class="tab-content pt-2" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                             aria-labelledby="home-tab">
+                            <form:form modelAttribute="ThuongHieu" method="post" action="update/${th.id}">
+                                <div>
+                                    <label>Tên</label>
+                                    <form:input path="ten" cssClass="form-control"></form:input>
+                                </div>
+                                <div>
+                                    <label>Giá nhập</label>
+                                    <form:radiobutton path="trangThai" value="true" label="Active"></form:radiobutton>
+                                    <form:radiobutton path="trangThai" value="false" label="Inactive"></form:radiobutton>
+                                </div>
+                                <div>
+                                    <form:button>UPdate</form:button>
+                                </div>
+                            </form:form>
                         </div>
-                        <div class="col-md-6">
-                            <label for="inputEmail5" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail5">
+
+
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <form method="post" action="add">
+                                <div>
+                                    <label>Tên</label>
+                                    <input name="ten" class="form-control" type="text">
+                                </div>
+                                <div>
+                                    <label>Giá nhập</label>
+                                    <input type="radio" name="trangThai" value="true" >Active
+                                    <input type="radio" name="trangThai" value="false" >Inactive
+                                </div>
+                                <div>
+                                    <button>Thêm</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-md-6">
-                            <label for="inputPassword5" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="inputPassword5">
+
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <form class="row g-3" action="update/${th.id}" method="post">
+                                <div class="form-group">
+                                    Tên danh mục : ${th.ten}
+                                </div>
+                                <div class="form-group">
+                                    Trạng thái : ${th.layTrangThai()}
+                                </div>
+                            </form><!-- End Multi Columns Form -->
                         </div>
-                        <div class="col-12">
-                            <label for="inputAddres5s" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inputState" class="form-label">State</label>
-                            <select id="inputState" class="form-select">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="inputZip" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
-                        </div>
-                    </form><!-- End Multi Columns Form -->
+                    </div><!-- End Multi Columns Form -->
 
 
                 </div>

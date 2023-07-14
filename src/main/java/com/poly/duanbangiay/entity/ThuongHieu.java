@@ -29,4 +29,9 @@ public class ThuongHieu {
             return "Inactive";
         }
     }
+
+    public ThuongHieu(String ten, Boolean trangThai) {
+        this.ten = ten;
+        this.trangThai = trangThai;
+    }
 }

@@ -25,7 +25,13 @@ public class SanPhamServiceimpl implements SanPhamService {
 
     @Override
     public void delete(Long id) {
-        sanPhamRespository.deleteById(id);
+        SanPham a = sanPhamRespository.findById(id).get();
+        if(a.getTrangThai()==1){
+            a.setTrangThai(0);
+        }else{
+            a.setTrangThai(1);
+        }
+        sanPhamRespository.flush();
     }
 
     @Override

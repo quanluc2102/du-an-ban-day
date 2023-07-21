@@ -22,6 +22,9 @@ public class KichThuocMauSacServiceImpl implements KichThuocMauSacService {
     @Autowired
     KichThuocMauSacRepository kichThuocMauSacRepository;
 
+    @Autowired
+    private KichThuocMauSacExcelSave excelSave;
+
     @Override
     public void add(KichThuocMauSac kichThuoc) {
         kichThuocMauSacRepository.save(kichThuoc);
@@ -61,7 +64,7 @@ public class KichThuocMauSacServiceImpl implements KichThuocMauSacService {
     @Override
     public void imPortExcel(MultipartFile file) {
         try {
-            List<KichThuocMauSac> importEX = KichThuocMauSacExcelSave.excelImport(file.getInputStream());
+            List<KichThuocMauSac> importEX = excelSave.excelImport(file.getInputStream());
             for (KichThuocMauSac kichThuocMauSac : importEX) {
                 kichThuocMauSacRepository.save(kichThuocMauSac);
                 kichThuocMauSac.toString();

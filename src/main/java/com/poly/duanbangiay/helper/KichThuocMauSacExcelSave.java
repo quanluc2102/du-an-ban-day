@@ -14,6 +14,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -22,9 +23,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
+@Component
 public class KichThuocMauSacExcelSave {
 
+    @Autowired
+    MauSacServiceImpl mauSacService;
 
+    @Autowired
+    KichThuocServiceImpl kichThuocService;
+
+    @Autowired
+    SanPhamServiceimpl sanPhamService;
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
     static String[] HEADERs = {"SoLuong", "TrangThai", "MauSac", "SanPham", "KichThuoc"};
     static String SHEET = "KichThuocMauSac";
@@ -36,15 +46,13 @@ public class KichThuocMauSacExcelSave {
         return true;
     }
 
-    public static List<KichThuocMauSac> excelImport(InputStream is) {
+    public List<KichThuocMauSac> excelImport(InputStream is) {
         try {
             Workbook workbook = new XSSFWorkbook(is);
             Sheet sheet = workbook.getSheet(SHEET);
             Iterator<Row> rows = sheet.iterator();
             List<KichThuocMauSac> kichThuocList = new ArrayList<>();
-            MauSacServiceImpl mauSacService = new MauSacServiceImpl();
-            KichThuocServiceImpl kichThuocService = new KichThuocServiceImpl();
-            SanPhamServiceimpl sanPhamService = new SanPhamServiceimpl();
+
             int rowNumber = 0;
             while (rows.hasNext()) {
                 Row currentRow = rows.next();
